@@ -1,0 +1,34 @@
+## Local editor / OS noise
+.DS_Store
+*~
+.vscode/
+.idea/
+
+## Agent-local state
+.serena/
+.claude/settings.local.json
+
+## Rust and local build outputs
+target/
+build/
+Battleships
+Battleships.exe
+*.pdb
+*.rlib
+*.rmeta
+
+## Benchmark wrapper outputs
+## Keep TSV summaries/manifests trackable, ignore heavy/reproducible artifacts.
+benchmarks/**/binary
+benchmarks/**/*.log
+archives/**/run/binary
+archives/**/run/*.log
+
+## Local tester saved IO / visualizer output
+inputs/
+outputs/
+errors/
+*.in
+*.out
+*.err
+seed-*.png
