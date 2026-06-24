@@ -46,74 +46,34 @@ fn decrement_ship_count(remaining: &mut [usize], len: usize) {
     }
 }
 
-fn placement_is_legal(
-    grid: &[Vec<Cell>],
-    shot: &[Vec<bool>],
-    r: usize,
-    c: usize,
-    dr: usize,
-    dc: usize,
-    len: usize,
-) -> bool {
-    for k in 0..len {
-        let rr = r + dr * k;
-        let cc = c + dc * k;
-        let cell = grid[rr][cc];
-        if cell == Cell::Miss || cell == Cell::Dead || (shot[rr][cc] && cell != Cell::Hit) {
-            return false;
-        }
-    }
-    true
-}
-
-const HEATMAP_ALPHA: f64 = 0.50;
-
 fn build_probabilities(
     n: usize,
     grid: &[Vec<Cell>],
     shot: &[Vec<bool>],
     remaining: &[usize],
 ) -> Vec<Vec<f64>> {
-    let mut raw = vec![vec![0.0f64; n]; n];
-    let mut norm = vec![vec![0.0f64; n]; n];
-    let mut legal_counts = vec![0usize; remaining.len()];
-
-    for len in 1..remaining.len() {
-        if remaining[len] == 0 {
-            continue;
-        }
-
-        for r in 0..n {
-            for c in 0..=n - len {
-                if placement_is_legal(grid, shot, r, c, 0, 1, len) {
-                    legal_counts[len] += 1;
-                }
-            }
-        }
-
-        for r in 0..=n - len {
-            for c in 0..n {
-                if placement_is_legal(grid, shot, r, c, 1, 0, len) {
-                    legal_counts[len] += 1;
-                }
-            }
-        }
-    }
+    let mut prob = vec![vec![0.0f64; n]; n];
 
     for len in 1..remaining.len() {
         let ships = remaining[len];
-        if ships == 0 || legal_counts[len] == 0 {
+        if ships == 0 {
             continue;
         }
-        let raw_weight = ships as f64 * len as f64;
-        let norm_weight = raw_weight / legal_counts[len] as f64;
+        let weight = ships as f64 * len as f64;
 
         for r in 0..n {
             for c in 0..=n - len {
-                if placement_is_legal(grid, shot, r, c, 0, 1, len) {
+                let mut ok = true;
+                for k in 0..len {
+                    let cell = grid[r][c + k];
+                    if cell == Cell::Miss || cell == Cell::Dead || (shot[r][c + k] && cell != Cell::Hit) {
+                        ok = false;
+                        break;
+                    }
+                }
+                if ok {
                     for k in 0..len {
-                        raw[r][c + k] += raw_weight;
-                        norm[r][c + k] += norm_weight;
+                        prob[r][c + k] += weight;
                     }
                 }
             }
@@ -121,35 +81,20 @@ fn build_probabilities(
 
         for r in 0..=n - len {
             for c in 0..n {
-                if placement_is_legal(grid, shot, r, c, 1, 0, len) {
+                let mut ok = true;
+                for k in 0..len {
+                    let cell = grid[r + k][c];
+                    if cell == Cell::Miss || cell == Cell::Dead || (shot[r + k][c] && cell != Cell::Hit) {
+                        ok = false;
+                        break;
+                    }
+                }
+                if ok {
                     for k in 0..len {
-                        raw[r + k][c] += raw_weight;
-                        norm[r + k][c] += norm_weight;
+                        prob[r + k][c] += weight;
                     }
                 }
             }
-        }
-    }
-
-    let mut raw_max = 0.0f64;
-    let mut norm_max = 0.0f64;
-    for r in 0..n {
-        for c in 0..n {
-            raw_max = raw_max.max(raw[r][c]);
-            norm_max = norm_max.max(norm[r][c]);
-        }
-    }
-
-    let scale = if norm_max > 0.0 && raw_max > 0.0 {
-        norm_max / raw_max
-    } else {
-        1.0
-    };
-
-    let mut prob = vec![vec![0.0f64; n]; n];
-    for r in 0..n {
-        for c in 0..n {
-            prob[r][c] = HEATMAP_ALPHA * norm[r][c] + (1.0 - HEATMAP_ALPHA) * raw[r][c] * scale;
         }
     }
 
@@ -281,7 +226,7 @@ fn chase_cell(
                 let c = nc as usize;
                 if !shot[r][c] && grid[r][c] == Cell::Unknown {
                     let placement_score = placement_score_for_hits(n, grid, shot, remaining, active_hits, (r, c));
-                    let placement_bonus = if active_hits.len() == 1 { placement_score * 0.25 } else { placement_score };
+                    let placement_bonus = placement_score.min(250.0) * 0.25;
                     candidates.push((r, c, 10000.0 + placement_bonus + prob[r][c]));
                 }
             }
@@ -295,7 +240,7 @@ fn chase_cell(
                 let r = nr as usize;
                 if !shot[r][c] && grid[r][c] == Cell::Unknown {
                     let placement_score = placement_score_for_hits(n, grid, shot, remaining, active_hits, (r, c));
-                    let placement_bonus = if active_hits.len() == 1 { placement_score * 0.25 } else { placement_score };
+                    let placement_bonus = placement_score.min(250.0) * 0.25;
                     candidates.push((r, c, 10000.0 + placement_bonus + prob[r][c]));
                 }
             }
@@ -313,7 +258,7 @@ fn chase_cell(
                     let cc = nc as usize;
                     if !shot[rr][cc] && grid[rr][cc] == Cell::Unknown {
                         let placement_score = placement_score_for_hits(n, grid, shot, remaining, active_hits, (rr, cc));
-                    let placement_bonus = if active_hits.len() == 1 { placement_score * 0.25 } else { placement_score };
+                    let placement_bonus = placement_score.min(250.0) * 0.25;
                     candidates.push((rr, cc, 5000.0 + placement_bonus + prob[rr][cc]));
                     }
                 }

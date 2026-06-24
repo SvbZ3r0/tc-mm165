@@ -66,16 +66,13 @@ fn placement_is_legal(
     true
 }
 
-const HEATMAP_ALPHA: f64 = 0.50;
-
 fn build_probabilities(
     n: usize,
     grid: &[Vec<Cell>],
     shot: &[Vec<bool>],
     remaining: &[usize],
 ) -> Vec<Vec<f64>> {
-    let mut raw = vec![vec![0.0f64; n]; n];
-    let mut norm = vec![vec![0.0f64; n]; n];
+    let mut prob = vec![vec![0.0f64; n]; n];
     let mut legal_counts = vec![0usize; remaining.len()];
 
     for len in 1..remaining.len() {
@@ -105,15 +102,13 @@ fn build_probabilities(
         if ships == 0 || legal_counts[len] == 0 {
             continue;
         }
-        let raw_weight = ships as f64 * len as f64;
-        let norm_weight = raw_weight / legal_counts[len] as f64;
+        let weight = ships as f64 * len as f64 / legal_counts[len] as f64;
 
         for r in 0..n {
             for c in 0..=n - len {
                 if placement_is_legal(grid, shot, r, c, 0, 1, len) {
                     for k in 0..len {
-                        raw[r][c + k] += raw_weight;
-                        norm[r][c + k] += norm_weight;
+                        prob[r][c + k] += weight;
                     }
                 }
             }
@@ -123,33 +118,10 @@ fn build_probabilities(
             for c in 0..n {
                 if placement_is_legal(grid, shot, r, c, 1, 0, len) {
                     for k in 0..len {
-                        raw[r + k][c] += raw_weight;
-                        norm[r + k][c] += norm_weight;
+                        prob[r + k][c] += weight;
                     }
                 }
             }
-        }
-    }
-
-    let mut raw_max = 0.0f64;
-    let mut norm_max = 0.0f64;
-    for r in 0..n {
-        for c in 0..n {
-            raw_max = raw_max.max(raw[r][c]);
-            norm_max = norm_max.max(norm[r][c]);
-        }
-    }
-
-    let scale = if norm_max > 0.0 && raw_max > 0.0 {
-        norm_max / raw_max
-    } else {
-        1.0
-    };
-
-    let mut prob = vec![vec![0.0f64; n]; n];
-    for r in 0..n {
-        for c in 0..n {
-            prob[r][c] = HEATMAP_ALPHA * norm[r][c] + (1.0 - HEATMAP_ALPHA) * raw[r][c] * scale;
         }
     }
 

@@ -8,6 +8,25 @@ enum Cell {
     Dead,
 }
 
+#[derive(Clone, Copy)]
+struct Scan {
+    r1: usize,
+    c1: usize,
+    r2: usize,
+    c2: usize,
+    count: usize,
+}
+
+impl Scan {
+    fn contains(&self, r: usize, c: usize) -> bool {
+        self.r1 <= r && r <= self.r2 && self.c1 <= c && c <= self.c2
+    }
+
+    fn area(&self) -> usize {
+        (self.r2 - self.r1 + 1) * (self.c2 - self.c1 + 1)
+    }
+}
+
 fn read_line<T: std::str::FromStr>(reader: &mut io::Lines<io::BufReader<io::Stdin>>) -> T {
     reader
         .next()
@@ -46,74 +65,34 @@ fn decrement_ship_count(remaining: &mut [usize], len: usize) {
     }
 }
 
-fn placement_is_legal(
-    grid: &[Vec<Cell>],
-    shot: &[Vec<bool>],
-    r: usize,
-    c: usize,
-    dr: usize,
-    dc: usize,
-    len: usize,
-) -> bool {
-    for k in 0..len {
-        let rr = r + dr * k;
-        let cc = c + dc * k;
-        let cell = grid[rr][cc];
-        if cell == Cell::Miss || cell == Cell::Dead || (shot[rr][cc] && cell != Cell::Hit) {
-            return false;
-        }
-    }
-    true
-}
-
-const HEATMAP_ALPHA: f64 = 0.50;
-
 fn build_probabilities(
     n: usize,
     grid: &[Vec<Cell>],
     shot: &[Vec<bool>],
     remaining: &[usize],
 ) -> Vec<Vec<f64>> {
-    let mut raw = vec![vec![0.0f64; n]; n];
-    let mut norm = vec![vec![0.0f64; n]; n];
-    let mut legal_counts = vec![0usize; remaining.len()];
-
-    for len in 1..remaining.len() {
-        if remaining[len] == 0 {
-            continue;
-        }
-
-        for r in 0..n {
-            for c in 0..=n - len {
-                if placement_is_legal(grid, shot, r, c, 0, 1, len) {
-                    legal_counts[len] += 1;
-                }
-            }
-        }
-
-        for r in 0..=n - len {
-            for c in 0..n {
-                if placement_is_legal(grid, shot, r, c, 1, 0, len) {
-                    legal_counts[len] += 1;
-                }
-            }
-        }
-    }
+    let mut prob = vec![vec![0.0f64; n]; n];
 
     for len in 1..remaining.len() {
         let ships = remaining[len];
-        if ships == 0 || legal_counts[len] == 0 {
+        if ships == 0 {
             continue;
         }
-        let raw_weight = ships as f64 * len as f64;
-        let norm_weight = raw_weight / legal_counts[len] as f64;
+        let weight = ships as f64 * len as f64;
 
         for r in 0..n {
             for c in 0..=n - len {
-                if placement_is_legal(grid, shot, r, c, 0, 1, len) {
+                let mut ok = true;
+                for k in 0..len {
+                    let cell = grid[r][c + k];
+                    if cell == Cell::Miss || cell == Cell::Dead || (shot[r][c + k] && cell != Cell::Hit) {
+                        ok = false;
+                        break;
+                    }
+                }
+                if ok {
                     for k in 0..len {
-                        raw[r][c + k] += raw_weight;
-                        norm[r][c + k] += norm_weight;
+                        prob[r][c + k] += weight;
                     }
                 }
             }
@@ -121,35 +100,20 @@ fn build_probabilities(
 
         for r in 0..=n - len {
             for c in 0..n {
-                if placement_is_legal(grid, shot, r, c, 1, 0, len) {
+                let mut ok = true;
+                for k in 0..len {
+                    let cell = grid[r + k][c];
+                    if cell == Cell::Miss || cell == Cell::Dead || (shot[r + k][c] && cell != Cell::Hit) {
+                        ok = false;
+                        break;
+                    }
+                }
+                if ok {
                     for k in 0..len {
-                        raw[r + k][c] += raw_weight;
-                        norm[r + k][c] += norm_weight;
+                        prob[r + k][c] += weight;
                     }
                 }
             }
-        }
-    }
-
-    let mut raw_max = 0.0f64;
-    let mut norm_max = 0.0f64;
-    for r in 0..n {
-        for c in 0..n {
-            raw_max = raw_max.max(raw[r][c]);
-            norm_max = norm_max.max(norm[r][c]);
-        }
-    }
-
-    let scale = if norm_max > 0.0 && raw_max > 0.0 {
-        norm_max / raw_max
-    } else {
-        1.0
-    };
-
-    let mut prob = vec![vec![0.0f64; n]; n];
-    for r in 0..n {
-        for c in 0..n {
-            prob[r][c] = HEATMAP_ALPHA * norm[r][c] + (1.0 - HEATMAP_ALPHA) * raw[r][c] * scale;
         }
     }
 
@@ -161,6 +125,8 @@ fn best_hunt_cell(
     grid: &[Vec<Cell>],
     shot: &[Vec<bool>],
     remaining: &[usize],
+    scans: &[Scan],
+    scan_weight: f64,
     rng: &mut u64,
 ) -> Option<(usize, usize)> {
     let prob = build_probabilities(n, grid, shot, remaining);
@@ -180,9 +146,16 @@ fn best_hunt_cell(
                 0.001 * (n as f64 - dr - dc)
             };
 
+            let mut scan_bias = 0.0;
+            for scan in scans {
+                if scan.count > 0 && scan.contains(r, c) {
+                    scan_bias += scan.count as f64 / scan.area() as f64;
+                }
+            }
+
             *rng = rng.wrapping_mul(6364136223846793005).wrapping_add(1442695040888963407);
             let jitter = ((*rng >> 32) as f64) * 1e-12;
-            let score = prob[r][c] + center_bias + jitter;
+            let score = prob[r][c] * (1.0 + scan_weight * scan_bias) + center_bias + jitter;
             if score > best_score {
                 best_score = score;
                 best = Some((r, c));
@@ -191,67 +164,6 @@ fn best_hunt_cell(
     }
 
     best
-}
-
-fn placement_score_for_hits(
-    n: usize,
-    grid: &[Vec<Cell>],
-    shot: &[Vec<bool>],
-    remaining: &[usize],
-    active_hits: &[(usize, usize)],
-    candidate: (usize, usize),
-) -> f64 {
-    let mut required = vec![candidate];
-    required.extend_from_slice(active_hits);
-    let mut score = 0.0;
-
-    for len in 1..remaining.len() {
-        let ships = remaining[len];
-        if ships == 0 {
-            continue;
-        }
-        let weight = ships as f64 * len as f64;
-
-        for r in 0..n {
-            for c in 0..=n - len {
-                let mut ok = true;
-                for k in 0..len {
-                    let cell = grid[r][c + k];
-                    if cell == Cell::Miss || cell == Cell::Dead || (shot[r][c + k] && cell != Cell::Hit) {
-                        ok = false;
-                        break;
-                    }
-                }
-                if !ok {
-                    continue;
-                }
-                if required.iter().all(|&(rr, cc)| rr == r && c <= cc && cc < c + len) {
-                    score += weight;
-                }
-            }
-        }
-
-        for r in 0..=n - len {
-            for c in 0..n {
-                let mut ok = true;
-                for k in 0..len {
-                    let cell = grid[r + k][c];
-                    if cell == Cell::Miss || cell == Cell::Dead || (shot[r + k][c] && cell != Cell::Hit) {
-                        ok = false;
-                        break;
-                    }
-                }
-                if !ok {
-                    continue;
-                }
-                if required.iter().all(|&(rr, cc)| cc == c && r <= rr && rr < r + len) {
-                    score += weight;
-                }
-            }
-        }
-    }
-
-    score
 }
 
 fn chase_cell(
@@ -280,9 +192,7 @@ fn chase_cell(
             if inside(n, r as isize, nc) {
                 let c = nc as usize;
                 if !shot[r][c] && grid[r][c] == Cell::Unknown {
-                    let placement_score = placement_score_for_hits(n, grid, shot, remaining, active_hits, (r, c));
-                    let placement_bonus = if active_hits.len() == 1 { placement_score * 0.25 } else { placement_score };
-                    candidates.push((r, c, 10000.0 + placement_bonus + prob[r][c]));
+                    candidates.push((r, c, 10000.0 + prob[r][c]));
                 }
             }
         }
@@ -294,9 +204,7 @@ fn chase_cell(
             if inside(n, nr, c as isize) {
                 let r = nr as usize;
                 if !shot[r][c] && grid[r][c] == Cell::Unknown {
-                    let placement_score = placement_score_for_hits(n, grid, shot, remaining, active_hits, (r, c));
-                    let placement_bonus = if active_hits.len() == 1 { placement_score * 0.25 } else { placement_score };
-                    candidates.push((r, c, 10000.0 + placement_bonus + prob[r][c]));
+                    candidates.push((r, c, 10000.0 + prob[r][c]));
                 }
             }
         }
@@ -312,9 +220,7 @@ fn chase_cell(
                     let rr = nr as usize;
                     let cc = nc as usize;
                     if !shot[rr][cc] && grid[rr][cc] == Cell::Unknown {
-                        let placement_score = placement_score_for_hits(n, grid, shot, remaining, active_hits, (rr, cc));
-                    let placement_bonus = if active_hits.len() == 1 { placement_score * 0.25 } else { placement_score };
-                    candidates.push((rr, cc, 5000.0 + placement_bonus + prob[rr][cc]));
+                        candidates.push((rr, cc, 5000.0 + prob[rr][cc]));
                     }
                 }
             }
@@ -441,6 +347,35 @@ fn split_hit_clusters(n: usize, hits: Vec<(usize, usize)>) -> Vec<Vec<(usize, us
     clusters
 }
 
+fn opening_scan_schedule(n: usize, p: f64) -> Vec<Scan> {
+    let mut scans = Vec::new();
+    if p <= 0.15 {
+        let mid = n / 2;
+        scans.push(Scan { r1: 0, c1: 0, r2: mid - 1, c2: n - 1, count: 0 });
+        scans.push(Scan { r1: 0, c1: 0, r2: n - 1, c2: mid - 1, count: 0 });
+        scans.push(Scan { r1: 0, c1: 0, r2: mid - 1, c2: mid - 1, count: 0 });
+        scans.push(Scan { r1: mid, c1: mid, r2: n - 1, c2: n - 1, count: 0 });
+    } else if false && p <= 0.45 {
+        let mid = n / 2;
+        scans.push(Scan { r1: 0, c1: 0, r2: mid - 1, c2: n - 1, count: 0 });
+        scans.push(Scan { r1: 0, c1: 0, r2: n - 1, c2: mid - 1, count: 0 });
+    }
+    scans
+}
+
+fn apply_zero_scan(grid: &mut [Vec<Cell>], scan: Scan) {
+    if scan.count != 0 {
+        return;
+    }
+    for r in scan.r1..=scan.r2 {
+        for c in scan.c1..=scan.c2 {
+            if grid[r][c] == Cell::Unknown {
+                grid[r][c] = Cell::Miss;
+            }
+        }
+    }
+}
+
 fn main() {
     let stdin = io::stdin();
     let mut reader = io::BufReader::new(stdin).lines();
@@ -449,7 +384,7 @@ fn main() {
     let n: usize = read_line(&mut reader);
     let s: usize = read_line(&mut reader);
     let l: usize = read_line(&mut reader);
-    let _p: f64 = read_line(&mut reader);
+    let p: f64 = read_line(&mut reader);
 
     let mut remaining = vec![0usize; l + 1];
     for len in 1..=l {
@@ -459,13 +394,29 @@ fn main() {
     let mut grid = vec![vec![Cell::Unknown; n]; n];
     let mut shot = vec![vec![false; n]; n];
     let mut active_clusters: Vec<Vec<(usize, usize)>> = Vec::new();
+    let opening_scans = opening_scan_schedule(n, p);
+    let mut next_opening_scan = 0usize;
+    let mut scans: Vec<Scan> = Vec::new();
+    let scan_weight = 0.0;
     let mut alive = s;
     let mut rng = 0x9E37_79B9_7F4A_7C15u64 ^ ((n as u64) << 32) ^ s as u64;
 
     while alive > 0 {
+        if active_clusters.is_empty() && next_opening_scan < opening_scans.len() {
+            let mut scan = opening_scans[next_opening_scan];
+            next_opening_scan += 1;
+            println!("SCAN {} {} {} {}", scan.r1, scan.c1, scan.r2, scan.c2);
+            stdout.flush().unwrap();
+            scan.count = read_line(&mut reader);
+            apply_zero_scan(&mut grid, scan);
+            scans.push(scan);
+            let _elapsed_time: i32 = read_line(&mut reader);
+            continue;
+        }
+
         let target = best_chase_cell(n, &grid, &shot, &active_clusters, &remaining, &mut rng)
             .map(|(cell, cluster_idx)| (cell, Some(cluster_idx)))
-            .or_else(|| best_hunt_cell(n, &grid, &shot, &remaining, &mut rng).map(|cell| (cell, None)))
+            .or_else(|| best_hunt_cell(n, &grid, &shot, &remaining, &scans, scan_weight, &mut rng).map(|cell| (cell, None)))
             .expect("No legal shot left");
 
         let ((r, c), target_cluster) = target;

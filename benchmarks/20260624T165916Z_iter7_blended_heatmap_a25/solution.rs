@@ -66,7 +66,7 @@ fn placement_is_legal(
     true
 }
 
-const HEATMAP_ALPHA: f64 = 0.50;
+const HEATMAP_ALPHA: f64 = 0.25;
 
 fn build_probabilities(
     n: usize,
