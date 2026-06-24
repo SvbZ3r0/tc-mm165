@@ -20,8 +20,8 @@ Examples:
   ./benchmark.sh compare benchmarks/20260624T123000Z_iter2
   ./benchmark.sh archive iter1 Battleships.rs benchmarks/20260624T123000Z_iter1
 
-If no seed_spec is provided, these are used:
-  1,10 1,100 1,500 1,1000
+If no seed_spec is provided, this is used:
+  1,1000
 
 State files:
   benchmarks/runs.tsv        all benchmark wrapper runs
@@ -223,7 +223,7 @@ run_solution() {
 
   local seeds
   if [[ $# -eq 0 ]]; then
-    seeds=("1,10" "1,100" "1,500" "1,1000")
+    seeds=("1,1000")
   else
     seeds=("$@")
   fi

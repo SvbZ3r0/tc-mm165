@@ -67,10 +67,10 @@ Use larger ranges before archiving a serious candidate:
 ./benchmark.sh run iter2 Battleships.rs 1,1000
 ```
 
-If no seed specs are provided, the wrapper runs all default ranges:
+If no seed specs are provided, the wrapper defaults to the longer reference range:
 
 ```text
-1,10 1,100 1,500 1,1000
+1,1000
 ```
 
 Example:

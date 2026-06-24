@@ -237,88 +237,6 @@ fn mark_active_dead(grid: &mut [Vec<Cell>], active_hits: &[(usize, usize)], last
     grid[last.0][last.1] = Cell::Dead;
 }
 
-fn infer_killed_hits(active_hits: &[(usize, usize)], last: (usize, usize)) -> Vec<(usize, usize)> {
-    let mut hit_set = vec![false; 400];
-    for &(r, c) in active_hits {
-        hit_set[r * 20 + c] = true;
-    }
-
-    let mut best: Vec<(usize, usize)> = Vec::new();
-
-    let mut row_segment = Vec::new();
-    let mut c = last.1 as isize - 1;
-    while c >= 0 && hit_set[last.0 * 20 + c as usize] {
-        row_segment.push((last.0, c as usize));
-        c -= 1;
-    }
-    c = last.1 as isize + 1;
-    while c < 20 && hit_set[last.0 * 20 + c as usize] {
-        row_segment.push((last.0, c as usize));
-        c += 1;
-    }
-    if row_segment.len() > best.len() {
-        best = row_segment;
-    }
-
-    let mut col_segment = Vec::new();
-    let mut r = last.0 as isize - 1;
-    while r >= 0 && hit_set[r as usize * 20 + last.1] {
-        col_segment.push((r as usize, last.1));
-        r -= 1;
-    }
-    r = last.0 as isize + 1;
-    while r < 20 && hit_set[r as usize * 20 + last.1] {
-        col_segment.push((r as usize, last.1));
-        r += 1;
-    }
-    if col_segment.len() > best.len() {
-        best = col_segment;
-    }
-
-    best
-}
-
-fn split_hit_clusters(n: usize, hits: Vec<(usize, usize)>) -> Vec<Vec<(usize, usize)>> {
-    let mut present = vec![vec![false; n]; n];
-    for &(r, c) in &hits {
-        present[r][c] = true;
-    }
-
-    let mut seen = vec![vec![false; n]; n];
-    let mut clusters = Vec::new();
-    let dirs = [(1isize, 0isize), (-1, 0), (0, 1), (0, -1)];
-
-    for &(sr, sc) in &hits {
-        if seen[sr][sc] {
-            continue;
-        }
-
-        let mut stack = vec![(sr, sc)];
-        let mut cluster = Vec::new();
-        seen[sr][sc] = true;
-
-        while let Some((r, c)) = stack.pop() {
-            cluster.push((r, c));
-            for &(dr, dc) in &dirs {
-                let nr = r as isize + dr;
-                let nc = c as isize + dc;
-                if inside(n, nr, nc) {
-                    let rr = nr as usize;
-                    let cc = nc as usize;
-                    if present[rr][cc] && !seen[rr][cc] {
-                        seen[rr][cc] = true;
-                        stack.push((rr, cc));
-                    }
-                }
-            }
-        }
-
-        clusters.push(cluster);
-    }
-
-    clusters
-}
-
 fn main() {
     let stdin = io::stdin();
     let mut reader = io::BufReader::new(stdin).lines();
@@ -372,21 +290,9 @@ fn main() {
                 let inferred_len = if let Some(cluster_idx) = target_cluster {
                     if cluster_idx < active_clusters.len() {
                         let killed_cluster = active_clusters.swap_remove(cluster_idx);
-                        let killed_hits = infer_killed_hits(&killed_cluster, (r, c));
-                        mark_active_dead(&mut grid, &killed_hits, (r, c));
-
-                        let mut killed = vec![vec![false; n]; n];
-                        for &(kr, kc) in &killed_hits {
-                            killed[kr][kc] = true;
-                        }
-
-                        let leftovers: Vec<(usize, usize)> = killed_cluster
-                            .into_iter()
-                            .filter(|&(hr, hc)| !killed[hr][hc])
-                            .collect();
-                        active_clusters.extend(split_hit_clusters(n, leftovers));
-
-                        killed_hits.len() + 1
+                        let inferred_len = killed_cluster.len() + 1;
+                        mark_active_dead(&mut grid, &killed_cluster, (r, c));
+                        inferred_len
                     } else {
                         grid[r][c] = Cell::Dead;
                         1
