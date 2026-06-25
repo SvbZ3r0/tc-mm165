@@ -97,36 +97,10 @@ fn build_probabilities(
     grid: &[Vec<Cell>],
     shot: &[Vec<bool>],
     remaining: &[usize],
-    scans: &[Scan],
-    remaining_cells: usize,
 ) -> Vec<Vec<f64>> {
     let mut raw = vec![vec![0.0f64; n]; n];
     let mut norm = vec![vec![0.0f64; n]; n];
-    let mut legal_weight_sums = vec![0.0f64; remaining.len()];
-
-    let mut global_unknown = 0usize;
-    for r in 0..n {
-        for c in 0..n {
-            if grid[r][c] == Cell::Unknown && !shot[r][c] {
-                global_unknown += 1;
-            }
-        }
-    }
-    let global_density = remaining_cells as f64 / global_unknown.max(1) as f64;
-    let density_scans = derived_quadrant_scans(n, scans, remaining_cells);
-    let scan_source: Vec<Scan> = density_scans.unwrap_or_else(|| scans.to_vec());
-    let mut scan_constraints = Vec::new();
-    if remaining_cells > 0 && global_density > 0.0 {
-        for scan in &scan_source {
-            let (scan_remaining, scan_unknown) = scan_adjusted_count(grid, *scan);
-            if scan_unknown == 0 {
-                continue;
-            }
-            let scan_density = scan_remaining as f64 / scan_unknown as f64;
-            let ratio = (scan_density / global_density).clamp(0.35, 2.25);
-            scan_constraints.push((*scan, scan_remaining, ratio));
-        }
-    }
+    let mut legal_counts = vec![0usize; remaining.len()];
 
     for len in 1..remaining.len() {
         if remaining[len] == 0 {
@@ -136,8 +110,7 @@ fn build_probabilities(
         for r in 0..n {
             for c in 0..=n - len {
                 if placement_is_legal(grid, shot, r, c, 0, 1, len) {
-                    let placement_weight = placement_scan_weight(r, c, 0, 1, len, &scan_constraints);
-                    legal_weight_sums[len] += placement_weight;
+                    legal_counts[len] += 1;
                 }
             }
         }
@@ -145,8 +118,7 @@ fn build_probabilities(
         for r in 0..=n - len {
             for c in 0..n {
                 if placement_is_legal(grid, shot, r, c, 1, 0, len) {
-                    let placement_weight = placement_scan_weight(r, c, 1, 0, len, &scan_constraints);
-                    legal_weight_sums[len] += placement_weight;
+                    legal_counts[len] += 1;
                 }
             }
         }
@@ -154,22 +126,18 @@ fn build_probabilities(
 
     for len in 1..remaining.len() {
         let ships = remaining[len];
-        if ships == 0 || legal_weight_sums[len] <= 0.0 {
+        if ships == 0 || legal_counts[len] == 0 {
             continue;
         }
         let raw_weight = ships as f64 * len as f64;
-        let norm_weight = raw_weight / legal_weight_sums[len];
+        let norm_weight = raw_weight / legal_counts[len] as f64;
 
         for r in 0..n {
             for c in 0..=n - len {
                 if placement_is_legal(grid, shot, r, c, 0, 1, len) {
-                    let placement_weight = placement_scan_weight(r, c, 0, 1, len, &scan_constraints);
-                    if placement_weight <= 0.0 {
-                        continue;
-                    }
                     for k in 0..len {
-                        raw[r][c + k] += raw_weight * placement_weight;
-                        norm[r][c + k] += norm_weight * placement_weight;
+                        raw[r][c + k] += raw_weight;
+                        norm[r][c + k] += norm_weight;
                     }
                 }
             }
@@ -178,13 +146,9 @@ fn build_probabilities(
         for r in 0..=n - len {
             for c in 0..n {
                 if placement_is_legal(grid, shot, r, c, 1, 0, len) {
-                    let placement_weight = placement_scan_weight(r, c, 1, 0, len, &scan_constraints);
-                    if placement_weight <= 0.0 {
-                        continue;
-                    }
                     for k in 0..len {
-                        raw[r + k][c] += raw_weight * placement_weight;
-                        norm[r + k][c] += norm_weight * placement_weight;
+                        raw[r + k][c] += raw_weight;
+                        norm[r + k][c] += norm_weight;
                     }
                 }
             }
@@ -216,32 +180,6 @@ fn build_probabilities(
     prob
 }
 
-fn placement_scan_weight(
-    r: usize,
-    c: usize,
-    dr: usize,
-    dc: usize,
-    len: usize,
-    scan_constraints: &[(Scan, usize, f64)],
-) -> f64 {
-    let mut weight = 1.0f64;
-    for &(scan, scan_remaining, ratio) in scan_constraints {
-        let mut overlap = 0usize;
-        for k in 0..len {
-            if scan.contains(r + dr * k, c + dc * k) {
-                overlap += 1;
-            }
-        }
-        if overlap == 0 {
-            continue;
-        }
-        if scan_remaining == 0 {
-            return 0.0;
-        }
-        weight *= ratio.powf(overlap as f64 / len as f64);
-    }
-    weight.clamp(0.15, 4.00)
-}
 
 fn scan_adjusted_count(grid: &[Vec<Cell>], scan: Scan) -> (usize, usize) {
     let mut unknown = 0usize;
@@ -287,7 +225,7 @@ fn best_hunt_cell(
     remaining_cells: usize,
     rng: &mut u64,
 ) -> Option<(usize, usize)> {
-    let prob = build_probabilities(n, grid, shot, remaining, scans, remaining_cells);
+    let prob = build_probabilities(n, grid, shot, remaining);
     let mut best = None;
     let mut best_score = -1.0f64;
 
@@ -418,7 +356,7 @@ fn chase_cell(
         return None;
     }
 
-    let prob = build_probabilities(n, grid, shot, remaining, &[], 0);
+    let prob = build_probabilities(n, grid, shot, remaining);
     let mut candidates: Vec<(usize, usize, f64)> = Vec::new();
 
     let same_row = active_hits.iter().all(|&(r, _)| r == active_hits[0].0);
@@ -489,7 +427,7 @@ fn best_chase_cell(
     remaining: &[usize],
     rng: &mut u64,
 ) -> Option<((usize, usize), usize)> {
-    let prob = build_probabilities(n, grid, shot, remaining, &[], 0);
+    let prob = build_probabilities(n, grid, shot, remaining);
     let mut best: Option<((usize, usize), usize, f64)> = None;
 
     for (idx, cluster) in active_clusters.iter().enumerate() {
