@@ -8,6 +8,14 @@ enum Cell {
     Dead,
 }
 
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum ScanKind {
+    TopHalf,
+    LeftHalf,
+    TopLeft,
+    Other,
+}
+
 #[derive(Clone, Copy)]
 struct Scan {
     r1: usize,
@@ -15,6 +23,7 @@ struct Scan {
     r2: usize,
     c2: usize,
     count: usize,
+    kind: ScanKind,
 }
 
 impl Scan {
@@ -171,6 +180,42 @@ fn build_probabilities(
     prob
 }
 
+
+fn scan_adjusted_count(grid: &[Vec<Cell>], scan: Scan) -> (usize, usize) {
+    let mut unknown = 0usize;
+    let mut known_ship = 0usize;
+    for r in scan.r1..=scan.r2 {
+        for c in scan.c1..=scan.c2 {
+            if grid[r][c] == Cell::Dead || grid[r][c] == Cell::Hit {
+                known_ship += 1;
+            } else if grid[r][c] == Cell::Unknown {
+                unknown += 1;
+            }
+        }
+    }
+    (scan.count.saturating_sub(known_ship), unknown)
+}
+
+fn derived_quadrant_scans(n: usize, scans: &[Scan], remaining_cells: usize) -> Option<Vec<Scan>> {
+    let top = scans.iter().find(|s| s.kind == ScanKind::TopHalf)?;
+    let left = scans.iter().find(|s| s.kind == ScanKind::LeftHalf)?;
+    let tl = scans.iter().find(|s| s.kind == ScanKind::TopLeft)?;
+    let mid = n / 2;
+
+    let tl_count = tl.count;
+    let tr_count = top.count.saturating_sub(tl_count);
+    let bl_count = left.count.saturating_sub(tl_count);
+    let used = tl_count + tr_count + bl_count;
+    let br_count = remaining_cells.saturating_sub(used);
+
+    Some(vec![
+        Scan { r1: 0, c1: 0, r2: mid - 1, c2: mid - 1, count: tl_count, kind: ScanKind::Other },
+        Scan { r1: 0, c1: mid, r2: mid - 1, c2: n - 1, count: tr_count, kind: ScanKind::Other },
+        Scan { r1: mid, c1: 0, r2: n - 1, c2: mid - 1, count: bl_count, kind: ScanKind::Other },
+        Scan { r1: mid, c1: mid, r2: n - 1, c2: n - 1, count: br_count, kind: ScanKind::Other },
+    ])
+}
+
 fn best_hunt_cell(
     n: usize,
     grid: &[Vec<Cell>],
@@ -208,25 +253,16 @@ fn best_hunt_cell(
                     }
                 }
                 let global_density = remaining_cells as f64 / global_unknown.max(1) as f64;
-                for scan in scans {
+                let density_scans = derived_quadrant_scans(n, scans, remaining_cells);
+                let scan_source: Vec<Scan> = density_scans.unwrap_or_else(|| scans.to_vec());
+                for scan in &scan_source {
                     if !scan.contains(r, c) {
                         continue;
                     }
-                    let mut scan_unknown = 0usize;
-                    let mut scan_known_ship = 0usize;
-                    for rr in scan.r1..=scan.r2 {
-                        for cc in scan.c1..=scan.c2 {
-                            if grid[rr][cc] == Cell::Dead || grid[rr][cc] == Cell::Hit {
-                                scan_known_ship += 1;
-                            } else if grid[rr][cc] == Cell::Unknown && !shot[rr][cc] {
-                                scan_unknown += 1;
-                            }
-                        }
-                    }
+                    let (scan_remaining, scan_unknown) = scan_adjusted_count(grid, *scan);
                     if scan_unknown == 0 {
                         continue;
                     }
-                    let scan_remaining = scan.count.saturating_sub(scan_known_ship);
                     let scan_density = scan_remaining as f64 / scan_unknown as f64;
                     let ratio = if global_density > 0.0 { scan_density / global_density } else { 1.0 };
                     density_scale *= ratio.clamp(0.25, 2.50);
@@ -499,8 +535,11 @@ fn opening_scan_schedule(n: usize, p: f64) -> Vec<Scan> {
     let mut scans = Vec::new();
     let mid = n / 2;
     if p <= 0.30 {
-        scans.push(Scan { r1: 0, c1: 0, r2: mid - 1, c2: n - 1, count: 0 });
-        scans.push(Scan { r1: 0, c1: 0, r2: n - 1, c2: mid - 1, count: 0 });
+        scans.push(Scan { r1: 0, c1: 0, r2: mid - 1, c2: n - 1, count: 0, kind: ScanKind::TopHalf });
+        scans.push(Scan { r1: 0, c1: 0, r2: n - 1, c2: mid - 1, count: 0, kind: ScanKind::LeftHalf });
+        if p <= 0.15 {
+            scans.push(Scan { r1: 0, c1: 0, r2: mid - 1, c2: mid - 1, count: 0, kind: ScanKind::TopLeft });
+        }
     }
     scans
 }

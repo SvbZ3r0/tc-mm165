@@ -498,7 +498,9 @@ fn split_hit_clusters(n: usize, hits: Vec<(usize, usize)>) -> Vec<Vec<(usize, us
 fn opening_scan_schedule(n: usize, p: f64) -> Vec<Scan> {
     let mut scans = Vec::new();
     let mid = n / 2;
-    if p <= 0.30 {
+    let full_h_area = mid * n;
+    let half_cost = p * ((n * n + 2 - full_h_area) as f64).log2();
+    if p <= 0.20 && half_cost <= 1.0 {
         scans.push(Scan { r1: 0, c1: 0, r2: mid - 1, c2: n - 1, count: 0 });
         scans.push(Scan { r1: 0, c1: 0, r2: n - 1, c2: mid - 1, count: 0 });
     }
