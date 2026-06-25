@@ -1,0 +1,689 @@
+use std::io::{self, BufRead, Write};
+
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum Cell {
+    Unknown,
+    Miss,
+    Hit,
+    Dead,
+}
+
+fn read_line<T: std::str::FromStr>(reader: &mut io::Lines<io::BufReader<io::Stdin>>) -> T {
+    reader
+        .next()
+        .expect("Unexpected end of input")
+        .expect("Failed to read line")
+        .trim()
+        .parse::<T>()
+        .ok()
+        .expect("Failed to parse input")
+}
+
+fn inside(n: usize, r: isize, c: isize) -> bool {
+    r >= 0 && c >= 0 && (r as usize) < n && (c as usize) < n
+}
+
+fn decrement_ship_count(remaining: &mut [usize], len: usize) {
+    if len < remaining.len() && remaining[len] > 0 {
+        remaining[len] -= 1;
+        return;
+    }
+
+    let mut best = 0usize;
+    let mut best_dist = usize::MAX;
+    for l in 1..remaining.len() {
+        if remaining[l] == 0 {
+            continue;
+        }
+        let d = if l > len { l - len } else { len - l };
+        if d < best_dist {
+            best_dist = d;
+            best = l;
+        }
+    }
+    if best > 0 {
+        remaining[best] -= 1;
+    }
+}
+
+fn placement_is_legal(
+    grid: &[Vec<Cell>],
+    shot: &[Vec<bool>],
+    r: usize,
+    c: usize,
+    dr: usize,
+    dc: usize,
+    len: usize,
+) -> bool {
+    for k in 0..len {
+        let rr = r + dr * k;
+        let cc = c + dc * k;
+        let cell = grid[rr][cc];
+        if cell == Cell::Miss || cell == Cell::Dead || (shot[rr][cc] && cell != Cell::Hit) {
+            return false;
+        }
+    }
+    true
+}
+
+const HEATMAP_ALPHA: f64 = 0.50;
+
+fn build_probabilities(
+    n: usize,
+    grid: &[Vec<Cell>],
+    shot: &[Vec<bool>],
+    remaining: &[usize],
+) -> Vec<Vec<f64>> {
+    let mut raw = vec![vec![0.0f64; n]; n];
+    let mut norm = vec![vec![0.0f64; n]; n];
+    let mut legal_counts = vec![0usize; remaining.len()];
+
+    for len in 1..remaining.len() {
+        if remaining[len] == 0 {
+            continue;
+        }
+
+        for r in 0..n {
+            for c in 0..=n - len {
+                if placement_is_legal(grid, shot, r, c, 0, 1, len) {
+                    legal_counts[len] += 1;
+                }
+            }
+        }
+
+        for r in 0..=n - len {
+            for c in 0..n {
+                if placement_is_legal(grid, shot, r, c, 1, 0, len) {
+                    legal_counts[len] += 1;
+                }
+            }
+        }
+    }
+
+    for len in 1..remaining.len() {
+        let ships = remaining[len];
+        if ships == 0 || legal_counts[len] == 0 {
+            continue;
+        }
+        let raw_weight = ships as f64 * len as f64;
+        let norm_weight = raw_weight / legal_counts[len] as f64;
+
+        for r in 0..n {
+            for c in 0..=n - len {
+                if placement_is_legal(grid, shot, r, c, 0, 1, len) {
+                    for k in 0..len {
+                        raw[r][c + k] += raw_weight;
+                        norm[r][c + k] += norm_weight;
+                    }
+                }
+            }
+        }
+
+        for r in 0..=n - len {
+            for c in 0..n {
+                if placement_is_legal(grid, shot, r, c, 1, 0, len) {
+                    for k in 0..len {
+                        raw[r + k][c] += raw_weight;
+                        norm[r + k][c] += norm_weight;
+                    }
+                }
+            }
+        }
+    }
+
+    let mut raw_max = 0.0f64;
+    let mut norm_max = 0.0f64;
+    for r in 0..n {
+        for c in 0..n {
+            raw_max = raw_max.max(raw[r][c]);
+            norm_max = norm_max.max(norm[r][c]);
+        }
+    }
+
+    let scale = if norm_max > 0.0 && raw_max > 0.0 {
+        norm_max / raw_max
+    } else {
+        1.0
+    };
+
+    let mut prob = vec![vec![0.0f64; n]; n];
+    for r in 0..n {
+        for c in 0..n {
+            prob[r][c] = HEATMAP_ALPHA * norm[r][c] + (1.0 - HEATMAP_ALPHA) * raw[r][c] * scale;
+        }
+    }
+
+    prob
+}
+
+
+fn next_random(rng: &mut u64) -> u64 {
+    *rng = rng
+        .wrapping_mul(6364136223846793005)
+        .wrapping_add(1442695040888963407);
+    *rng
+}
+
+fn shuffle_ship_lengths(lengths: &mut [usize], rng: &mut u64) {
+    for i in (1..lengths.len()).rev() {
+        let j = (next_random(rng) as usize) % (i + 1);
+        lengths.swap(i, j);
+    }
+}
+
+fn collect_available_placements(
+    n: usize,
+    grid: &[Vec<Cell>],
+    shot: &[Vec<bool>],
+    occupied: &[Vec<bool>],
+    len: usize,
+) -> Vec<(usize, usize, usize, usize)> {
+    let mut placements = Vec::new();
+
+    for r in 0..n {
+        for c in 0..=n - len {
+            if !placement_is_legal(grid, shot, r, c, 0, 1, len) {
+                continue;
+            }
+            let mut ok = true;
+            for k in 0..len {
+                if occupied[r][c + k] {
+                    ok = false;
+                    break;
+                }
+            }
+            if ok {
+                placements.push((r, c, 0, 1));
+            }
+        }
+    }
+
+    for r in 0..=n - len {
+        for c in 0..n {
+            if !placement_is_legal(grid, shot, r, c, 1, 0, len) {
+                continue;
+            }
+            let mut ok = true;
+            for k in 0..len {
+                if occupied[r + k][c] {
+                    ok = false;
+                    break;
+                }
+            }
+            if ok {
+                placements.push((r, c, 1, 0));
+            }
+        }
+    }
+
+    placements
+}
+
+fn build_mc_probabilities(
+    n: usize,
+    grid: &[Vec<Cell>],
+    shot: &[Vec<bool>],
+    remaining: &[usize],
+    rng: &mut u64,
+) -> Option<Vec<Vec<f64>>> {
+    const TARGET_SAMPLES: usize = 80;
+    const MAX_ATTEMPTS: usize = 600;
+
+    let mut lengths = Vec::new();
+    for len in 1..remaining.len() {
+        for _ in 0..remaining[len] {
+            lengths.push(len);
+        }
+    }
+    if lengths.is_empty() {
+        return None;
+    }
+
+    let mut counts = vec![vec![0.0f64; n]; n];
+    let mut accepted = 0usize;
+
+    for _ in 0..MAX_ATTEMPTS {
+        let mut order = lengths.clone();
+        order.sort_unstable_by(|a, b| b.cmp(a));
+        let split = order.len().min(4);
+        shuffle_ship_lengths(&mut order[..split], rng);
+
+        let mut occupied = vec![vec![false; n]; n];
+        let mut ok_sample = true;
+
+        for &len in &order {
+            let placements = collect_available_placements(n, grid, shot, &occupied, len);
+            if placements.is_empty() {
+                ok_sample = false;
+                break;
+            }
+
+            let pick = (next_random(rng) as usize) % placements.len();
+            let (r, c, dr, dc) = placements[pick];
+            for k in 0..len {
+                occupied[r + dr * k][c + dc * k] = true;
+            }
+        }
+
+        if !ok_sample {
+            continue;
+        }
+
+        accepted += 1;
+        for r in 0..n {
+            for c in 0..n {
+                if occupied[r][c] {
+                    counts[r][c] += 1.0;
+                }
+            }
+        }
+
+        if accepted >= TARGET_SAMPLES {
+            break;
+        }
+    }
+
+    if accepted < 20 {
+        return None;
+    }
+
+    for r in 0..n {
+        for c in 0..n {
+            counts[r][c] /= accepted as f64;
+        }
+    }
+
+    Some(counts)
+}
+
+fn best_hunt_cell(
+    n: usize,
+    grid: &[Vec<Cell>],
+    shot: &[Vec<bool>],
+    remaining: &[usize],
+    use_mc: bool,
+    rng: &mut u64,
+) -> Option<(usize, usize)> {
+    let mut prob = build_probabilities(n, grid, shot, remaining);
+    if use_mc {
+        if let Some(mc) = build_mc_probabilities(n, grid, shot, remaining, rng) {
+            let mut prob_max = 0.0f64;
+            let mut mc_max = 0.0f64;
+            for r in 0..n {
+                for c in 0..n {
+                    prob_max = prob_max.max(prob[r][c]);
+                    mc_max = mc_max.max(mc[r][c]);
+                }
+            }
+            let scale = if mc_max > 0.0 { prob_max / mc_max } else { 1.0 };
+            for r in 0..n {
+                for c in 0..n {
+                    prob[r][c] = 0.85 * prob[r][c] + 0.15 * mc[r][c] * scale;
+                }
+            }
+        }
+    }
+    let mut best = None;
+    let mut best_score = -1.0f64;
+
+    for r in 0..n {
+        for c in 0..n {
+            if shot[r][c] || grid[r][c] != Cell::Unknown {
+                continue;
+            }
+
+            let center_bias = {
+                let mid = (n - 1) as f64 / 2.0;
+                let dr = (r as f64 - mid).abs();
+                let dc = (c as f64 - mid).abs();
+                0.001 * (n as f64 - dr - dc)
+            };
+
+            *rng = rng.wrapping_mul(6364136223846793005).wrapping_add(1442695040888963407);
+            let jitter = ((*rng >> 32) as f64) * 1e-12;
+            let score = prob[r][c] + center_bias + jitter;
+            if score > best_score {
+                best_score = score;
+                best = Some((r, c));
+            }
+        }
+    }
+
+    best
+}
+
+fn placement_score_for_hits(
+    n: usize,
+    grid: &[Vec<Cell>],
+    shot: &[Vec<bool>],
+    remaining: &[usize],
+    active_hits: &[(usize, usize)],
+    candidate: (usize, usize),
+) -> f64 {
+    let mut required = vec![candidate];
+    required.extend_from_slice(active_hits);
+    let mut score = 0.0;
+
+    for len in 1..remaining.len() {
+        let ships = remaining[len];
+        if ships == 0 {
+            continue;
+        }
+        let weight = ships as f64 * len as f64;
+
+        for r in 0..n {
+            for c in 0..=n - len {
+                let mut ok = true;
+                for k in 0..len {
+                    let cell = grid[r][c + k];
+                    if cell == Cell::Miss || cell == Cell::Dead || (shot[r][c + k] && cell != Cell::Hit) {
+                        ok = false;
+                        break;
+                    }
+                }
+                if !ok {
+                    continue;
+                }
+                if required.iter().all(|&(rr, cc)| rr == r && c <= cc && cc < c + len) {
+                    score += weight;
+                }
+            }
+        }
+
+        for r in 0..=n - len {
+            for c in 0..n {
+                let mut ok = true;
+                for k in 0..len {
+                    let cell = grid[r + k][c];
+                    if cell == Cell::Miss || cell == Cell::Dead || (shot[r + k][c] && cell != Cell::Hit) {
+                        ok = false;
+                        break;
+                    }
+                }
+                if !ok {
+                    continue;
+                }
+                if required.iter().all(|&(rr, cc)| cc == c && r <= rr && rr < r + len) {
+                    score += weight;
+                }
+            }
+        }
+    }
+
+    score
+}
+
+fn chase_cell(
+    n: usize,
+    grid: &[Vec<Cell>],
+    shot: &[Vec<bool>],
+    active_hits: &[(usize, usize)],
+    remaining: &[usize],
+    _rng: &mut u64,
+) -> Option<(usize, usize)> {
+    if active_hits.is_empty() {
+        return None;
+    }
+
+    let prob = build_probabilities(n, grid, shot, remaining);
+    let mut candidates: Vec<(usize, usize, f64)> = Vec::new();
+
+    let same_row = active_hits.iter().all(|&(r, _)| r == active_hits[0].0);
+    let same_col = active_hits.iter().all(|&(_, c)| c == active_hits[0].1);
+
+    if active_hits.len() >= 2 && same_row {
+        let r = active_hits[0].0;
+        let min_c = active_hits.iter().map(|&(_, c)| c).min().unwrap();
+        let max_c = active_hits.iter().map(|&(_, c)| c).max().unwrap();
+        for nc in [min_c as isize - 1, max_c as isize + 1] {
+            if inside(n, r as isize, nc) {
+                let c = nc as usize;
+                if !shot[r][c] && grid[r][c] == Cell::Unknown {
+                    let placement_score = placement_score_for_hits(n, grid, shot, remaining, active_hits, (r, c));
+                    let placement_bonus = if active_hits.len() == 1 { placement_score * 0.25 } else { placement_score };
+                    candidates.push((r, c, 10000.0 + placement_bonus + prob[r][c]));
+                }
+            }
+        }
+    } else if active_hits.len() >= 2 && same_col {
+        let c = active_hits[0].1;
+        let min_r = active_hits.iter().map(|&(r, _)| r).min().unwrap();
+        let max_r = active_hits.iter().map(|&(r, _)| r).max().unwrap();
+        for nr in [min_r as isize - 1, max_r as isize + 1] {
+            if inside(n, nr, c as isize) {
+                let r = nr as usize;
+                if !shot[r][c] && grid[r][c] == Cell::Unknown {
+                    let placement_score = placement_score_for_hits(n, grid, shot, remaining, active_hits, (r, c));
+                    let placement_bonus = if active_hits.len() == 1 { placement_score * 0.25 } else { placement_score };
+                    candidates.push((r, c, 10000.0 + placement_bonus + prob[r][c]));
+                }
+            }
+        }
+    }
+
+    if candidates.is_empty() {
+        let dirs = [(1isize, 0isize), (-1, 0), (0, 1), (0, -1)];
+        for &(r, c) in active_hits {
+            for &(dr, dc) in &dirs {
+                let nr = r as isize + dr;
+                let nc = c as isize + dc;
+                if inside(n, nr, nc) {
+                    let rr = nr as usize;
+                    let cc = nc as usize;
+                    if !shot[rr][cc] && grid[rr][cc] == Cell::Unknown {
+                        let placement_score = placement_score_for_hits(n, grid, shot, remaining, active_hits, (rr, cc));
+                    let placement_bonus = if active_hits.len() == 1 { placement_score * 0.25 } else { placement_score };
+                    candidates.push((rr, cc, 5000.0 + placement_bonus + prob[rr][cc]));
+                    }
+                }
+            }
+        }
+    }
+
+    if candidates.is_empty() {
+        return None;
+    }
+
+    candidates.sort_by(|a, b| b.2.partial_cmp(&a.2).unwrap());
+    Some((candidates[0].0, candidates[0].1))
+}
+
+fn best_chase_cell(
+    n: usize,
+    grid: &[Vec<Cell>],
+    shot: &[Vec<bool>],
+    active_clusters: &[Vec<(usize, usize)>],
+    remaining: &[usize],
+    rng: &mut u64,
+) -> Option<((usize, usize), usize)> {
+    let prob = build_probabilities(n, grid, shot, remaining);
+    let mut best: Option<((usize, usize), usize, f64)> = None;
+
+    for (idx, cluster) in active_clusters.iter().enumerate() {
+        if let Some((r, c)) = chase_cell(n, grid, shot, cluster, remaining, rng) {
+            let score = (cluster.len() as f64) * 100000.0 + prob[r][c];
+            if best.map_or(true, |(_, _, best_score)| score > best_score) {
+                best = Some(((r, c), idx, score));
+            }
+        }
+    }
+
+    best.map(|(cell, idx, _)| (cell, idx))
+}
+
+fn mark_active_dead(grid: &mut [Vec<Cell>], active_hits: &[(usize, usize)], last: (usize, usize)) {
+    for &(r, c) in active_hits {
+        grid[r][c] = Cell::Dead;
+    }
+    grid[last.0][last.1] = Cell::Dead;
+}
+
+fn infer_killed_hits(active_hits: &[(usize, usize)], last: (usize, usize)) -> Vec<(usize, usize)> {
+    let mut hit_set = vec![false; 400];
+    for &(r, c) in active_hits {
+        hit_set[r * 20 + c] = true;
+    }
+
+    let mut best: Vec<(usize, usize)> = Vec::new();
+
+    let mut row_segment = Vec::new();
+    let mut c = last.1 as isize - 1;
+    while c >= 0 && hit_set[last.0 * 20 + c as usize] {
+        row_segment.push((last.0, c as usize));
+        c -= 1;
+    }
+    c = last.1 as isize + 1;
+    while c < 20 && hit_set[last.0 * 20 + c as usize] {
+        row_segment.push((last.0, c as usize));
+        c += 1;
+    }
+    if row_segment.len() > best.len() {
+        best = row_segment;
+    }
+
+    let mut col_segment = Vec::new();
+    let mut r = last.0 as isize - 1;
+    while r >= 0 && hit_set[r as usize * 20 + last.1] {
+        col_segment.push((r as usize, last.1));
+        r -= 1;
+    }
+    r = last.0 as isize + 1;
+    while r < 20 && hit_set[r as usize * 20 + last.1] {
+        col_segment.push((r as usize, last.1));
+        r += 1;
+    }
+    if col_segment.len() > best.len() {
+        best = col_segment;
+    }
+
+    best
+}
+
+fn split_hit_clusters(n: usize, hits: Vec<(usize, usize)>) -> Vec<Vec<(usize, usize)>> {
+    let mut present = vec![vec![false; n]; n];
+    for &(r, c) in &hits {
+        present[r][c] = true;
+    }
+
+    let mut seen = vec![vec![false; n]; n];
+    let mut clusters = Vec::new();
+    let dirs = [(1isize, 0isize), (-1, 0), (0, 1), (0, -1)];
+
+    for &(sr, sc) in &hits {
+        if seen[sr][sc] {
+            continue;
+        }
+
+        let mut stack = vec![(sr, sc)];
+        let mut cluster = Vec::new();
+        seen[sr][sc] = true;
+
+        while let Some((r, c)) = stack.pop() {
+            cluster.push((r, c));
+            for &(dr, dc) in &dirs {
+                let nr = r as isize + dr;
+                let nc = c as isize + dc;
+                if inside(n, nr, nc) {
+                    let rr = nr as usize;
+                    let cc = nc as usize;
+                    if present[rr][cc] && !seen[rr][cc] {
+                        seen[rr][cc] = true;
+                        stack.push((rr, cc));
+                    }
+                }
+            }
+        }
+
+        clusters.push(cluster);
+    }
+
+    clusters
+}
+
+fn main() {
+    let stdin = io::stdin();
+    let mut reader = io::BufReader::new(stdin).lines();
+    let mut stdout = io::stdout();
+
+    let n: usize = read_line(&mut reader);
+    let s: usize = read_line(&mut reader);
+    let l: usize = read_line(&mut reader);
+    let _p: f64 = read_line(&mut reader);
+
+    let mut remaining = vec![0usize; l + 1];
+    for len in 1..=l {
+        remaining[len] = read_line(&mut reader);
+    }
+
+    let mut grid = vec![vec![Cell::Unknown; n]; n];
+    let mut shot = vec![vec![false; n]; n];
+    let mut active_clusters: Vec<Vec<(usize, usize)>> = Vec::new();
+    let mut alive = s;
+    let mut shots_fired = 0usize;
+    let mut rng = 0x9E37_79B9_7F4A_7C15u64 ^ ((n as u64) << 32) ^ s as u64;
+
+    while alive > 0 {
+        let target = best_chase_cell(n, &grid, &shot, &active_clusters, &remaining, &mut rng)
+            .map(|(cell, cluster_idx)| (cell, Some(cluster_idx)))
+            .or_else(|| best_hunt_cell(n, &grid, &shot, &remaining, shots_fired < 3, &mut rng).map(|cell| (cell, None)))
+            .expect("No legal shot left");
+
+        let ((r, c), target_cluster) = target;
+        shot[r][c] = true;
+        shots_fired += 1;
+        println!("SHOOT {} {}", r, c);
+        stdout.flush().unwrap();
+
+        let result: String = read_line(&mut reader);
+        match result.as_str() {
+            "MISS" => {
+                grid[r][c] = Cell::Miss;
+            }
+            "HIT" => {
+                grid[r][c] = Cell::Hit;
+                if let Some(cluster_idx) = target_cluster {
+                    if cluster_idx < active_clusters.len() {
+                        active_clusters[cluster_idx].push((r, c));
+                    } else {
+                        active_clusters.push(vec![(r, c)]);
+                    }
+                } else {
+                    active_clusters.push(vec![(r, c)]);
+                }
+            }
+            "KILL" => {
+                let inferred_len = if let Some(cluster_idx) = target_cluster {
+                    if cluster_idx < active_clusters.len() {
+                        let killed_cluster = active_clusters.swap_remove(cluster_idx);
+                        let killed_hits = infer_killed_hits(&killed_cluster, (r, c));
+                        mark_active_dead(&mut grid, &killed_hits, (r, c));
+
+                        let mut killed = vec![vec![false; n]; n];
+                        for &(kr, kc) in &killed_hits {
+                            killed[kr][kc] = true;
+                        }
+
+                        let leftovers: Vec<(usize, usize)> = killed_cluster
+                            .into_iter()
+                            .filter(|&(hr, hc)| !killed[hr][hc])
+                            .collect();
+                        active_clusters.extend(split_hit_clusters(n, leftovers));
+
+                        killed_hits.len() + 1
+                    } else {
+                        grid[r][c] = Cell::Dead;
+                        1
+                    }
+                } else {
+                    grid[r][c] = Cell::Dead;
+                    1
+                };
+                decrement_ship_count(&mut remaining, inferred_len);
+                alive -= 1;
+            }
+            _ => panic!("Unexpected result: {}", result),
+        }
+
+        let _elapsed_time: i32 = read_line(&mut reader);
+    }
+}
