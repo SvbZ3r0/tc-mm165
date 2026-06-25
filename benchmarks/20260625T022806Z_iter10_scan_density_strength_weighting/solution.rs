@@ -228,8 +228,11 @@ fn best_hunt_cell(
                     }
                     let scan_remaining = scan.count.saturating_sub(scan_known_ship);
                     let scan_density = scan_remaining as f64 / scan_unknown as f64;
+                    let expected = global_density * scan_unknown as f64;
                     let ratio = if global_density > 0.0 { scan_density / global_density } else { 1.0 };
-                    density_scale *= ratio.clamp(0.25, 2.50);
+                    let surprise = (scan_remaining as f64 - expected).abs();
+                    let strength = (surprise / (expected + 1.0).sqrt()).min(1.0);
+                    density_scale *= ratio.clamp(0.25, 2.50).powf(strength);
                 }
             }
             density_scale = density_scale.clamp(0.20, 3.00);
@@ -498,7 +501,7 @@ fn split_hit_clusters(n: usize, hits: Vec<(usize, usize)>) -> Vec<Vec<(usize, us
 fn opening_scan_schedule(n: usize, p: f64) -> Vec<Scan> {
     let mut scans = Vec::new();
     let mid = n / 2;
-    if p <= 1.00 {
+    if p <= 0.30 {
         scans.push(Scan { r1: 0, c1: 0, r2: mid - 1, c2: n - 1, count: 0 });
         scans.push(Scan { r1: 0, c1: 0, r2: n - 1, c2: mid - 1, count: 0 });
     }
