@@ -1,0 +1,853 @@
+GAME n=17 p=0.435189 remaining_cells=83 remaining=[0, 2, 1, 3, 1, 4, 0, 2, 4]
+turn=1 mode=SCAN region=0,0,7,16
+turn=1 result=SCAN count=34
+turn=2 mode=SCAN region=0,0,16,7
+turn=2 result=SCAN count=24
+turn=3 picked cell=9,9 target_cluster=None active_clusters=0 remaining_cells=83 scans=2
+RESULT turn=3 cell=9,9 result=MISS remaining_cells=83 active_clusters=0
+turn=3 result=MISS
+turn=4 picked cell=8,10 target_cluster=None active_clusters=0 remaining_cells=83 scans=2
+RESULT turn=4 cell=8,10 result=HIT remaining_cells=83 active_clusters=0
+turn=4 result=HIT
+turn=5 mode=CHASE cluster=0 cluster_len=1 cell=7,10 score=100002.691257 chase_score=5107.691257 prob=2.691257
+turn=5 picked cell=7,10 target_cluster=Some(0) active_clusters=1 remaining_cells=82 scans=2
+RESULT turn=5 cell=7,10 result=HIT remaining_cells=82 active_clusters=1
+turn=5 result=HIT
+turn=6 mode=CHASE cluster=0 cluster_len=2 cell=6,10 score=200002.597581 chase_score=10341.597581 prob=2.597581
+turn=6 picked cell=6,10 target_cluster=Some(0) active_clusters=1 remaining_cells=81 scans=2
+RESULT turn=6 cell=6,10 result=HIT remaining_cells=81 active_clusters=1
+turn=6 result=HIT
+turn=7 mode=CHASE cluster=0 cluster_len=3 cell=5,10 score=300002.465082 chase_score=10262.465082 prob=2.465082
+turn=7 picked cell=5,10 target_cluster=Some(0) active_clusters=1 remaining_cells=80 scans=2
+RESULT turn=7 cell=5,10 result=HIT remaining_cells=80 active_clusters=1
+turn=7 result=HIT
+turn=8 mode=CHASE cluster=0 cluster_len=4 cell=4,10 score=400002.332584 chase_score=10192.332584 prob=2.332584
+turn=8 picked cell=4,10 target_cluster=Some(0) active_clusters=1 remaining_cells=79 scans=2
+RESULT turn=8 cell=4,10 result=MISS remaining_cells=79 active_clusters=1
+turn=8 result=MISS
+turn=9 mode=CHASE cluster=0 cluster_len=4 cell=9,10 score=400001.201340 chase_score=10067.201340 prob=1.201340
+turn=9 picked cell=9,10 target_cluster=Some(0) active_clusters=1 remaining_cells=79 scans=2
+RESULT turn=9 cell=9,10 result=HIT remaining_cells=79 active_clusters=1
+turn=9 result=HIT
+turn=10 mode=CHASE cluster=0 cluster_len=5 cell=10,10 score=500002.449703 chase_score=10048.449703 prob=2.449703
+turn=10 picked cell=10,10 target_cluster=Some(0) active_clusters=1 remaining_cells=78 scans=2
+RESULT turn=10 cell=10,10 result=HIT remaining_cells=78 active_clusters=1
+turn=10 result=HIT
+turn=11 mode=CHASE cluster=0 cluster_len=6 cell=11,10 score=600002.449703 chase_score=10048.449703 prob=2.449703
+turn=11 picked cell=11,10 target_cluster=Some(0) active_clusters=1 remaining_cells=77 scans=2
+RESULT turn=11 cell=11,10 result=HIT remaining_cells=77 active_clusters=1
+turn=11 result=HIT
+turn=12 mode=CHASE cluster=0 cluster_len=7 cell=12,10 score=700002.409562 chase_score=10034.409562 prob=2.409562
+turn=12 picked cell=12,10 target_cluster=Some(0) active_clusters=1 remaining_cells=76 scans=2
+RESULT turn=12 cell=12,10 result=KILL remaining_cells=76 active_clusters=1
+turn=12 result=KILL
+turn=12 kill_infer inferred_len=8 committed_hits=7 cluster_hits=7
+turn=13 picked cell=13,8 target_cluster=None active_clusters=0 remaining_cells=75 scans=2
+RESULT turn=13 cell=13,8 result=HIT remaining_cells=75 active_clusters=0
+turn=13 result=HIT
+turn=14 mode=CHASE cluster=0 cluster_len=1 cell=13,7 score=100002.333665 chase_score=5093.333665 prob=2.333665
+turn=14 picked cell=13,7 target_cluster=Some(0) active_clusters=1 remaining_cells=74 scans=2
+RESULT turn=14 cell=13,7 result=MISS remaining_cells=74 active_clusters=1
+turn=14 result=MISS
+turn=15 mode=CHASE cluster=0 cluster_len=1 cell=12,8 score=100001.614223 chase_score=5067.614223 prob=1.614223
+turn=15 picked cell=12,8 target_cluster=Some(0) active_clusters=1 remaining_cells=74 scans=2
+RESULT turn=15 cell=12,8 result=HIT remaining_cells=74 active_clusters=1
+turn=15 result=HIT
+turn=16 mode=CHASE cluster=0 cluster_len=2 cell=11,8 score=200001.751868 chase_score=10230.751868 prob=1.751868
+turn=16 picked cell=11,8 target_cluster=Some(0) active_clusters=1 remaining_cells=73 scans=2
+RESULT turn=16 cell=11,8 result=HIT remaining_cells=73 active_clusters=1
+turn=16 result=HIT
+turn=17 mode=CHASE cluster=0 cluster_len=3 cell=10,8 score=300001.889512 chase_score=10197.889512 prob=1.889512
+turn=17 picked cell=10,8 target_cluster=Some(0) active_clusters=1 remaining_cells=72 scans=2
+RESULT turn=17 cell=10,8 result=HIT remaining_cells=72 active_clusters=1
+turn=17 result=HIT
+turn=18 mode=CHASE cluster=0 cluster_len=4 cell=9,8 score=400001.738511 chase_score=10159.738511 prob=1.738511
+turn=18 picked cell=9,8 target_cluster=Some(0) active_clusters=1 remaining_cells=71 scans=2
+RESULT turn=18 cell=9,8 result=HIT remaining_cells=71 active_clusters=1
+turn=18 result=HIT
+turn=19 mode=CHASE cluster=0 cluster_len=5 cell=14,8 score=500002.213527 chase_score=10102.213527 prob=2.213527
+turn=19 picked cell=14,8 target_cluster=Some(0) active_clusters=1 remaining_cells=70 scans=2
+RESULT turn=19 cell=14,8 result=HIT remaining_cells=70 active_clusters=1
+turn=19 result=HIT
+turn=20 mode=CHASE cluster=0 cluster_len=6 cell=8,8 score=600001.978684 chase_score=10063.978684 prob=1.978684
+turn=20 picked cell=8,8 target_cluster=Some(0) active_clusters=1 remaining_cells=69 scans=2
+RESULT turn=20 cell=8,8 result=HIT remaining_cells=69 active_clusters=1
+turn=20 result=HIT
+turn=21 mode=CHASE cluster=0 cluster_len=7 cell=7,8 score=700001.978684 chase_score=10025.978684 prob=1.978684
+turn=21 picked cell=7,8 target_cluster=Some(0) active_clusters=1 remaining_cells=68 scans=2
+RESULT turn=21 cell=7,8 result=KILL remaining_cells=68 active_clusters=1
+turn=21 result=KILL
+turn=21 kill_infer inferred_len=8 committed_hits=7 cluster_hits=7
+turn=22 picked cell=3,11 target_cluster=None active_clusters=0 remaining_cells=67 scans=2
+RESULT turn=22 cell=3,11 result=HIT remaining_cells=67 active_clusters=0
+turn=22 result=HIT
+turn=23 mode=CHASE cluster=0 cluster_len=1 cell=3,10 score=100001.356373 chase_score=5074.356373 prob=1.356373
+turn=23 picked cell=3,10 target_cluster=Some(0) active_clusters=1 remaining_cells=66 scans=2
+RESULT turn=23 cell=3,10 result=HIT remaining_cells=66 active_clusters=1
+turn=23 result=HIT
+turn=24 mode=CHASE cluster=0 cluster_len=2 cell=3,9 score=200002.071010 chase_score=10245.071010 prob=2.071010
+turn=24 picked cell=3,9 target_cluster=Some(0) active_clusters=1 remaining_cells=65 scans=2
+RESULT turn=24 cell=3,9 result=MISS remaining_cells=65 active_clusters=1
+turn=24 result=MISS
+turn=25 mode=CHASE cluster=0 cluster_len=2 cell=3,12 score=200001.297146 chase_score=10048.297146 prob=1.297146
+turn=25 picked cell=3,12 target_cluster=Some(0) active_clusters=1 remaining_cells=65 scans=2
+RESULT turn=25 cell=3,12 result=HIT remaining_cells=65 active_clusters=1
+turn=25 result=HIT
+turn=26 mode=CHASE cluster=0 cluster_len=3 cell=3,13 score=300001.309738 chase_score=10039.309738 prob=1.309738
+turn=26 picked cell=3,13 target_cluster=Some(0) active_clusters=1 remaining_cells=64 scans=2
+RESULT turn=26 cell=3,13 result=HIT remaining_cells=64 active_clusters=1
+turn=26 result=HIT
+turn=27 mode=CHASE cluster=0 cluster_len=4 cell=3,14 score=400001.297146 chase_score=10035.297146 prob=1.297146
+turn=27 picked cell=3,14 target_cluster=Some(0) active_clusters=1 remaining_cells=63 scans=2
+RESULT turn=27 cell=3,14 result=KILL remaining_cells=63 active_clusters=1
+turn=27 result=KILL
+turn=27 kill_infer inferred_len=5 committed_hits=4 cluster_hits=4
+turn=28 picked cell=15,11 target_cluster=None active_clusters=0 remaining_cells=62 scans=2
+RESULT turn=28 cell=15,11 result=MISS remaining_cells=62 active_clusters=0
+turn=28 result=MISS
+turn=29 picked cell=9,15 target_cluster=None active_clusters=0 remaining_cells=62 scans=2
+RESULT turn=29 cell=9,15 result=MISS remaining_cells=62 active_clusters=0
+turn=29 result=MISS
+turn=30 picked cell=10,14 target_cluster=None active_clusters=0 remaining_cells=62 scans=2
+RESULT turn=30 cell=10,14 result=MISS remaining_cells=62 active_clusters=0
+turn=30 result=MISS
+turn=31 picked cell=16,9 target_cluster=None active_clusters=0 remaining_cells=62 scans=2
+RESULT turn=31 cell=16,9 result=HIT remaining_cells=62 active_clusters=0
+turn=31 result=HIT
+turn=32 mode=CHASE cluster=0 cluster_len=1 cell=16,8 score=100001.598636 chase_score=5073.598636 prob=1.598636
+turn=32 picked cell=16,8 target_cluster=Some(0) active_clusters=1 remaining_cells=61 scans=2
+RESULT turn=32 cell=16,8 result=HIT remaining_cells=61 active_clusters=1
+turn=32 result=HIT
+turn=33 mode=CHASE cluster=0 cluster_len=2 cell=16,7 score=200001.629813 chase_score=10229.629813 prob=1.629813
+turn=33 picked cell=16,7 target_cluster=Some(0) active_clusters=1 remaining_cells=60 scans=2
+RESULT turn=33 cell=16,7 result=HIT remaining_cells=60 active_clusters=1
+turn=33 result=HIT
+turn=34 mode=CHASE cluster=0 cluster_len=3 cell=16,6 score=300001.768511 chase_score=10171.768511 prob=1.768511
+turn=34 picked cell=16,6 target_cluster=Some(0) active_clusters=1 remaining_cells=59 scans=2
+RESULT turn=34 cell=16,6 result=HIT remaining_cells=59 active_clusters=1
+turn=34 result=HIT
+turn=35 mode=CHASE cluster=0 cluster_len=4 cell=16,5 score=400001.620270 chase_score=10122.620270 prob=1.620270
+turn=35 picked cell=16,5 target_cluster=Some(0) active_clusters=1 remaining_cells=58 scans=2
+RESULT turn=35 cell=16,5 result=HIT remaining_cells=58 active_clusters=1
+turn=35 result=HIT
+turn=36 mode=CHASE cluster=0 cluster_len=5 cell=16,10 score=500001.561604 chase_score=10077.561604 prob=1.561604
+turn=36 picked cell=16,10 target_cluster=Some(0) active_clusters=1 remaining_cells=57 scans=2
+RESULT turn=36 cell=16,10 result=HIT remaining_cells=57 active_clusters=1
+turn=36 result=HIT
+turn=37 mode=CHASE cluster=0 cluster_len=6 cell=16,4 score=600001.472029 chase_score=10047.472029 prob=1.472029
+turn=37 picked cell=16,4 target_cluster=Some(0) active_clusters=1 remaining_cells=56 scans=2
+RESULT turn=37 cell=16,4 result=MISS remaining_cells=56 active_clusters=1
+turn=37 result=MISS
+turn=38 mode=CHASE cluster=0 cluster_len=6 cell=16,11 score=600001.315120 chase_score=10031.315120 prob=1.315120
+turn=38 picked cell=16,11 target_cluster=Some(0) active_clusters=1 remaining_cells=56 scans=2
+RESULT turn=38 cell=16,11 result=HIT remaining_cells=56 active_clusters=1
+turn=38 result=HIT
+turn=39 mode=CHASE cluster=0 cluster_len=7 cell=16,12 score=700001.514605 chase_score=10017.514605 prob=1.514605
+turn=39 picked cell=16,12 target_cluster=Some(0) active_clusters=1 remaining_cells=55 scans=2
+RESULT turn=39 cell=16,12 result=KILL remaining_cells=55 active_clusters=1
+turn=39 result=KILL
+turn=39 kill_infer inferred_len=8 committed_hits=7 cluster_hits=7
+turn=40 picked cell=13,13 target_cluster=None active_clusters=0 remaining_cells=54 scans=2
+RESULT turn=40 cell=13,13 result=HIT remaining_cells=54 active_clusters=0
+turn=40 result=HIT
+turn=41 mode=CHASE cluster=0 cluster_len=1 cell=12,13 score=100001.326782 chase_score=5046.326782 prob=1.326782
+turn=41 picked cell=12,13 target_cluster=Some(0) active_clusters=1 remaining_cells=53 scans=2
+RESULT turn=41 cell=12,13 result=HIT remaining_cells=53 active_clusters=1
+turn=41 result=HIT
+turn=42 mode=CHASE cluster=0 cluster_len=2 cell=11,13 score=200001.439398 chase_score=10151.439398 prob=1.439398
+turn=42 picked cell=11,13 target_cluster=Some(0) active_clusters=1 remaining_cells=52 scans=2
+RESULT turn=42 cell=11,13 result=HIT remaining_cells=52 active_clusters=1
+turn=42 result=HIT
+turn=43 mode=CHASE cluster=0 cluster_len=3 cell=10,13 score=300001.270316 chase_score=10123.270316 prob=1.270316
+turn=43 picked cell=10,13 target_cluster=Some(0) active_clusters=1 remaining_cells=51 scans=2
+RESULT turn=43 cell=10,13 result=HIT remaining_cells=51 active_clusters=1
+turn=43 result=HIT
+turn=44 mode=CHASE cluster=0 cluster_len=4 cell=9,13 score=400001.255468 chase_score=10090.255468 prob=1.255468
+turn=44 picked cell=9,13 target_cluster=Some(0) active_clusters=1 remaining_cells=50 scans=2
+RESULT turn=44 cell=9,13 result=MISS remaining_cells=50 active_clusters=1
+turn=44 result=MISS
+turn=45 mode=CHASE cluster=0 cluster_len=4 cell=14,13 score=400001.039906 chase_score=10030.039906 prob=1.039906
+turn=45 picked cell=14,13 target_cluster=Some(0) active_clusters=1 remaining_cells=50 scans=2
+RESULT turn=45 cell=14,13 result=HIT remaining_cells=50 active_clusters=1
+turn=45 result=HIT
+turn=46 mode=CHASE cluster=0 cluster_len=5 cell=15,13 score=500000.491539 chase_score=10014.491539 prob=0.491539
+turn=46 picked cell=15,13 target_cluster=Some(0) active_clusters=1 remaining_cells=49 scans=2
+RESULT turn=46 cell=15,13 result=HIT remaining_cells=49 active_clusters=1
+turn=46 result=HIT
+turn=47 mode=CHASE cluster=0 cluster_len=6 cell=16,13 score=600000.256661 chase_score=10014.256661 prob=0.256661
+turn=47 picked cell=16,13 target_cluster=Some(0) active_clusters=1 remaining_cells=48 scans=2
+RESULT turn=47 cell=16,13 result=KILL remaining_cells=48 active_clusters=1
+turn=47 result=KILL
+turn=47 kill_infer inferred_len=7 committed_hits=6 cluster_hits=6
+turn=48 picked cell=2,8 target_cluster=None active_clusters=0 remaining_cells=47 scans=2
+RESULT turn=48 cell=2,8 result=MISS remaining_cells=47 active_clusters=0
+turn=48 result=MISS
+turn=49 picked cell=6,5 target_cluster=None active_clusters=0 remaining_cells=47 scans=2
+RESULT turn=49 cell=6,5 result=MISS remaining_cells=47 active_clusters=0
+turn=49 result=MISS
+turn=50 picked cell=5,4 target_cluster=None active_clusters=0 remaining_cells=47 scans=2
+RESULT turn=50 cell=5,4 result=MISS remaining_cells=47 active_clusters=0
+turn=50 result=MISS
+turn=51 picked cell=7,16 target_cluster=None active_clusters=0 remaining_cells=47 scans=2
+RESULT turn=51 cell=7,16 result=MISS remaining_cells=47 active_clusters=0
+turn=51 result=MISS
+turn=52 picked cell=7,3 target_cluster=None active_clusters=0 remaining_cells=47 scans=2
+RESULT turn=52 cell=7,3 result=MISS remaining_cells=47 active_clusters=0
+turn=52 result=MISS
+turn=53 picked cell=4,6 target_cluster=None active_clusters=0 remaining_cells=47 scans=2
+RESULT turn=53 cell=4,6 result=MISS remaining_cells=47 active_clusters=0
+turn=53 result=MISS
+turn=54 picked cell=1,7 target_cluster=None active_clusters=0 remaining_cells=47 scans=2
+RESULT turn=54 cell=1,7 result=MISS remaining_cells=47 active_clusters=0
+turn=54 result=MISS
+turn=55 picked cell=0,9 target_cluster=None active_clusters=0 remaining_cells=47 scans=2
+RESULT turn=55 cell=0,9 result=MISS remaining_cells=47 active_clusters=0
+turn=55 result=MISS
+turn=56 picked cell=8,12 target_cluster=None active_clusters=0 remaining_cells=47 scans=2
+RESULT turn=56 cell=8,12 result=MISS remaining_cells=47 active_clusters=0
+turn=56 result=MISS
+turn=57 picked cell=8,2 target_cluster=None active_clusters=0 remaining_cells=47 scans=2
+RESULT turn=57 cell=8,2 result=MISS remaining_cells=47 active_clusters=0
+turn=57 result=MISS
+turn=58 picked cell=9,1 target_cluster=None active_clusters=0 remaining_cells=47 scans=2
+RESULT turn=58 cell=9,1 result=HIT remaining_cells=47 active_clusters=0
+turn=58 result=HIT
+turn=59 mode=CHASE cluster=0 cluster_len=1 cell=10,1 score=100002.632091 chase_score=5050.132091 prob=2.632091
+turn=59 picked cell=10,1 target_cluster=Some(0) active_clusters=1 remaining_cells=46 scans=2
+RESULT turn=59 cell=10,1 result=HIT remaining_cells=46 active_clusters=1
+turn=59 result=HIT
+turn=60 mode=CHASE cluster=0 cluster_len=2 cell=11,1 score=200002.465731 chase_score=10147.465731 prob=2.465731
+turn=60 picked cell=11,1 target_cluster=Some(0) active_clusters=1 remaining_cells=45 scans=2
+RESULT turn=60 cell=11,1 result=HIT remaining_cells=45 active_clusters=1
+turn=60 result=HIT
+turn=61 mode=CHASE cluster=0 cluster_len=3 cell=12,1 score=300002.299372 chase_score=10104.299372 prob=2.299372
+turn=61 picked cell=12,1 target_cluster=Some(0) active_clusters=1 remaining_cells=44 scans=2
+RESULT turn=61 cell=12,1 result=KILL remaining_cells=44 active_clusters=1
+turn=61 result=KILL
+turn=61 kill_infer inferred_len=4 committed_hits=3 cluster_hits=3
+turn=62 picked cell=2,15 target_cluster=None active_clusters=0 remaining_cells=43 scans=2
+RESULT turn=62 cell=2,15 result=HIT remaining_cells=43 active_clusters=0
+turn=62 result=HIT
+turn=63 mode=CHASE cluster=0 cluster_len=1 cell=3,15 score=100001.255106 chase_score=5026.755106 prob=1.255106
+turn=63 picked cell=3,15 target_cluster=Some(0) active_clusters=1 remaining_cells=42 scans=2
+RESULT turn=63 cell=3,15 result=HIT remaining_cells=42 active_clusters=1
+turn=63 result=HIT
+turn=64 mode=CHASE cluster=0 cluster_len=2 cell=4,15 score=200001.774528 chase_score=10092.774528 prob=1.774528
+turn=64 picked cell=4,15 target_cluster=Some(0) active_clusters=1 remaining_cells=41 scans=2
+RESULT turn=64 cell=4,15 result=HIT remaining_cells=41 active_clusters=1
+turn=64 result=HIT
+turn=65 mode=CHASE cluster=0 cluster_len=3 cell=5,15 score=300001.648067 chase_score=10068.648067 prob=1.648067
+turn=65 picked cell=5,15 target_cluster=Some(0) active_clusters=1 remaining_cells=40 scans=2
+RESULT turn=65 cell=5,15 result=MISS remaining_cells=40 active_clusters=1
+turn=65 result=MISS
+turn=66 mode=CHASE cluster=0 cluster_len=3 cell=1,15 score=300001.165259 chase_score=10016.165259 prob=1.165259
+turn=66 picked cell=1,15 target_cluster=Some(0) active_clusters=1 remaining_cells=40 scans=2
+RESULT turn=66 cell=1,15 result=HIT remaining_cells=40 active_clusters=1
+turn=66 result=HIT
+turn=67 mode=CHASE cluster=0 cluster_len=4 cell=0,15 score=400000.744968 chase_score=10015.744968 prob=0.744968
+turn=67 picked cell=0,15 target_cluster=Some(0) active_clusters=1 remaining_cells=39 scans=2
+RESULT turn=67 cell=0,15 result=KILL remaining_cells=39 active_clusters=1
+turn=67 result=KILL
+turn=67 kill_infer inferred_len=5 committed_hits=4 cluster_hits=4
+turn=68 picked cell=7,0 target_cluster=None active_clusters=0 remaining_cells=38 scans=2
+RESULT turn=68 cell=7,0 result=MISS remaining_cells=38 active_clusters=0
+turn=68 result=MISS
+turn=69 picked cell=7,11 target_cluster=None active_clusters=0 remaining_cells=38 scans=2
+RESULT turn=69 cell=7,11 result=MISS remaining_cells=38 active_clusters=0
+turn=69 result=MISS
+turn=70 picked cell=15,3 target_cluster=None active_clusters=0 remaining_cells=38 scans=2
+RESULT turn=70 cell=15,3 result=MISS remaining_cells=38 active_clusters=0
+turn=70 result=MISS
+turn=71 picked cell=3,1 target_cluster=None active_clusters=0 remaining_cells=38 scans=2
+RESULT turn=71 cell=3,1 result=MISS remaining_cells=38 active_clusters=0
+turn=71 result=MISS
+turn=72 picked cell=6,7 target_cluster=None active_clusters=0 remaining_cells=38 scans=2
+RESULT turn=72 cell=6,7 result=HIT remaining_cells=38 active_clusters=0
+turn=72 result=HIT
+turn=73 mode=CHASE cluster=0 cluster_len=1 cell=7,7 score=100002.600622 chase_score=5034.350622 prob=2.600622
+turn=73 picked cell=7,7 target_cluster=Some(0) active_clusters=1 remaining_cells=37 scans=2
+RESULT turn=73 cell=7,7 result=HIT remaining_cells=37 active_clusters=1
+turn=73 result=HIT
+turn=74 mode=CHASE cluster=0 cluster_len=2 cell=8,7 score=200002.717334 chase_score=10108.717334 prob=2.717334
+turn=74 picked cell=8,7 target_cluster=Some(0) active_clusters=1 remaining_cells=36 scans=2
+RESULT turn=74 cell=8,7 result=HIT remaining_cells=36 active_clusters=1
+turn=74 result=HIT
+turn=75 mode=CHASE cluster=0 cluster_len=3 cell=5,7 score=300002.661833 chase_score=10082.661833 prob=2.661833
+turn=75 picked cell=5,7 target_cluster=Some(0) active_clusters=1 remaining_cells=35 scans=2
+RESULT turn=75 cell=5,7 result=HIT remaining_cells=35 active_clusters=1
+turn=75 result=HIT
+turn=76 mode=CHASE cluster=0 cluster_len=4 cell=9,7 score=400002.471525 chase_score=10065.471525 prob=2.471525
+turn=76 picked cell=9,7 target_cluster=Some(0) active_clusters=1 remaining_cells=34 scans=2
+RESULT turn=76 cell=9,7 result=HIT remaining_cells=34 active_clusters=1
+turn=76 result=HIT
+turn=77 mode=CHASE cluster=0 cluster_len=5 cell=10,7 score=500001.991220 chase_score=10039.991220 prob=1.991220
+turn=77 picked cell=10,7 target_cluster=Some(0) active_clusters=1 remaining_cells=33 scans=2
+RESULT turn=77 cell=10,7 result=HIT remaining_cells=33 active_clusters=1
+turn=77 result=HIT
+turn=78 mode=CHASE cluster=0 cluster_len=6 cell=4,7 score=600001.874508 chase_score=10024.874508 prob=1.874508
+turn=78 picked cell=4,7 target_cluster=Some(0) active_clusters=1 remaining_cells=32 scans=2
+RESULT turn=78 cell=4,7 result=HIT remaining_cells=32 active_clusters=1
+turn=78 result=HIT
+turn=79 mode=CHASE cluster=0 cluster_len=7 cell=3,7 score=700001.774864 chase_score=10009.774864 prob=1.774864
+turn=79 picked cell=3,7 target_cluster=Some(0) active_clusters=1 remaining_cells=31 scans=2
+RESULT turn=79 cell=3,7 result=KILL remaining_cells=31 active_clusters=1
+turn=79 result=KILL
+turn=79 kill_infer inferred_len=8 committed_hits=7 cluster_hits=7
+turn=80 picked cell=11,11 target_cluster=None active_clusters=0 remaining_cells=30 scans=2
+RESULT turn=80 cell=11,11 result=MISS remaining_cells=30 active_clusters=0
+turn=80 result=MISS
+turn=81 picked cell=12,16 target_cluster=None active_clusters=0 remaining_cells=30 scans=2
+RESULT turn=81 cell=12,16 result=MISS remaining_cells=30 active_clusters=0
+turn=81 result=MISS
+turn=82 picked cell=13,9 target_cluster=None active_clusters=0 remaining_cells=30 scans=2
+RESULT turn=82 cell=13,9 result=MISS remaining_cells=30 active_clusters=0
+turn=82 result=MISS
+turn=83 picked cell=6,14 target_cluster=None active_clusters=0 remaining_cells=30 scans=2
+RESULT turn=83 cell=6,14 result=MISS remaining_cells=30 active_clusters=0
+turn=83 result=MISS
+turn=84 picked cell=1,11 target_cluster=None active_clusters=0 remaining_cells=30 scans=2
+RESULT turn=84 cell=1,11 result=MISS remaining_cells=30 active_clusters=0
+turn=84 result=MISS
+turn=85 picked cell=14,15 target_cluster=None active_clusters=0 remaining_cells=30 scans=2
+RESULT turn=85 cell=14,15 result=MISS remaining_cells=30 active_clusters=0
+turn=85 result=MISS
+turn=86 picked cell=13,12 target_cluster=None active_clusters=0 remaining_cells=30 scans=2
+RESULT turn=86 cell=13,12 result=HIT remaining_cells=30 active_clusters=0
+turn=86 result=HIT
+turn=87 mode=CHASE cluster=0 cluster_len=1 cell=12,12 score=100000.819993 chase_score=5015.069993 prob=0.819993
+turn=87 picked cell=12,12 target_cluster=Some(0) active_clusters=1 remaining_cells=29 scans=2
+RESULT turn=87 cell=12,12 result=HIT remaining_cells=29 active_clusters=1
+turn=87 result=HIT
+turn=88 mode=CHASE cluster=0 cluster_len=2 cell=11,12 score=200000.803943 chase_score=10046.803943 prob=0.803943
+turn=88 picked cell=11,12 target_cluster=Some(0) active_clusters=1 remaining_cells=28 scans=2
+RESULT turn=88 cell=11,12 result=HIT remaining_cells=28 active_clusters=1
+turn=88 result=HIT
+turn=89 mode=CHASE cluster=0 cluster_len=3 cell=14,12 score=300000.700629 chase_score=10027.700629 prob=0.700629
+turn=89 picked cell=14,12 target_cluster=Some(0) active_clusters=1 remaining_cells=27 scans=2
+RESULT turn=89 cell=14,12 result=HIT remaining_cells=27 active_clusters=1
+turn=89 result=HIT
+turn=90 mode=CHASE cluster=0 cluster_len=4 cell=10,12 score=400000.621811 chase_score=10017.621811 prob=0.621811
+turn=90 picked cell=10,12 target_cluster=Some(0) active_clusters=1 remaining_cells=26 scans=2
+RESULT turn=90 cell=10,12 result=MISS remaining_cells=26 active_clusters=1
+turn=90 result=MISS
+turn=91 mode=CHASE cluster=0 cluster_len=4 cell=15,12 score=400000.249872 chase_score=10010.249872 prob=0.249872
+turn=91 picked cell=15,12 target_cluster=Some(0) active_clusters=1 remaining_cells=26 scans=2
+RESULT turn=91 cell=15,12 result=KILL remaining_cells=26 active_clusters=1
+turn=91 result=KILL
+turn=91 kill_infer inferred_len=5 committed_hits=4 cluster_hits=4
+turn=92 picked cell=2,2 target_cluster=None active_clusters=0 remaining_cells=25 scans=2
+RESULT turn=92 cell=2,2 result=HIT remaining_cells=25 active_clusters=0
+turn=92 result=HIT
+turn=93 mode=CHASE cluster=0 cluster_len=1 cell=2,3 score=100001.496707 chase_score=5013.746707 prob=1.496707
+turn=93 picked cell=2,3 target_cluster=Some(0) active_clusters=1 remaining_cells=24 scans=2
+RESULT turn=93 cell=2,3 result=MISS remaining_cells=24 active_clusters=1
+turn=93 result=MISS
+turn=94 mode=CHASE cluster=0 cluster_len=1 cell=3,2 score=100001.121393 chase_score=5013.371393 prob=1.121393
+turn=94 picked cell=3,2 target_cluster=Some(0) active_clusters=1 remaining_cells=24 scans=2
+RESULT turn=94 cell=3,2 result=MISS remaining_cells=24 active_clusters=1
+turn=94 result=MISS
+turn=95 mode=CHASE cluster=0 cluster_len=1 cell=1,2 score=100000.884661 chase_score=5003.634661 prob=0.884661
+turn=95 picked cell=1,2 target_cluster=Some(0) active_clusters=1 remaining_cells=24 scans=2
+RESULT turn=95 cell=1,2 result=MISS remaining_cells=24 active_clusters=1
+turn=95 result=MISS
+turn=96 mode=CHASE cluster=0 cluster_len=1 cell=2,1 score=100000.290037 chase_score=5003.040037 prob=0.290037
+turn=96 picked cell=2,1 target_cluster=Some(0) active_clusters=1 remaining_cells=24 scans=2
+RESULT turn=96 cell=2,1 result=KILL remaining_cells=24 active_clusters=1
+turn=96 result=KILL
+turn=96 kill_infer inferred_len=2 committed_hits=1 cluster_hits=1
+turn=97 picked cell=6,9 target_cluster=None active_clusters=0 remaining_cells=23 scans=2
+RESULT turn=97 cell=6,9 result=KILL remaining_cells=23 active_clusters=0
+turn=97 result=KILL
+turn=98 picked cell=5,13 target_cluster=None active_clusters=0 remaining_cells=22 scans=2
+RESULT turn=98 cell=5,13 result=MISS remaining_cells=22 active_clusters=0
+turn=98 result=MISS
+turn=99 picked cell=2,12 target_cluster=None active_clusters=0 remaining_cells=22 scans=2
+RESULT turn=99 cell=2,12 result=MISS remaining_cells=22 active_clusters=0
+turn=99 result=MISS
+turn=100 picked cell=4,16 target_cluster=None active_clusters=0 remaining_cells=22 scans=2
+RESULT turn=100 cell=4,16 result=HIT remaining_cells=22 active_clusters=0
+turn=100 result=HIT
+turn=101 mode=CHASE cluster=0 cluster_len=1 cell=3,16 score=100000.770347 chase_score=5010.770347 prob=0.770347
+turn=101 picked cell=3,16 target_cluster=Some(0) active_clusters=1 remaining_cells=21 scans=2
+RESULT turn=101 cell=3,16 result=HIT remaining_cells=21 active_clusters=1
+turn=101 result=HIT
+turn=102 mode=CHASE cluster=0 cluster_len=2 cell=2,16 score=200000.770347 chase_score=10031.770347 prob=0.770347
+turn=102 picked cell=2,16 target_cluster=Some(0) active_clusters=1 remaining_cells=20 scans=2
+RESULT turn=102 cell=2,16 result=HIT remaining_cells=20 active_clusters=1
+turn=102 result=HIT
+turn=103 mode=CHASE cluster=0 cluster_len=3 cell=1,16 score=300000.583950 chase_score=10017.583950 prob=0.583950
+turn=103 picked cell=1,16 target_cluster=Some(0) active_clusters=1 remaining_cells=19 scans=2
+RESULT turn=103 cell=1,16 result=MISS remaining_cells=19 active_clusters=1
+turn=103 result=MISS
+turn=104 mode=CHASE cluster=0 cluster_len=3 cell=5,16 score=300000.320817 chase_score=10005.320817 prob=0.320817
+turn=104 picked cell=5,16 target_cluster=Some(0) active_clusters=1 remaining_cells=19 scans=2
+RESULT turn=104 cell=5,16 result=HIT remaining_cells=19 active_clusters=1
+turn=104 result=HIT
+turn=105 mode=CHASE cluster=0 cluster_len=4 cell=6,16 score=400000.212656 chase_score=10005.212656 prob=0.212656
+turn=105 picked cell=6,16 target_cluster=Some(0) active_clusters=1 remaining_cells=18 scans=2
+RESULT turn=105 cell=6,16 result=KILL remaining_cells=18 active_clusters=1
+turn=105 result=KILL
+turn=105 kill_infer inferred_len=5 committed_hits=4 cluster_hits=4
+turn=106 picked cell=11,6 target_cluster=None active_clusters=0 remaining_cells=17 scans=2
+RESULT turn=106 cell=11,6 result=MISS remaining_cells=17 active_clusters=0
+turn=106 result=MISS
+turn=107 picked cell=13,5 target_cluster=None active_clusters=0 remaining_cells=17 scans=2
+RESULT turn=107 cell=13,5 result=MISS remaining_cells=17 active_clusters=0
+turn=107 result=MISS
+turn=108 picked cell=10,4 target_cluster=None active_clusters=0 remaining_cells=17 scans=2
+RESULT turn=108 cell=10,4 result=MISS remaining_cells=17 active_clusters=0
+turn=108 result=MISS
+turn=109 picked cell=14,3 target_cluster=None active_clusters=0 remaining_cells=17 scans=2
+RESULT turn=109 cell=14,3 result=MISS remaining_cells=17 active_clusters=0
+turn=109 result=MISS
+turn=110 picked cell=15,8 target_cluster=None active_clusters=0 remaining_cells=17 scans=2
+RESULT turn=110 cell=15,8 result=MISS remaining_cells=17 active_clusters=0
+turn=110 result=MISS
+turn=111 picked cell=13,2 target_cluster=None active_clusters=0 remaining_cells=17 scans=2
+RESULT turn=111 cell=13,2 result=MISS remaining_cells=17 active_clusters=0
+turn=111 result=MISS
+turn=112 picked cell=14,0 target_cluster=None active_clusters=0 remaining_cells=17 scans=2
+RESULT turn=112 cell=14,0 result=MISS remaining_cells=17 active_clusters=0
+turn=112 result=MISS
+turn=113 picked cell=0,6 target_cluster=None active_clusters=0 remaining_cells=17 scans=2
+RESULT turn=113 cell=0,6 result=MISS remaining_cells=17 active_clusters=0
+turn=113 result=MISS
+turn=114 picked cell=4,0 target_cluster=None active_clusters=0 remaining_cells=17 scans=2
+RESULT turn=114 cell=4,0 result=MISS remaining_cells=17 active_clusters=0
+turn=114 result=MISS
+turn=115 picked cell=13,14 target_cluster=None active_clusters=0 remaining_cells=17 scans=2
+RESULT turn=115 cell=13,14 result=MISS remaining_cells=17 active_clusters=0
+turn=115 result=MISS
+turn=116 picked cell=8,14 target_cluster=None active_clusters=0 remaining_cells=17 scans=2
+RESULT turn=116 cell=8,14 result=HIT remaining_cells=17 active_clusters=0
+turn=116 result=HIT
+turn=117 mode=CHASE cluster=0 cluster_len=1 cell=8,15 score=100000.230899 chase_score=5004.730899 prob=0.230899
+turn=117 picked cell=8,15 target_cluster=Some(0) active_clusters=1 remaining_cells=16 scans=2
+RESULT turn=117 cell=8,15 result=HIT remaining_cells=16 active_clusters=1
+turn=117 result=HIT
+turn=118 mode=CHASE cluster=0 cluster_len=2 cell=8,13 score=200000.157558 chase_score=10009.157558 prob=0.157558
+turn=118 picked cell=8,13 target_cluster=Some(0) active_clusters=1 remaining_cells=15 scans=2
+RESULT turn=118 cell=8,13 result=MISS remaining_cells=15 active_clusters=1
+turn=118 result=MISS
+turn=119 mode=CHASE cluster=0 cluster_len=2 cell=8,16 score=200000.160161 chase_score=10009.160161 prob=0.160161
+turn=119 picked cell=8,16 target_cluster=Some(0) active_clusters=1 remaining_cells=15 scans=2
+RESULT turn=119 cell=8,16 result=KILL remaining_cells=15 active_clusters=1
+turn=119 result=KILL
+turn=119 kill_infer inferred_len=3 committed_hits=2 cluster_hits=2
+turn=120 picked cell=2,5 target_cluster=None active_clusters=0 remaining_cells=14 scans=2
+RESULT turn=120 cell=2,5 result=MISS remaining_cells=14 active_clusters=0
+turn=120 result=MISS
+turn=121 picked cell=6,2 target_cluster=None active_clusters=0 remaining_cells=14 scans=2
+RESULT turn=121 cell=6,2 result=MISS remaining_cells=14 active_clusters=0
+turn=121 result=MISS
+turn=122 picked cell=4,3 target_cluster=None active_clusters=0 remaining_cells=14 scans=2
+RESULT turn=122 cell=4,3 result=HIT remaining_cells=14 active_clusters=0
+turn=122 result=HIT
+turn=123 mode=CHASE cluster=0 cluster_len=1 cell=5,3 score=100000.179779 chase_score=5003.179779 prob=0.179779
+turn=123 picked cell=5,3 target_cluster=Some(0) active_clusters=1 remaining_cells=13 scans=2
+RESULT turn=123 cell=5,3 result=MISS remaining_cells=13 active_clusters=1
+turn=123 result=MISS
+turn=124 mode=CHASE cluster=0 cluster_len=1 cell=4,4 score=100000.184955 chase_score=5003.184955 prob=0.184955
+turn=124 picked cell=4,4 target_cluster=Some(0) active_clusters=1 remaining_cells=13 scans=2
+RESULT turn=124 cell=4,4 result=MISS remaining_cells=13 active_clusters=1
+turn=124 result=MISS
+turn=125 mode=CHASE cluster=0 cluster_len=1 cell=4,2 score=100000.071902 chase_score=5001.571902 prob=0.071902
+turn=125 picked cell=4,2 target_cluster=Some(0) active_clusters=1 remaining_cells=13 scans=2
+RESULT turn=125 cell=4,2 result=HIT remaining_cells=13 active_clusters=1
+turn=125 result=HIT
+turn=126 mode=CHASE cluster=0 cluster_len=2 cell=4,1 score=200000.131172 chase_score=10006.131172 prob=0.131172
+turn=126 picked cell=4,1 target_cluster=Some(0) active_clusters=1 remaining_cells=12 scans=2
+RESULT turn=126 cell=4,1 result=KILL remaining_cells=12 active_clusters=1
+turn=126 result=KILL
+turn=126 kill_infer inferred_len=3 committed_hits=2 cluster_hits=2
+turn=127 picked cell=11,15 target_cluster=None active_clusters=0 remaining_cells=11 scans=2
+RESULT turn=127 cell=11,15 result=MISS remaining_cells=11 active_clusters=0
+turn=127 result=MISS
+turn=128 picked cell=15,16 target_cluster=None active_clusters=0 remaining_cells=11 scans=2
+RESULT turn=128 cell=15,16 result=MISS remaining_cells=11 active_clusters=0
+turn=128 result=MISS
+turn=129 picked cell=14,11 target_cluster=None active_clusters=0 remaining_cells=11 scans=2
+RESULT turn=129 cell=14,11 result=HIT remaining_cells=11 active_clusters=0
+turn=129 result=HIT
+turn=130 mode=CHASE cluster=0 cluster_len=1 cell=14,10 score=100000.076263 chase_score=5000.826263 prob=0.076263
+turn=130 picked cell=14,10 target_cluster=Some(0) active_clusters=1 remaining_cells=10 scans=2
+RESULT turn=130 cell=14,10 result=HIT remaining_cells=10 active_clusters=1
+turn=130 result=HIT
+turn=131 mode=CHASE cluster=0 cluster_len=2 cell=14,9 score=200000.044694 chase_score=10003.044694 prob=0.044694
+turn=131 picked cell=14,9 target_cluster=Some(0) active_clusters=1 remaining_cells=9 scans=2
+RESULT turn=131 cell=14,9 result=HIT remaining_cells=9 active_clusters=1
+turn=131 result=HIT
+turn=132 mode=CHASE cluster=0 cluster_len=3 cell=13,11 score=300000.044694 chase_score=5000.044694 prob=0.044694
+turn=132 picked cell=13,11 target_cluster=Some(0) active_clusters=1 remaining_cells=8 scans=2
+RESULT turn=132 cell=13,11 result=MISS remaining_cells=8 active_clusters=1
+turn=132 result=MISS
+turn=133 mode=CHASE cluster=0 cluster_len=3 cell=15,10 score=300000.045171 chase_score=5000.045171 prob=0.045171
+turn=133 picked cell=15,10 target_cluster=Some(0) active_clusters=1 remaining_cells=8 scans=2
+RESULT turn=133 cell=15,10 result=MISS remaining_cells=8 active_clusters=1
+turn=133 result=MISS
+turn=134 mode=CHASE cluster=0 cluster_len=3 cell=13,10 score=300000.013385 chase_score=5000.013385 prob=0.013385
+turn=134 picked cell=13,10 target_cluster=Some(0) active_clusters=1 remaining_cells=8 scans=2
+RESULT turn=134 cell=13,10 result=MISS remaining_cells=8 active_clusters=1
+turn=134 result=MISS
+turn=135 mode=CHASE cluster=0 cluster_len=3 cell=15,9 score=300000.013407 chase_score=5000.013407 prob=0.013407
+turn=135 picked cell=15,9 target_cluster=Some(0) active_clusters=1 remaining_cells=8 scans=2
+RESULT turn=135 cell=15,9 result=MISS remaining_cells=8 active_clusters=1
+turn=135 result=MISS
+turn=136 picked cell=9,5 target_cluster=None active_clusters=1 remaining_cells=8 scans=2
+RESULT turn=136 cell=9,5 result=MISS remaining_cells=8 active_clusters=1
+turn=136 result=MISS
+turn=137 picked cell=12,4 target_cluster=None active_clusters=1 remaining_cells=8 scans=2
+RESULT turn=137 cell=12,4 result=MISS remaining_cells=8 active_clusters=1
+turn=137 result=MISS
+turn=138 picked cell=11,3 target_cluster=None active_clusters=1 remaining_cells=8 scans=2
+RESULT turn=138 cell=11,3 result=MISS remaining_cells=8 active_clusters=1
+turn=138 result=MISS
+turn=139 picked cell=8,6 target_cluster=None active_clusters=1 remaining_cells=8 scans=2
+RESULT turn=139 cell=8,6 result=MISS remaining_cells=8 active_clusters=1
+turn=139 result=MISS
+turn=140 picked cell=14,6 target_cluster=None active_clusters=1 remaining_cells=8 scans=2
+RESULT turn=140 cell=14,6 result=HIT remaining_cells=8 active_clusters=1
+turn=140 result=HIT
+turn=141 mode=CHASE cluster=1 cluster_len=1 cell=13,6 score=100000.096906 chase_score=5001.596906 prob=0.096906
+turn=141 picked cell=13,6 target_cluster=Some(1) active_clusters=2 remaining_cells=7 scans=2
+RESULT turn=141 cell=13,6 result=MISS remaining_cells=7 active_clusters=2
+turn=141 result=MISS
+turn=142 mode=CHASE cluster=1 cluster_len=1 cell=14,5 score=100000.099640 chase_score=5001.599640 prob=0.099640
+turn=142 picked cell=14,5 target_cluster=Some(1) active_clusters=2 remaining_cells=7 scans=2
+RESULT turn=142 cell=14,5 result=HIT remaining_cells=7 active_clusters=2
+turn=142 result=HIT
+turn=143 mode=CHASE cluster=1 cluster_len=2 cell=14,4 score=200000.099640 chase_score=10003.099640 prob=0.099640
+turn=143 picked cell=14,4 target_cluster=Some(1) active_clusters=2 remaining_cells=6 scans=2
+RESULT turn=143 cell=14,4 result=HIT remaining_cells=6 active_clusters=2
+turn=143 result=HIT
+turn=144 mode=CHASE cluster=1 cluster_len=3 cell=14,7 score=300000.057978 chase_score=10000.057978 prob=0.057978
+turn=144 picked cell=14,7 target_cluster=Some(1) active_clusters=2 remaining_cells=5 scans=2
+RESULT turn=144 cell=14,7 result=KILL remaining_cells=5 active_clusters=2
+turn=144 result=KILL
+turn=144 kill_infer inferred_len=3 committed_hits=2 cluster_hits=3
+turn=145 mode=CHASE cluster=1 cluster_len=1 cell=15,4 score=100000.006623 chase_score=5000.006623 prob=0.006623
+turn=145 picked cell=15,4 target_cluster=Some(1) active_clusters=2 remaining_cells=4 scans=2
+RESULT turn=145 cell=15,4 result=MISS remaining_cells=4 active_clusters=2
+turn=145 result=MISS
+turn=146 mode=CHASE cluster=1 cluster_len=1 cell=13,4 score=100000.006667 chase_score=5000.006667 prob=0.006667
+turn=146 picked cell=13,4 target_cluster=Some(1) active_clusters=2 remaining_cells=4 scans=2
+RESULT turn=146 cell=13,4 result=MISS remaining_cells=4 active_clusters=2
+turn=146 result=MISS
+turn=147 picked cell=7,9 target_cluster=None active_clusters=2 remaining_cells=4 scans=2
+RESULT turn=147 cell=7,9 result=MISS remaining_cells=4 active_clusters=2
+turn=147 result=MISS
+turn=148 picked cell=5,8 target_cluster=None active_clusters=2 remaining_cells=4 scans=2
+RESULT turn=148 cell=5,8 result=MISS remaining_cells=4 active_clusters=2
+turn=148 result=MISS
+turn=149 picked cell=5,9 target_cluster=None active_clusters=2 remaining_cells=4 scans=2
+RESULT turn=149 cell=5,9 result=MISS remaining_cells=4 active_clusters=2
+turn=149 result=MISS
+turn=150 picked cell=3,8 target_cluster=None active_clusters=2 remaining_cells=4 scans=2
+RESULT turn=150 cell=3,8 result=MISS remaining_cells=4 active_clusters=2
+turn=150 result=MISS
+turn=151 picked cell=4,8 target_cluster=None active_clusters=2 remaining_cells=4 scans=2
+RESULT turn=151 cell=4,8 result=MISS remaining_cells=4 active_clusters=2
+turn=151 result=MISS
+turn=152 picked cell=6,8 target_cluster=None active_clusters=2 remaining_cells=4 scans=2
+RESULT turn=152 cell=6,8 result=KILL remaining_cells=4 active_clusters=2
+turn=152 result=KILL
+turn=153 picked cell=9,6 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=153 cell=9,6 result=MISS remaining_cells=3 active_clusters=2
+turn=153 result=MISS
+turn=154 picked cell=8,9 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=154 cell=8,9 result=MISS remaining_cells=3 active_clusters=2
+turn=154 result=MISS
+turn=155 picked cell=10,6 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=155 cell=10,6 result=MISS remaining_cells=3 active_clusters=2
+turn=155 result=MISS
+turn=156 picked cell=8,11 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=156 cell=8,11 result=MISS remaining_cells=3 active_clusters=2
+turn=156 result=MISS
+turn=157 picked cell=7,6 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=157 cell=7,6 result=MISS remaining_cells=3 active_clusters=2
+turn=157 result=MISS
+turn=158 picked cell=10,9 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=158 cell=10,9 result=MISS remaining_cells=3 active_clusters=2
+turn=158 result=MISS
+turn=159 picked cell=8,4 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=159 cell=8,4 result=MISS remaining_cells=3 active_clusters=2
+turn=159 result=MISS
+turn=160 picked cell=7,5 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=160 cell=7,5 result=MISS remaining_cells=3 active_clusters=2
+turn=160 result=MISS
+turn=161 picked cell=8,5 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=161 cell=8,5 result=MISS remaining_cells=3 active_clusters=2
+turn=161 result=MISS
+turn=162 picked cell=9,12 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=162 cell=9,12 result=MISS remaining_cells=3 active_clusters=2
+turn=162 result=MISS
+turn=163 picked cell=6,6 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=163 cell=6,6 result=MISS remaining_cells=3 active_clusters=2
+turn=163 result=MISS
+turn=164 picked cell=11,9 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=164 cell=11,9 result=MISS remaining_cells=3 active_clusters=2
+turn=164 result=MISS
+turn=165 picked cell=9,11 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=165 cell=9,11 result=MISS remaining_cells=3 active_clusters=2
+turn=165 result=MISS
+turn=166 picked cell=11,7 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=166 cell=11,7 result=MISS remaining_cells=3 active_clusters=2
+turn=166 result=MISS
+turn=167 picked cell=12,7 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=167 cell=12,7 result=MISS remaining_cells=3 active_clusters=2
+turn=167 result=MISS
+turn=168 picked cell=5,6 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=168 cell=5,6 result=MISS remaining_cells=3 active_clusters=2
+turn=168 result=MISS
+turn=169 picked cell=7,4 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=169 cell=7,4 result=MISS remaining_cells=3 active_clusters=2
+turn=169 result=MISS
+turn=170 picked cell=10,11 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=170 cell=10,11 result=MISS remaining_cells=3 active_clusters=2
+turn=170 result=MISS
+turn=171 picked cell=9,4 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=171 cell=9,4 result=MISS remaining_cells=3 active_clusters=2
+turn=171 result=MISS
+turn=172 picked cell=4,9 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=172 cell=4,9 result=MISS remaining_cells=3 active_clusters=2
+turn=172 result=MISS
+turn=173 picked cell=8,3 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=173 cell=8,3 result=MISS remaining_cells=3 active_clusters=2
+turn=173 result=MISS
+turn=174 picked cell=6,11 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=174 cell=6,11 result=MISS remaining_cells=3 active_clusters=2
+turn=174 result=MISS
+turn=175 picked cell=7,12 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=175 cell=7,12 result=MISS remaining_cells=3 active_clusters=2
+turn=175 result=MISS
+turn=176 picked cell=10,5 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=176 cell=10,5 result=MISS remaining_cells=3 active_clusters=2
+turn=176 result=MISS
+turn=177 picked cell=12,9 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=177 cell=12,9 result=MISS remaining_cells=3 active_clusters=2
+turn=177 result=MISS
+turn=178 picked cell=9,3 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=178 cell=9,3 result=MISS remaining_cells=3 active_clusters=2
+turn=178 result=MISS
+turn=179 picked cell=11,5 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=179 cell=11,5 result=MISS remaining_cells=3 active_clusters=2
+turn=179 result=MISS
+turn=180 picked cell=6,4 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=180 cell=6,4 result=MISS remaining_cells=3 active_clusters=2
+turn=180 result=MISS
+turn=181 picked cell=5,11 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=181 cell=5,11 result=MISS remaining_cells=3 active_clusters=2
+turn=181 result=MISS
+turn=182 picked cell=6,12 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=182 cell=6,12 result=MISS remaining_cells=3 active_clusters=2
+turn=182 result=MISS
+turn=183 picked cell=9,14 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=183 cell=9,14 result=MISS remaining_cells=3 active_clusters=2
+turn=183 result=MISS
+turn=184 picked cell=8,1 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=184 cell=8,1 result=MISS remaining_cells=3 active_clusters=2
+turn=184 result=MISS
+turn=185 picked cell=12,6 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=185 cell=12,6 result=MISS remaining_cells=3 active_clusters=2
+turn=185 result=MISS
+turn=186 picked cell=4,5 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=186 cell=4,5 result=MISS remaining_cells=3 active_clusters=2
+turn=186 result=MISS
+turn=187 picked cell=5,5 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=187 cell=5,5 result=MISS remaining_cells=3 active_clusters=2
+turn=187 result=MISS
+turn=188 picked cell=2,9 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=188 cell=2,9 result=MISS remaining_cells=3 active_clusters=2
+turn=188 result=MISS
+turn=189 picked cell=7,2 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=189 cell=7,2 result=MISS remaining_cells=3 active_clusters=2
+turn=189 result=MISS
+turn=190 picked cell=7,13 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=190 cell=7,13 result=MISS remaining_cells=3 active_clusters=2
+turn=190 result=MISS
+turn=191 picked cell=12,5 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=191 cell=12,5 result=MISS remaining_cells=3 active_clusters=2
+turn=191 result=MISS
+turn=192 picked cell=11,4 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=192 cell=11,4 result=MISS remaining_cells=3 active_clusters=2
+turn=192 result=MISS
+turn=193 picked cell=3,5 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=193 cell=3,5 result=MISS remaining_cells=3 active_clusters=2
+turn=193 result=MISS
+turn=194 picked cell=6,3 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=194 cell=6,3 result=MISS remaining_cells=3 active_clusters=2
+turn=194 result=MISS
+turn=195 picked cell=1,8 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=195 cell=1,8 result=MISS remaining_cells=3 active_clusters=2
+turn=195 result=MISS
+turn=196 picked cell=12,11 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=196 cell=12,11 result=MISS remaining_cells=3 active_clusters=2
+turn=196 result=MISS
+turn=197 picked cell=5,12 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=197 cell=5,12 result=MISS remaining_cells=3 active_clusters=2
+turn=197 result=MISS
+turn=198 picked cell=9,2 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=198 cell=9,2 result=MISS remaining_cells=3 active_clusters=2
+turn=198 result=MISS
+turn=199 picked cell=6,13 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=199 cell=6,13 result=MISS remaining_cells=3 active_clusters=2
+turn=199 result=MISS
+turn=200 picked cell=7,14 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=200 cell=7,14 result=MISS remaining_cells=3 active_clusters=2
+turn=200 result=MISS
+turn=201 picked cell=4,11 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=201 cell=4,11 result=MISS remaining_cells=3 active_clusters=2
+turn=201 result=MISS
+turn=202 picked cell=3,6 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=202 cell=3,6 result=MISS remaining_cells=3 active_clusters=2
+turn=202 result=MISS
+turn=203 picked cell=0,8 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=203 cell=0,8 result=MISS remaining_cells=3 active_clusters=2
+turn=203 result=MISS
+turn=204 picked cell=7,15 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=204 cell=7,15 result=MISS remaining_cells=3 active_clusters=2
+turn=204 result=MISS
+turn=205 picked cell=2,7 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=205 cell=2,7 result=MISS remaining_cells=3 active_clusters=2
+turn=205 result=MISS
+turn=206 picked cell=10,3 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=206 cell=10,3 result=MISS remaining_cells=3 active_clusters=2
+turn=206 result=MISS
+turn=207 picked cell=8,0 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=207 cell=8,0 result=MISS remaining_cells=3 active_clusters=2
+turn=207 result=MISS
+turn=208 picked cell=15,7 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=208 cell=15,7 result=MISS remaining_cells=3 active_clusters=2
+turn=208 result=MISS
+turn=209 picked cell=10,2 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=209 cell=10,2 result=MISS remaining_cells=3 active_clusters=2
+turn=209 result=MISS
+turn=210 picked cell=1,10 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=210 cell=1,10 result=MISS remaining_cells=3 active_clusters=2
+turn=210 result=MISS
+turn=211 picked cell=1,9 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=211 cell=1,9 result=MISS remaining_cells=3 active_clusters=2
+turn=211 result=MISS
+turn=212 picked cell=7,1 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=212 cell=7,1 result=MISS remaining_cells=3 active_clusters=2
+turn=212 result=MISS
+turn=213 picked cell=4,12 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=213 cell=4,12 result=MISS remaining_cells=3 active_clusters=2
+turn=213 result=MISS
+turn=214 picked cell=3,4 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=214 cell=3,4 result=MISS remaining_cells=3 active_clusters=2
+turn=214 result=MISS
+turn=215 picked cell=2,6 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=215 cell=2,6 result=MISS remaining_cells=3 active_clusters=2
+turn=215 result=MISS
+turn=216 picked cell=6,15 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=216 cell=6,15 result=MISS remaining_cells=3 active_clusters=2
+turn=216 result=MISS
+turn=217 picked cell=15,6 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=217 cell=15,6 result=MISS remaining_cells=3 active_clusters=2
+turn=217 result=MISS
+turn=218 picked cell=11,14 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=218 cell=11,14 result=MISS remaining_cells=3 active_clusters=2
+turn=218 result=MISS
+turn=219 picked cell=12,3 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=219 cell=12,3 result=MISS remaining_cells=3 active_clusters=2
+turn=219 result=MISS
+turn=220 picked cell=5,2 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=220 cell=5,2 result=MISS remaining_cells=3 active_clusters=2
+turn=220 result=MISS
+turn=221 picked cell=6,1 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=221 cell=6,1 result=MISS remaining_cells=3 active_clusters=2
+turn=221 result=MISS
+turn=222 picked cell=2,10 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=222 cell=2,10 result=MISS remaining_cells=3 active_clusters=2
+turn=222 result=MISS
+turn=223 picked cell=1,6 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=223 cell=1,6 result=MISS remaining_cells=3 active_clusters=2
+turn=223 result=MISS
+turn=224 picked cell=5,14 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=224 cell=5,14 result=MISS remaining_cells=3 active_clusters=2
+turn=224 result=MISS
+turn=225 picked cell=3,3 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=225 cell=3,3 result=MISS remaining_cells=3 active_clusters=2
+turn=225 result=MISS
+turn=226 picked cell=11,2 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=226 cell=11,2 result=MISS remaining_cells=3 active_clusters=2
+turn=226 result=MISS
+turn=227 picked cell=2,11 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=227 cell=2,11 result=MISS remaining_cells=3 active_clusters=2
+turn=227 result=MISS
+turn=228 picked cell=9,0 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=228 cell=9,0 result=MISS remaining_cells=3 active_clusters=2
+turn=228 result=MISS
+turn=229 picked cell=4,13 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=229 cell=4,13 result=MISS remaining_cells=3 active_clusters=2
+turn=229 result=MISS
+turn=230 picked cell=9,16 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=230 cell=9,16 result=MISS remaining_cells=3 active_clusters=2
+turn=230 result=MISS
+turn=231 picked cell=0,7 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=231 cell=0,7 result=MISS remaining_cells=3 active_clusters=2
+turn=231 result=MISS
+turn=232 picked cell=12,2 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=232 cell=12,2 result=MISS remaining_cells=3 active_clusters=2
+turn=232 result=MISS
+turn=233 picked cell=10,15 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=233 cell=10,15 result=MISS remaining_cells=3 active_clusters=2
+turn=233 result=MISS
+turn=234 picked cell=6,0 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=234 cell=6,0 result=MISS remaining_cells=3 active_clusters=2
+turn=234 result=MISS
+turn=235 picked cell=4,14 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=235 cell=4,14 result=MISS remaining_cells=3 active_clusters=2
+turn=235 result=MISS
+turn=236 picked cell=1,5 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=236 cell=1,5 result=MISS remaining_cells=3 active_clusters=2
+turn=236 result=MISS
+turn=237 picked cell=10,16 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=237 cell=10,16 result=MISS remaining_cells=3 active_clusters=2
+turn=237 result=MISS
+turn=238 picked cell=2,4 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=238 cell=2,4 result=MISS remaining_cells=3 active_clusters=2
+turn=238 result=MISS
+turn=239 picked cell=12,14 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=239 cell=12,14 result=MISS remaining_cells=3 active_clusters=2
+turn=239 result=MISS
+turn=240 picked cell=0,10 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=240 cell=0,10 result=MISS remaining_cells=3 active_clusters=2
+turn=240 result=MISS
+turn=241 picked cell=15,5 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=241 cell=15,5 result=MISS remaining_cells=3 active_clusters=2
+turn=241 result=MISS
+turn=242 picked cell=1,4 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=242 cell=1,4 result=MISS remaining_cells=3 active_clusters=2
+turn=242 result=MISS
+turn=243 picked cell=1,12 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=243 cell=1,12 result=MISS remaining_cells=3 active_clusters=2
+turn=243 result=MISS
+turn=244 picked cell=2,14 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=244 cell=2,14 result=MISS remaining_cells=3 active_clusters=2
+turn=244 result=MISS
+turn=245 picked cell=11,16 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=245 cell=11,16 result=MISS remaining_cells=3 active_clusters=2
+turn=245 result=MISS
+turn=246 picked cell=10,0 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=246 cell=10,0 result=MISS remaining_cells=3 active_clusters=2
+turn=246 result=MISS
+turn=247 picked cell=11,0 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=247 cell=11,0 result=MISS remaining_cells=3 active_clusters=2
+turn=247 result=MISS
+turn=248 picked cell=12,0 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=248 cell=12,0 result=MISS remaining_cells=3 active_clusters=2
+turn=248 result=MISS
+turn=249 picked cell=2,13 target_cluster=None active_clusters=2 remaining_cells=3 scans=2
+RESULT turn=249 cell=2,13 result=HIT remaining_cells=3 active_clusters=2
+turn=249 result=HIT
+turn=250 mode=CHASE cluster=2 cluster_len=1 cell=1,13 score=100000.000000 chase_score=5000.000000 prob=0.000000
+turn=250 picked cell=1,13 target_cluster=Some(2) active_clusters=3 remaining_cells=2 scans=2
+RESULT turn=250 cell=1,13 result=HIT remaining_cells=2 active_clusters=3
+turn=250 result=HIT
+turn=251 mode=CHASE cluster=2 cluster_len=2 cell=0,13 score=200000.000000 chase_score=10000.000000 prob=0.000000
+turn=251 picked cell=0,13 target_cluster=Some(2) active_clusters=3 remaining_cells=1 scans=2
+RESULT turn=251 cell=0,13 result=KILL remaining_cells=1 active_clusters=3
+turn=251 result=KILL
+turn=251 kill_infer inferred_len=3 committed_hits=2 cluster_hits=2

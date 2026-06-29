@@ -1,0 +1,1351 @@
+turn=1 mode=SCAN region=0,0,8,8
+turn=1 result=SCAN count=17
+turn=2 mode=SCAN region=0,9,8,18
+turn=2 result=SCAN count=34
+turn=3 mode=SCAN region=9,0,18,8
+turn=3 result=SCAN count=34
+turn=4 mode=SCAN region=9,9,18,18
+turn=4 result=SCAN count=27
+turn=5 mode=HUNT rank=1 cell=11,8 score=3.912795 prob=3.197319 density=1.217659 center=0.016000
+turn=5 mode=HUNT rank=2 cell=8,11 score=3.912602 prob=3.197319 density=1.217659 center=0.016000
+turn=5 mode=HUNT rank=3 cell=7,11 score=3.902009 prob=3.188976 density=1.217659 center=0.015000
+turn=5 mode=HUNT rank=4 cell=11,7 score=3.899737 prob=3.188976 density=1.217659 center=0.015000
+turn=5 mode=HUNT rank=5 cell=10,8 score=3.898694 prob=3.186382 density=1.217659 center=0.017000
+turn=5 picked cell=11,8 target_cluster=None active_clusters=0 remaining_cells=112 scans=4
+turn=5 result=MISS
+turn=6 mode=HUNT rank=1 cell=10,7 score=4.077249 prob=3.305998 density=1.227929 center=0.016000
+turn=6 mode=HUNT rank=2 cell=12,7 score=4.027804 prob=3.267441 density=1.227929 center=0.014000
+turn=6 mode=HUNT rank=3 cell=8,11 score=4.022754 prob=3.299362 density=1.214286 center=0.016000
+turn=6 mode=HUNT rank=4 cell=8,10 score=4.014341 prob=3.288486 density=1.214286 center=0.017000
+turn=6 mode=HUNT rank=5 cell=7,11 score=4.011162 prob=3.290295 density=1.214286 center=0.015000
+turn=6 picked cell=10,7 target_cluster=None active_clusters=0 remaining_cells=112 scans=4
+turn=6 result=MISS
+turn=7 mode=HUNT rank=1 cell=8,11 score=4.150913 prob=3.411876 density=1.210913 center=0.016000
+turn=7 mode=HUNT rank=2 cell=12,6 score=4.150620 prob=3.340955 density=1.238433 center=0.013000
+turn=7 mode=HUNT rank=3 cell=8,10 score=4.136911 prob=3.401078 density=1.210913 center=0.017000
+turn=7 mode=HUNT rank=4 cell=7,11 score=4.135452 prob=3.401999 density=1.210913 center=0.015000
+turn=7 mode=HUNT rank=5 cell=7,10 score=4.124969 prob=3.391201 density=1.210913 center=0.016000
+turn=7 picked cell=8,11 target_cluster=None active_clusters=0 remaining_cells=112 scans=4
+turn=7 result=HIT
+turn=8 mode=CHASE cluster=0 cluster_len=1 cell=8,10 score=100003.234437 chase_score=5154.734437 prob=3.234437
+turn=8 picked cell=8,10 target_cluster=Some(0) active_clusters=1 remaining_cells=111 scans=4
+turn=8 result=HIT
+turn=9 mode=CHASE cluster=0 cluster_len=2 cell=8,9 score=200003.234437 chase_score=10500.234437 prob=3.234437
+turn=9 picked cell=8,9 target_cluster=Some(0) active_clusters=1 remaining_cells=110 scans=4
+turn=9 result=MISS
+turn=10 mode=CHASE cluster=0 cluster_len=2 cell=8,12 score=200002.238494 chase_score=10105.238494 prob=2.238494
+turn=10 picked cell=8,12 target_cluster=Some(0) active_clusters=1 remaining_cells=110 scans=4
+turn=10 result=HIT
+turn=11 mode=CHASE cluster=0 cluster_len=3 cell=8,13 score=300002.286312 chase_score=10096.286312 prob=2.286312
+turn=11 picked cell=8,13 target_cluster=Some(0) active_clusters=1 remaining_cells=109 scans=4
+turn=11 result=HIT
+turn=12 mode=CHASE cluster=0 cluster_len=4 cell=8,14 score=400002.296782 chase_score=10084.296782 prob=2.296782
+turn=12 picked cell=8,14 target_cluster=Some(0) active_clusters=1 remaining_cells=108 scans=4
+turn=12 result=HIT
+turn=13 mode=CHASE cluster=0 cluster_len=5 cell=8,15 score=500002.286312 chase_score=10079.286312 prob=2.286312
+turn=13 picked cell=8,15 target_cluster=Some(0) active_clusters=1 remaining_cells=107 scans=4
+turn=13 result=HIT
+turn=14 mode=CHASE cluster=0 cluster_len=6 cell=8,16 score=600002.238494 chase_score=10073.238494 prob=2.238494
+turn=14 picked cell=8,16 target_cluster=Some(0) active_clusters=1 remaining_cells=106 scans=4
+turn=14 result=HIT
+turn=15 mode=CHASE cluster=0 cluster_len=7 cell=8,17 score=700002.109316 chase_score=10045.109316 prob=2.109316
+turn=15 picked cell=8,17 target_cluster=Some(0) active_clusters=1 remaining_cells=105 scans=4
+turn=15 result=KILL
+turn=15 kill_infer inferred_len=8 committed_hits=7 cluster_hits=7
+turn=16 mode=HUNT rank=1 cell=12,6 score=5.028772 prob=3.857446 density=1.300262 center=0.013000
+turn=16 mode=HUNT rank=2 cell=9,6 score=4.919914 prob=3.768946 density=1.300262 center=0.016000
+turn=16 mode=HUNT rank=3 cell=13,6 score=4.812652 prob=3.689616 density=1.300262 center=0.012000
+turn=16 mode=HUNT rank=4 cell=12,5 score=4.798479 prob=3.678245 density=1.300262 center=0.012000
+turn=16 mode=HUNT rank=5 cell=9,5 score=4.685688 prob=3.589745 density=1.300262 center=0.015000
+turn=16 picked cell=12,6 target_cluster=None active_clusters=0 remaining_cells=104 scans=4
+turn=16 result=MISS
+turn=17 mode=HUNT rank=1 cell=9,5 score=4.997470 prob=3.795953 density=1.311450 center=0.015000
+turn=17 mode=HUNT rank=2 cell=13,5 score=4.887455 prob=3.716380 density=1.311450 center=0.011000
+turn=17 mode=HUNT rank=3 cell=9,4 score=4.699528 prob=3.571580 density=1.311450 center=0.014000
+turn=17 mode=HUNT rank=4 cell=14,5 score=4.603441 prob=3.499820 density=1.311450 center=0.010000
+turn=17 mode=HUNT rank=5 cell=13,4 score=4.592551 prob=3.492007 density=1.311450 center=0.010000
+turn=17 picked cell=9,5 target_cluster=None active_clusters=0 remaining_cells=104 scans=4
+turn=17 result=MISS
+turn=18 mode=HUNT rank=1 cell=13,4 score=4.809502 prob=3.627022 density=1.322898 center=0.010000
+turn=18 mode=HUNT rank=2 cell=14,4 score=4.513168 prob=3.401986 density=1.322898 center=0.009000
+turn=18 mode=HUNT rank=3 cell=13,3 score=4.462874 prob=3.364447 density=1.322898 center=0.009000
+turn=18 mode=HUNT rank=4 cell=15,4 score=4.164284 prob=3.140956 density=1.322898 center=0.008000
+turn=18 mode=HUNT rank=5 cell=14,3 score=4.163189 prob=3.139412 density=1.322898 center=0.008000
+turn=18 picked cell=13,4 target_cluster=None active_clusters=0 remaining_cells=104 scans=4
+turn=18 result=MISS
+turn=19 mode=HUNT rank=1 cell=14,3 score=4.379070 prob=3.274597 density=1.334615 center=0.008000
+turn=19 mode=HUNT rank=2 cell=14,5 score=4.018097 prob=3.000996 density=1.334615 center=0.010000
+turn=19 mode=HUNT rank=3 cell=15,3 score=4.017793 prob=3.002178 density=1.334615 center=0.007000
+turn=19 mode=HUNT rank=4 cell=15,5 score=3.993901 prob=2.983688 density=1.334615 center=0.009000
+turn=19 mode=HUNT rank=5 cell=14,7 score=3.973013 prob=2.965943 density=1.334615 center=0.012000
+turn=19 picked cell=14,3 target_cluster=None active_clusters=0 remaining_cells=104 scans=4
+turn=19 result=HIT
+turn=20 mode=CHASE cluster=0 cluster_len=1 cell=13,3 score=100001.645565 chase_score=5107.895565 prob=1.645565
+turn=20 picked cell=13,3 target_cluster=Some(0) active_clusters=1 remaining_cells=103 scans=4
+turn=20 result=HIT
+turn=21 mode=CHASE cluster=0 cluster_len=2 cell=12,3 score=200002.001844 chase_score=10389.001844 prob=2.001844
+turn=21 picked cell=12,3 target_cluster=Some(0) active_clusters=1 remaining_cells=102 scans=4
+turn=21 result=HIT
+turn=22 mode=CHASE cluster=0 cluster_len=3 cell=11,3 score=300002.395268 chase_score=10329.395268 prob=2.395268
+turn=22 picked cell=11,3 target_cluster=Some(0) active_clusters=1 remaining_cells=101 scans=4
+turn=22 result=HIT
+turn=23 mode=CHASE cluster=0 cluster_len=4 cell=10,3 score=400002.353523 chase_score=10270.353523 prob=2.353523
+turn=23 picked cell=10,3 target_cluster=Some(0) active_clusters=1 remaining_cells=100 scans=4
+turn=23 result=HIT
+turn=24 mode=CHASE cluster=0 cluster_len=5 cell=15,3 score=500002.259994 chase_score=10196.259994 prob=2.259994
+turn=24 picked cell=15,3 target_cluster=Some(0) active_clusters=1 remaining_cells=99 scans=4
+turn=24 result=HIT
+turn=25 mode=CHASE cluster=0 cluster_len=6 cell=9,3 score=600002.134420 chase_score=10127.134420 prob=2.134420
+turn=25 picked cell=9,3 target_cluster=Some(0) active_clusters=1 remaining_cells=98 scans=4
+turn=25 result=KILL
+turn=25 kill_infer inferred_len=7 committed_hits=6 cluster_hits=6
+turn=26 mode=HUNT rank=1 cell=16,7 score=3.347671 prob=2.750633 density=1.213323 center=0.010000
+turn=26 mode=HUNT rank=2 cell=16,5 score=3.268369 prob=2.685397 density=1.213323 center=0.008000
+turn=26 mode=HUNT rank=3 cell=16,8 score=3.255488 prob=2.672254 density=1.213323 center=0.011000
+turn=26 mode=HUNT rank=4 cell=17,7 score=3.220769 prob=2.643906 density=1.213323 center=0.009000
+turn=26 mode=HUNT rank=5 cell=17,8 score=3.153600 prob=2.587382 density=1.213323 center=0.010000
+turn=26 picked cell=16,7 target_cluster=None active_clusters=0 remaining_cells=97 scans=4
+turn=26 result=MISS
+turn=27 mode=HUNT rank=1 cell=17,8 score=3.298074 prob=2.682558 density=1.225465 center=0.010000
+turn=27 mode=HUNT rank=2 cell=17,5 score=3.187812 prob=2.595268 density=1.225465 center=0.007000
+turn=27 mode=HUNT rank=3 cell=18,8 score=3.140924 prob=2.553428 density=1.225465 center=0.009000
+turn=27 mode=HUNT rank=4 cell=4,10 score=3.033588 prob=2.689927 density=1.121802 center=0.013000
+turn=27 mode=HUNT rank=5 cell=3,10 score=3.030746 prob=2.689927 density=1.121802 center=0.012000
+turn=27 picked cell=17,8 target_cluster=None active_clusters=0 remaining_cells=97 scans=4
+turn=27 result=HIT
+turn=28 mode=CHASE cluster=0 cluster_len=1 cell=17,9 score=100002.644731 chase_score=5129.644731 prob=2.644731
+turn=28 picked cell=17,9 target_cluster=Some(0) active_clusters=1 remaining_cells=96 scans=4
+turn=28 result=HIT
+turn=29 mode=CHASE cluster=0 cluster_len=2 cell=17,10 score=200002.644731 chase_score=10416.644731 prob=2.644731
+turn=29 picked cell=17,10 target_cluster=Some(0) active_clusters=1 remaining_cells=95 scans=4
+turn=29 result=MISS
+turn=30 mode=CHASE cluster=0 cluster_len=2 cell=17,7 score=200000.839425 chase_score=10088.839425 prob=0.839425
+turn=30 picked cell=17,7 target_cluster=Some(0) active_clusters=1 remaining_cells=95 scans=4
+turn=30 result=HIT
+turn=31 mode=CHASE cluster=0 cluster_len=3 cell=17,6 score=300001.150296 chase_score=10080.150296 prob=1.150296
+turn=31 picked cell=17,6 target_cluster=Some(0) active_clusters=1 remaining_cells=94 scans=4
+turn=31 result=HIT
+turn=32 mode=CHASE cluster=0 cluster_len=4 cell=17,5 score=400001.505684 chase_score=10068.505684 prob=1.505684
+turn=32 picked cell=17,5 target_cluster=Some(0) active_clusters=1 remaining_cells=93 scans=4
+turn=32 result=HIT
+turn=33 mode=CHASE cluster=0 cluster_len=5 cell=17,4 score=500001.150296 chase_score=10063.150296 prob=1.150296
+turn=33 picked cell=17,4 target_cluster=Some(0) active_clusters=1 remaining_cells=92 scans=4
+turn=33 result=HIT
+turn=34 mode=CHASE cluster=0 cluster_len=6 cell=17,3 score=600001.013224 chase_score=10057.013224 prob=1.013224
+turn=34 picked cell=17,3 target_cluster=Some(0) active_clusters=1 remaining_cells=91 scans=4
+turn=34 result=HIT
+turn=35 mode=CHASE cluster=0 cluster_len=7 cell=17,2 score=700001.446456 chase_score=10036.446456 prob=1.446456
+turn=35 picked cell=17,2 target_cluster=Some(0) active_clusters=1 remaining_cells=90 scans=4
+turn=35 result=HIT
+turn=36 mode=CHASE cluster=0 cluster_len=8 cell=17,1 score=800001.259093 chase_score=10028.259093 prob=1.259093
+turn=36 picked cell=17,1 target_cluster=Some(0) active_clusters=1 remaining_cells=89 scans=4
+turn=36 result=KILL
+turn=36 kill_infer inferred_len=9 committed_hits=8 cluster_hits=8
+turn=37 mode=HUNT rank=1 cell=4,10 score=3.167146 prob=2.625530 density=1.200056 center=0.013000
+turn=37 mode=HUNT rank=2 cell=3,10 score=3.166736 prob=2.625530 density=1.200056 center=0.012000
+turn=37 mode=HUNT rank=3 cell=3,11 score=3.151945 prob=2.613792 density=1.200056 center=0.011000
+turn=37 mode=HUNT rank=4 cell=4,11 score=3.149076 prob=2.613792 density=1.200056 center=0.012000
+turn=37 mode=HUNT rank=5 cell=5,10 score=3.098237 prob=2.566738 density=1.200056 center=0.014000
+turn=37 picked cell=4,10 target_cluster=None active_clusters=0 remaining_cells=88 scans=4
+turn=37 result=MISS
+turn=38 mode=HUNT rank=1 cell=3,11 score=3.307699 prob=2.719279 density=1.211364 center=0.011000
+turn=38 mode=HUNT rank=2 cell=5,11 score=3.236530 prob=2.658344 density=1.211364 center=0.013000
+turn=38 mode=HUNT rank=3 cell=2,11 score=3.230952 prob=2.658344 density=1.211364 center=0.010000
+turn=38 mode=HUNT rank=4 cell=3,12 score=3.223727 prob=2.651109 density=1.211364 center=0.010000
+turn=38 mode=HUNT rank=5 cell=3,9 score=3.194227 prob=2.623399 density=1.211364 center=0.013000
+turn=38 picked cell=3,11 target_cluster=None active_clusters=0 remaining_cells=88 scans=4
+turn=38 result=MISS
+turn=39 mode=HUNT rank=1 cell=5,12 score=3.353311 prob=2.731192 density=1.222957 center=0.012000
+turn=39 mode=HUNT rank=2 cell=2,12 score=3.351217 prob=2.731192 density=1.222957 center=0.009000
+turn=39 mode=HUNT rank=3 cell=5,9 score=3.315163 prob=2.696055 density=1.222957 center=0.015000
+turn=39 mode=HUNT rank=4 cell=2,9 score=3.312630 prob=2.696055 density=1.222957 center=0.012000
+turn=39 mode=HUNT rank=5 cell=6,12 score=3.207242 prob=2.610349 density=1.222957 center=0.013000
+turn=39 picked cell=5,12 target_cluster=None active_clusters=0 remaining_cells=88 scans=4
+turn=39 result=MISS
+turn=40 mode=HUNT rank=1 cell=2,9 score=3.490334 prob=2.813435 density=1.234848 center=0.012000
+turn=40 mode=HUNT rank=2 cell=7,18 score=3.362016 prob=2.715312 density=1.234848 center=0.008000
+turn=40 mode=HUNT rank=3 cell=6,9 score=3.336385 prob=2.687507 density=1.234848 center=0.016000
+turn=40 mode=HUNT rank=4 cell=1,9 score=3.332209 prob=2.687507 density=1.234848 center=0.011000
+turn=40 mode=HUNT rank=5 cell=2,13 score=3.303052 prob=2.665130 density=1.234848 center=0.008000
+turn=40 picked cell=2,9 target_cluster=None active_clusters=0 remaining_cells=88 scans=4
+turn=40 result=HIT
+turn=41 mode=CHASE cluster=0 cluster_len=1 cell=2,8 score=100002.919104 chase_score=5111.919104 prob=2.919104
+turn=41 picked cell=2,8 target_cluster=Some(0) active_clusters=1 remaining_cells=87 scans=4
+turn=41 result=HIT
+turn=42 mode=CHASE cluster=0 cluster_len=2 cell=2,7 score=200002.753814 chase_score=10353.753814 prob=2.753814
+turn=42 picked cell=2,7 target_cluster=Some(0) active_clusters=1 remaining_cells=86 scans=4
+turn=42 result=MISS
+turn=43 mode=CHASE cluster=0 cluster_len=2 cell=2,10 score=200001.082060 chase_score=10080.082060 prob=1.082060
+turn=43 picked cell=2,10 target_cluster=Some(0) active_clusters=1 remaining_cells=86 scans=4
+turn=43 result=HIT
+turn=44 mode=CHASE cluster=0 cluster_len=3 cell=2,11 score=300001.190278 chase_score=10071.190278 prob=1.190278
+turn=44 picked cell=2,11 target_cluster=Some(0) active_clusters=1 remaining_cells=85 scans=4
+turn=44 result=HIT
+turn=45 mode=CHASE cluster=0 cluster_len=4 cell=2,12 score=400001.469262 chase_score=10059.469262 prob=1.469262
+turn=45 picked cell=2,12 target_cluster=Some(0) active_clusters=1 remaining_cells=84 scans=4
+turn=45 result=HIT
+turn=46 mode=CHASE cluster=0 cluster_len=5 cell=2,13 score=500001.818345 chase_score=10054.818345 prob=1.818345
+turn=46 picked cell=2,13 target_cluster=Some(0) active_clusters=1 remaining_cells=83 scans=4
+turn=46 result=HIT
+turn=47 mode=CHASE cluster=0 cluster_len=6 cell=2,14 score=600001.797220 chase_score=10048.797220 prob=1.797220
+turn=47 picked cell=2,14 target_cluster=Some(0) active_clusters=1 remaining_cells=82 scans=4
+turn=47 result=HIT
+turn=48 mode=CHASE cluster=0 cluster_len=7 cell=2,15 score=700001.679447 chase_score=10027.679447 prob=1.679447
+turn=48 picked cell=2,15 target_cluster=Some(0) active_clusters=1 remaining_cells=81 scans=4
+turn=48 result=KILL
+turn=48 kill_infer inferred_len=8 committed_hits=7 cluster_hits=7
+turn=49 mode=HUNT rank=1 cell=14,11 score=3.042668 prob=2.881654 density=1.051276 center=0.012000
+turn=49 mode=HUNT rank=2 cell=14,12 score=3.040054 prob=2.878649 density=1.051276 center=0.011000
+turn=49 mode=HUNT rank=3 cell=15,11 score=2.998096 prob=2.840080 density=1.051276 center=0.011000
+turn=49 mode=HUNT rank=4 cell=15,12 score=2.994178 prob=2.837075 density=1.051276 center=0.010000
+turn=49 mode=HUNT rank=5 cell=13,11 score=2.941118 prob=2.784185 density=1.051276 center=0.013000
+turn=49 picked cell=14,11 target_cluster=None active_clusters=0 remaining_cells=80 scans=4
+turn=49 result=MISS
+turn=50 mode=HUNT rank=1 cell=15,12 score=3.180829 prob=2.993896 density=1.058763 center=0.010000
+turn=50 mode=HUNT rank=2 cell=13,12 score=3.119124 prob=2.934436 density=1.058763 center=0.012000
+turn=50 mode=HUNT rank=3 cell=13,13 score=3.020112 prob=2.839067 density=1.058763 center=0.011000
+turn=50 mode=HUNT rank=4 cell=15,13 score=2.970855 prob=2.795343 density=1.058763 center=0.009000
+turn=50 mode=HUNT rank=5 cell=13,14 score=2.781676 prob=2.616733 density=1.058763 center=0.010000
+turn=50 picked cell=15,12 target_cluster=None active_clusters=0 remaining_cells=80 scans=4
+turn=50 result=HIT
+turn=51 mode=CHASE cluster=0 cluster_len=1 cell=15,11 score=100001.888015 chase_score=5092.388015 prob=1.888015
+turn=51 picked cell=15,11 target_cluster=Some(0) active_clusters=1 remaining_cells=79 scans=4
+turn=51 result=HIT
+turn=52 mode=CHASE cluster=0 cluster_len=2 cell=15,10 score=200002.231780 chase_score=10305.231780 prob=2.231780
+turn=52 picked cell=15,10 target_cluster=Some(0) active_clusters=1 remaining_cells=78 scans=4
+turn=52 result=HIT
+turn=53 mode=CHASE cluster=0 cluster_len=3 cell=15,13 score=300002.604541 chase_score=10234.604541 prob=2.604541
+turn=53 picked cell=15,13 target_cluster=Some(0) active_clusters=1 remaining_cells=77 scans=4
+turn=53 result=MISS
+turn=54 mode=CHASE cluster=0 cluster_len=3 cell=15,9 score=300001.299872 chase_score=10063.299872 prob=1.299872
+turn=54 picked cell=15,9 target_cluster=Some(0) active_clusters=1 remaining_cells=77 scans=4
+turn=54 result=HIT
+turn=55 mode=CHASE cluster=0 cluster_len=4 cell=15,8 score=400001.069207 chase_score=10051.069207 prob=1.069207
+turn=55 picked cell=15,8 target_cluster=Some(0) active_clusters=1 remaining_cells=76 scans=4
+turn=55 result=HIT
+turn=56 mode=CHASE cluster=0 cluster_len=5 cell=15,7 score=500000.961014 chase_score=10045.961014 prob=0.961014
+turn=56 picked cell=15,7 target_cluster=Some(0) active_clusters=1 remaining_cells=75 scans=4
+turn=56 result=HIT
+turn=57 mode=CHASE cluster=0 cluster_len=6 cell=15,6 score=600000.906520 chase_score=10039.906520 prob=0.906520
+turn=57 picked cell=15,6 target_cluster=Some(0) active_clusters=1 remaining_cells=74 scans=4
+turn=57 result=HIT
+turn=58 mode=CHASE cluster=0 cluster_len=7 cell=15,5 score=700000.919516 chase_score=10018.919516 prob=0.919516
+turn=58 picked cell=15,5 target_cluster=Some(0) active_clusters=1 remaining_cells=73 scans=4
+turn=58 result=KILL
+turn=58 kill_infer inferred_len=7 committed_hits=6 cluster_hits=7
+turn=59 mode=CHASE cluster=0 cluster_len=1 cell=14,12 score=100001.188691 chase_score=5050.188691 prob=1.188691
+turn=59 picked cell=14,12 target_cluster=Some(0) active_clusters=1 remaining_cells=72 scans=4
+turn=59 result=MISS
+turn=60 mode=CHASE cluster=0 cluster_len=1 cell=16,12 score=100001.316678 chase_score=5008.066678 prob=1.316678
+turn=60 picked cell=16,12 target_cluster=Some(0) active_clusters=1 remaining_cells=72 scans=4
+turn=60 result=MISS
+turn=61 mode=HUNT rank=1 cell=7,18 score=2.813321 prob=2.473394 density=1.133607 center=0.008000
+turn=61 mode=HUNT rank=2 cell=6,18 score=2.696297 prob=2.372006 density=1.133607 center=0.007000
+turn=61 mode=HUNT rank=3 cell=13,14 score=2.651780 prob=2.550823 density=1.035494 center=0.010000
+turn=61 mode=HUNT rank=4 cell=6,9 score=2.615883 prob=2.292248 density=1.133607 center=0.016000
+turn=61 mode=HUNT rank=5 cell=9,18 score=2.603964 prob=2.504603 density=1.035494 center=0.010000
+turn=61 picked cell=7,18 target_cluster=None active_clusters=1 remaining_cells=72 scans=4
+turn=61 result=HIT
+turn=62 mode=CHASE cluster=1 cluster_len=1 cell=8,18 score=100001.975987 chase_score=5086.475987 prob=1.975987
+turn=62 picked cell=8,18 target_cluster=Some(1) active_clusters=2 remaining_cells=71 scans=4
+turn=62 result=HIT
+turn=63 mode=CHASE cluster=1 cluster_len=2 cell=9,18 score=200002.286240 chase_score=10270.286240 prob=2.286240
+turn=63 picked cell=9,18 target_cluster=Some(1) active_clusters=2 remaining_cells=70 scans=4
+turn=63 result=HIT
+turn=64 mode=CHASE cluster=1 cluster_len=3 cell=10,18 score=300002.286240 chase_score=10206.286240 prob=2.286240
+turn=64 picked cell=10,18 target_cluster=Some(1) active_clusters=2 remaining_cells=69 scans=4
+turn=64 result=HIT
+turn=65 mode=CHASE cluster=1 cluster_len=4 cell=11,18 score=400002.182300 chase_score=10151.182300 prob=2.182300
+turn=65 picked cell=11,18 target_cluster=Some(1) active_clusters=2 remaining_cells=68 scans=4
+turn=65 result=HIT
+turn=66 mode=CHASE cluster=1 cluster_len=5 cell=6,18 score=500002.078360 chase_score=10108.078360 prob=2.078360
+turn=66 picked cell=6,18 target_cluster=Some(1) active_clusters=2 remaining_cells=67 scans=4
+turn=66 result=HIT
+turn=67 mode=CHASE cluster=1 cluster_len=6 cell=12,18 score=600002.078360 chase_score=10070.078360 prob=2.078360
+turn=67 picked cell=12,18 target_cluster=Some(1) active_clusters=2 remaining_cells=66 scans=4
+turn=67 result=MISS
+turn=68 mode=CHASE cluster=1 cluster_len=6 cell=5,18 score=600001.593001 chase_score=10033.593001 prob=1.593001
+turn=68 picked cell=5,18 target_cluster=Some(1) active_clusters=2 remaining_cells=66 scans=4
+turn=68 result=HIT
+turn=69 mode=CHASE cluster=1 cluster_len=7 cell=4,18 score=700001.566414 chase_score=10019.566414 prob=1.566414
+turn=69 picked cell=4,18 target_cluster=Some(1) active_clusters=2 remaining_cells=65 scans=4
+turn=69 result=HIT
+turn=70 mode=CHASE cluster=1 cluster_len=8 cell=3,18 score=800001.451349 chase_score=10019.451349 prob=1.451349
+turn=70 picked cell=3,18 target_cluster=Some(1) active_clusters=2 remaining_cells=64 scans=4
+turn=70 result=KILL
+turn=70 kill_infer inferred_len=9 committed_hits=8 cluster_hits=8
+turn=71 mode=HUNT rank=1 cell=6,6 score=2.489788 prob=2.608640 density=0.948362 center=0.013000
+turn=71 mode=HUNT rank=2 cell=7,6 score=2.408031 prob=2.522310 density=0.948362 center=0.014000
+turn=71 mode=HUNT rank=3 cell=6,4 score=2.359400 prob=2.472969 density=0.948362 center=0.011000
+turn=71 mode=HUNT rank=4 cell=13,14 score=2.337440 prob=2.248975 density=1.034515 center=0.010000
+turn=71 mode=HUNT rank=5 cell=7,4 score=2.303038 prob=2.414765 density=0.948362 center=0.012000
+turn=71 picked cell=6,6 target_cluster=None active_clusters=1 remaining_cells=63 scans=4
+turn=71 result=MISS
+turn=72 mode=HUNT rank=1 cell=7,4 score=2.463541 prob=2.557102 density=0.957265 center=0.012000
+turn=72 mode=HUNT rank=2 cell=13,14 score=2.437590 prob=2.351734 density=1.031008 center=0.010000
+turn=72 mode=HUNT rank=3 cell=5,4 score=2.388370 prob=2.482587 density=0.957265 center=0.010000
+turn=72 mode=HUNT rank=4 cell=7,2 score=2.334867 prob=2.425870 density=0.957265 center=0.010000
+turn=72 mode=HUNT rank=5 cell=8,2 score=2.304995 prob=2.394790 density=0.957265 center=0.011000
+turn=72 picked cell=7,4 target_cluster=None active_clusters=1 remaining_cells=63 scans=4
+turn=72 result=MISS
+turn=73 mode=HUNT rank=1 cell=13,14 score=2.572246 prob=2.491214 density=1.027501 center=0.010000
+turn=73 mode=HUNT rank=2 cell=8,2 score=2.490540 prob=2.564911 density=0.966399 center=0.011000
+turn=73 mode=HUNT rank=3 cell=13,15 score=2.358489 prob=2.286397 density=1.027501 center=0.009000
+turn=73 mode=HUNT rank=4 cell=5,2 score=2.298788 prob=2.366530 density=0.966399 center=0.008000
+turn=73 mode=HUNT rank=5 cell=8,1 score=2.287672 prob=2.355171 density=0.966399 center=0.010000
+turn=73 picked cell=13,14 target_cluster=None active_clusters=1 remaining_cells=63 scans=4
+turn=73 result=HIT
+turn=74 mode=CHASE cluster=1 cluster_len=1 cell=13,13 score=100001.820395 chase_score=5058.070395 prob=1.820395
+turn=74 picked cell=13,13 target_cluster=Some(1) active_clusters=2 remaining_cells=62 scans=4
+turn=74 result=HIT
+turn=75 mode=CHASE cluster=1 cluster_len=2 cell=13,12 score=200001.739408 chase_score=10188.739408 prob=1.739408
+turn=75 picked cell=13,12 target_cluster=Some(1) active_clusters=2 remaining_cells=61 scans=4
+turn=75 result=HIT
+turn=76 mode=CHASE cluster=1 cluster_len=3 cell=13,11 score=300001.739408 chase_score=10142.739408 prob=1.739408
+turn=76 picked cell=13,11 target_cluster=Some(1) active_clusters=2 remaining_cells=60 scans=4
+turn=76 result=MISS
+turn=77 mode=CHASE cluster=1 cluster_len=3 cell=13,15 score=300001.695723 chase_score=10038.695723 prob=1.695723
+turn=77 picked cell=13,15 target_cluster=Some(1) active_clusters=2 remaining_cells=60 scans=4
+turn=77 result=KILL
+turn=77 kill_infer inferred_len=4 committed_hits=3 cluster_hits=3
+turn=78 mode=HUNT rank=1 cell=8,2 score=2.897963 prob=2.844345 density=1.014308 center=0.011000
+turn=78 mode=HUNT rank=2 cell=8,1 score=2.669374 prob=2.619362 density=1.014308 center=0.010000
+turn=78 mode=HUNT rank=3 cell=5,2 score=2.663727 prob=2.616807 density=1.014308 center=0.008000
+turn=78 mode=HUNT rank=4 cell=10,0 score=2.470871 prob=2.184043 density=1.126467 center=0.009000
+turn=78 mode=HUNT rank=5 cell=9,0 score=2.440484 prob=2.155332 density=1.126467 center=0.010000
+turn=78 picked cell=8,2 target_cluster=None active_clusters=1 remaining_cells=59 scans=4
+turn=78 result=MISS
+turn=79 mode=HUNT rank=1 cell=10,0 score=2.538635 prob=2.253397 density=1.122555 center=0.009000
+turn=79 mode=HUNT rank=2 cell=5,5 score=2.531694 prob=2.460437 density=1.024086 center=0.011000
+turn=79 mode=HUNT rank=3 cell=9,0 score=2.513034 prob=2.227560 density=1.122555 center=0.010000
+turn=79 mode=HUNT rank=4 cell=5,1 score=2.470313 prob=2.401494 density=1.024086 center=0.007000
+turn=79 mode=HUNT rank=5 cell=11,0 score=2.462432 prob=2.185178 density=1.122555 center=0.008000
+turn=79 picked cell=10,0 target_cluster=None active_clusters=1 remaining_cells=59 scans=4
+turn=79 result=MISS
+turn=80 mode=HUNT rank=1 cell=5,5 score=2.683432 prob=2.618053 density=1.020517 center=0.011000
+turn=80 mode=HUNT rank=2 cell=9,1 score=2.677657 prob=2.344642 density=1.136123 center=0.011000
+turn=80 mode=HUNT rank=3 cell=5,1 score=2.634305 prob=2.573697 density=1.020517 center=0.007000
+turn=80 mode=HUNT rank=4 cell=18,8 score=2.538114 prob=2.223662 density=1.136123 center=0.009000
+turn=80 mode=HUNT rank=5 cell=10,1 score=2.517394 prob=2.204467 density=1.136123 center=0.010000
+turn=80 picked cell=5,5 target_cluster=None active_clusters=1 remaining_cells=59 scans=4
+turn=80 result=MISS
+turn=81 mode=HUNT rank=1 cell=9,1 score=2.941060 prob=2.585974 density=1.132150 center=0.011000
+turn=81 mode=HUNT rank=2 cell=18,8 score=2.772359 prob=2.438275 density=1.132150 center=0.009000
+turn=81 mode=HUNT rank=3 cell=10,1 score=2.762441 prob=2.428306 density=1.132150 center=0.010000
+turn=81 mode=HUNT rank=4 cell=18,7 score=2.732927 prob=2.405506 density=1.132150 center=0.008000
+turn=81 mode=HUNT rank=5 cell=6,1 score=2.716560 prob=2.626801 density=1.030508 center=0.008000
+turn=81 picked cell=9,1 target_cluster=None active_clusters=1 remaining_cells=59 scans=4
+turn=81 result=MISS
+turn=82 mode=HUNT rank=1 cell=18,8 score=3.021695 prob=2.627384 density=1.146086 center=0.009000
+turn=82 mode=HUNT rank=2 cell=18,7 score=2.980705 prob=2.592052 density=1.146086 center=0.008000
+turn=82 mode=HUNT rank=3 cell=18,6 score=2.918006 prob=2.536516 density=1.146086 center=0.007000
+turn=82 mode=HUNT rank=4 cell=1,6 score=2.792027 prob=2.708364 density=1.026893 center=0.008000
+turn=82 mode=HUNT rank=5 cell=3,3 score=2.703991 prob=2.624167 density=1.026893 center=0.007000
+turn=82 picked cell=18,8 target_cluster=None active_clusters=1 remaining_cells=59 scans=4
+turn=82 result=MISS
+turn=83 mode=HUNT rank=1 cell=1,6 score=3.015666 prob=2.936837 density=1.023277 center=0.008000
+turn=83 mode=HUNT rank=2 cell=3,3 score=2.894564 prob=2.821366 density=1.023277 center=0.007000
+turn=83 mode=HUNT rank=3 cell=1,8 score=2.882786 prob=2.804692 density=1.023277 center=0.010000
+turn=83 mode=HUNT rank=4 cell=0,8 score=2.882383 prob=2.804692 density=1.023277 center=0.009000
+turn=83 mode=HUNT rank=5 cell=0,6 score=2.846152 prob=2.774279 density=1.023277 center=0.007000
+turn=83 picked cell=1,6 target_cluster=None active_clusters=1 remaining_cells=59 scans=4
+turn=83 result=HIT
+turn=84 mode=CHASE cluster=1 cluster_len=1 cell=1,7 score=100002.660047 chase_score=5063.910047 prob=2.660047
+turn=84 picked cell=1,7 target_cluster=Some(1) active_clusters=2 remaining_cells=58 scans=4
+turn=84 result=HIT
+turn=85 mode=CHASE cluster=1 cluster_len=2 cell=1,8 score=200002.777942 chase_score=10199.777942 prob=2.777942
+turn=85 picked cell=1,8 target_cluster=Some(1) active_clusters=2 remaining_cells=57 scans=4
+turn=85 result=HIT
+turn=86 mode=CHASE cluster=1 cluster_len=3 cell=1,9 score=300002.777942 chase_score=10148.777942 prob=2.777942
+turn=86 picked cell=1,9 target_cluster=Some(1) active_clusters=2 remaining_cells=56 scans=4
+turn=86 result=HIT
+turn=87 mode=CHASE cluster=1 cluster_len=4 cell=1,10 score=400002.777942 chase_score=10106.777942 prob=2.777942
+turn=87 picked cell=1,10 target_cluster=Some(1) active_clusters=2 remaining_cells=55 scans=4
+turn=87 result=HIT
+turn=88 mode=CHASE cluster=1 cluster_len=5 cell=1,11 score=500002.660047 chase_score=10072.660047 prob=2.660047
+turn=88 picked cell=1,11 target_cluster=Some(1) active_clusters=2 remaining_cells=54 scans=4
+turn=88 result=HIT
+turn=89 mode=CHASE cluster=1 cluster_len=6 cell=1,5 score=600002.558639 chase_score=10043.558639 prob=2.558639
+turn=89 picked cell=1,5 target_cluster=Some(1) active_clusters=2 remaining_cells=53 scans=4
+turn=89 result=HIT
+turn=90 mode=CHASE cluster=1 cluster_len=7 cell=1,12 score=700002.542151 chase_score=10020.542151 prob=2.542151
+turn=90 picked cell=1,12 target_cluster=Some(1) active_clusters=2 remaining_cells=52 scans=4
+turn=90 result=HIT
+turn=91 mode=CHASE cluster=1 cluster_len=8 cell=1,4 score=800002.516652 chase_score=10011.516652 prob=2.516652
+turn=91 picked cell=1,4 target_cluster=Some(1) active_clusters=2 remaining_cells=51 scans=4
+turn=91 result=KILL
+turn=91 kill_infer inferred_len=9 committed_hits=8 cluster_hits=8
+turn=92 mode=HUNT rank=1 cell=9,8 score=2.213212 prob=1.652914 density=1.325806 center=0.018000
+turn=92 mode=HUNT rank=2 cell=16,0 score=1.932307 prob=1.453972 density=1.325806 center=0.003000
+turn=92 mode=HUNT rank=3 cell=12,16 score=1.825020 prob=1.785585 density=1.014815 center=0.009000
+turn=92 mode=HUNT rank=4 cell=9,11 score=1.736549 prob=1.692371 density=1.014815 center=0.017000
+turn=92 mode=HUNT rank=5 cell=9,12 score=1.721289 prob=1.679872 density=1.014815 center=0.016000
+turn=92 picked cell=9,8 target_cluster=None active_clusters=1 remaining_cells=50 scans=4
+turn=92 result=MISS
+turn=93 mode=HUNT rank=1 cell=16,0 score=2.070595 prob=1.537735 density=1.342623 center=0.003000
+turn=93 mode=HUNT rank=2 cell=12,16 score=1.892035 prob=1.860623 density=1.011111 center=0.009000
+turn=93 mode=HUNT rank=3 cell=13,2 score=1.765178 prob=1.305713 density=1.342623 center=0.008000
+turn=93 mode=HUNT rank=4 cell=12,2 score=1.764245 prob=1.305713 density=1.342623 center=0.009000
+turn=93 mode=HUNT rank=5 cell=16,2 score=1.761952 prob=1.305713 density=1.342623 center=0.005000
+turn=93 picked cell=16,0 target_cluster=None active_clusters=1 remaining_cells=50 scans=4
+turn=93 result=MISS
+turn=94 mode=HUNT rank=1 cell=12,16 score=1.954373 prob=1.930596 density=1.007407 center=0.009000
+turn=94 mode=HUNT rank=2 cell=12,2 score=1.881240 prob=1.374560 density=1.360000 center=0.009000
+turn=94 mode=HUNT rank=3 cell=13,2 score=1.879600 prob=1.374560 density=1.360000 center=0.008000
+turn=94 mode=HUNT rank=4 cell=14,16 score=1.806551 prob=1.782859 density=1.007407 center=0.007000
+turn=94 mode=HUNT rank=5 cell=12,10 score=1.782553 prob=1.751249 density=1.007407 center=0.015000
+turn=94 picked cell=12,16 target_cluster=None active_clusters=1 remaining_cells=50 scans=4
+turn=94 result=HIT
+turn=95 mode=CHASE cluster=1 cluster_len=1 cell=13,16 score=100001.322930 chase_score=5038.322930 prob=1.322930
+turn=95 picked cell=13,16 target_cluster=Some(1) active_clusters=2 remaining_cells=49 scans=4
+turn=95 result=HIT
+turn=96 mode=CHASE cluster=1 cluster_len=2 cell=14,16 score=200001.669213 chase_score=10121.669213 prob=1.669213
+turn=96 picked cell=14,16 target_cluster=Some(1) active_clusters=2 remaining_cells=48 scans=4
+turn=96 result=HIT
+turn=97 mode=CHASE cluster=1 cluster_len=3 cell=15,16 score=300001.478894 chase_score=10093.478894 prob=1.478894
+turn=97 picked cell=15,16 target_cluster=Some(1) active_clusters=2 remaining_cells=47 scans=4
+turn=97 result=MISS
+turn=98 mode=CHASE cluster=1 cluster_len=3 cell=11,16 score=300001.104608 chase_score=10020.104608 prob=1.104608
+turn=98 picked cell=11,16 target_cluster=Some(1) active_clusters=2 remaining_cells=47 scans=4
+turn=98 result=HIT
+turn=99 mode=CHASE cluster=1 cluster_len=4 cell=10,16 score=400001.015652 chase_score=10012.015652 prob=1.015652
+turn=99 picked cell=10,16 target_cluster=Some(1) active_clusters=2 remaining_cells=46 scans=4
+turn=99 result=HIT
+turn=100 mode=CHASE cluster=1 cluster_len=5 cell=9,16 score=500000.867550 chase_score=10006.867550 prob=0.867550
+turn=100 picked cell=9,16 target_cluster=Some(1) active_clusters=2 remaining_cells=45 scans=4
+turn=100 result=KILL
+turn=100 kill_infer inferred_len=6 committed_hits=5 cluster_hits=5
+turn=101 mode=HUNT rank=1 cell=12,2 score=2.200689 prob=1.453110 density=1.505682 center=0.009000
+turn=101 mode=HUNT rank=2 cell=13,2 score=2.196238 prob=1.453110 density=1.505682 center=0.008000
+turn=101 mode=HUNT rank=3 cell=18,4 score=2.012854 prob=1.331853 density=1.505682 center=0.005000
+turn=101 mode=HUNT rank=4 cell=18,3 score=2.012196 prob=1.331853 density=1.505682 center=0.004000
+turn=101 mode=HUNT rank=5 cell=4,3 score=2.008986 prob=2.113890 density=0.946429 center=0.008000
+turn=101 picked cell=12,2 target_cluster=None active_clusters=1 remaining_cells=44 scans=4
+turn=101 result=MISS
+turn=102 mode=HUNT rank=1 cell=18,4 score=2.146593 prob=1.402337 density=1.525424 center=0.005000
+turn=102 mode=HUNT rank=2 cell=18,3 score=2.143674 prob=1.402337 density=1.525424 center=0.004000
+turn=102 mode=HUNT rank=3 cell=4,3 score=2.074466 prob=2.191213 density=0.942857 center=0.008000
+turn=102 mode=HUNT rank=4 cell=3,3 score=2.041971 prob=2.156478 density=0.942857 center=0.007000
+turn=102 mode=HUNT rank=5 cell=13,1 score=1.958872 prob=1.277658 density=1.525424 center=0.007000
+turn=102 picked cell=18,4 target_cluster=None active_clusters=1 remaining_cells=44 scans=4
+turn=102 result=HIT
+turn=103 mode=CHASE cluster=1 cluster_len=1 cell=18,3 score=100000.851818 chase_score=5024.851818 prob=0.851818
+turn=103 picked cell=18,3 target_cluster=Some(1) active_clusters=2 remaining_cells=43 scans=4
+turn=103 result=HIT
+turn=104 mode=CHASE cluster=1 cluster_len=2 cell=18,2 score=200000.769996 chase_score=10068.769996 prob=0.769996
+turn=104 picked cell=18,2 target_cluster=Some(1) active_clusters=2 remaining_cells=42 scans=4
+turn=104 result=HIT
+turn=105 mode=CHASE cluster=1 cluster_len=3 cell=18,5 score=300000.769996 chase_score=10046.769996 prob=0.769996
+turn=105 picked cell=18,5 target_cluster=Some(1) active_clusters=2 remaining_cells=41 scans=4
+turn=105 result=HIT
+turn=106 mode=CHASE cluster=1 cluster_len=4 cell=18,1 score=400000.639945 chase_score=10033.639945 prob=0.639945
+turn=106 picked cell=18,1 target_cluster=Some(1) active_clusters=2 remaining_cells=40 scans=4
+turn=106 result=HIT
+turn=107 mode=CHASE cluster=1 cluster_len=5 cell=18,6 score=500000.639945 chase_score=10028.639945 prob=0.639945
+turn=107 picked cell=18,6 target_cluster=Some(1) active_clusters=2 remaining_cells=39 scans=4
+turn=107 result=HIT
+turn=108 mode=CHASE cluster=1 cluster_len=6 cell=18,0 score=600000.363608 chase_score=10014.363608 prob=0.363608
+turn=108 picked cell=18,0 target_cluster=Some(1) active_clusters=2 remaining_cells=38 scans=4
+turn=108 result=MISS
+turn=109 mode=CHASE cluster=1 cluster_len=6 cell=18,7 score=600000.337298 chase_score=10014.337298 prob=0.337298
+turn=109 picked cell=18,7 target_cluster=Some(1) active_clusters=2 remaining_cells=38 scans=4
+turn=109 result=KILL
+turn=109 kill_infer inferred_len=7 committed_hits=6 cluster_hits=6
+turn=110 mode=HUNT rank=1 cell=4,3 score=1.801163 prob=1.648819 density=1.087259 center=0.008000
+turn=110 mode=HUNT rank=2 cell=3,3 score=1.764853 prob=1.614290 density=1.087259 center=0.007000
+turn=110 mode=HUNT rank=3 cell=4,2 score=1.508493 prob=1.380579 density=1.087259 center=0.007000
+turn=110 mode=HUNT rank=4 cell=3,2 score=1.507992 prob=1.380579 density=1.087259 center=0.006000
+turn=110 mode=HUNT rank=5 cell=4,1 score=1.406435 prob=1.285899 density=1.087259 center=0.006000
+turn=110 picked cell=4,3 target_cluster=None active_clusters=1 remaining_cells=37 scans=4
+turn=110 result=MISS
+turn=111 mode=HUNT rank=1 cell=3,2 score=1.588637 prob=1.437977 density=1.098707 center=0.006000
+turn=111 mode=HUNT rank=2 cell=3,1 score=1.440918 prob=1.305482 density=1.098707 center=0.005000
+turn=111 mode=HUNT rank=3 cell=3,4 score=1.440219 prob=1.302753 density=1.098707 center=0.008000
+turn=111 mode=HUNT rank=4 cell=7,7 score=1.391837 prob=1.251660 density=1.098707 center=0.015000
+turn=111 mode=HUNT rank=5 cell=3,6 score=1.347160 prob=1.215665 density=1.098707 center=0.010000
+turn=111 picked cell=3,2 target_cluster=None active_clusters=1 remaining_cells=37 scans=4
+turn=111 result=HIT
+turn=112 mode=CHASE cluster=1 cluster_len=1 cell=3,3 score=100000.933143 chase_score=5021.933143 prob=0.933143
+turn=112 picked cell=3,3 target_cluster=Some(1) active_clusters=2 remaining_cells=36 scans=4
+turn=112 result=KILL
+turn=112 kill_infer inferred_len=2 committed_hits=1 cluster_hits=1
+turn=113 mode=HUNT rank=1 cell=7,11 score=1.531994 prob=1.419586 density=1.066511 center=0.015000
+turn=113 mode=HUNT rank=2 cell=6,13 score=1.526664 prob=1.416767 density=1.066511 center=0.012000
+turn=113 mode=HUNT rank=3 cell=6,11 score=1.423411 prob=1.318802 density=1.066511 center=0.014000
+turn=113 mode=HUNT rank=4 cell=0,12 score=1.390663 prob=1.296515 density=1.066511 center=0.007000
+turn=113 mode=HUNT rank=5 cell=6,14 score=1.387081 prob=1.286442 density=1.066511 center=0.011000
+turn=113 picked cell=7,11 target_cluster=None active_clusters=1 remaining_cells=35 scans=4
+turn=113 result=MISS
+turn=114 mode=HUNT rank=1 cell=6,13 score=1.653305 prob=1.518518 density=1.080000 center=0.012000
+turn=114 mode=HUNT rank=2 cell=0,12 score=1.526631 prob=1.405894 density=1.080000 center=0.007000
+turn=114 mode=HUNT rank=3 cell=0,11 score=1.518897 prob=1.396153 density=1.080000 center=0.008000
+turn=114 mode=HUNT rank=4 cell=0,10 score=1.500541 prob=1.380449 density=1.080000 center=0.009000
+turn=114 mode=HUNT rank=5 cell=6,14 score=1.497284 prob=1.375382 density=1.080000 center=0.011000
+turn=114 picked cell=6,13 target_cluster=None active_clusters=1 remaining_cells=35 scans=4
+turn=114 result=MISS
+turn=115 mode=HUNT rank=1 cell=0,12 score=1.763479 prob=1.605071 density=1.093947 center=0.007000
+turn=115 mode=HUNT rank=2 cell=0,11 score=1.752919 prob=1.592296 density=1.093947 center=0.008000
+turn=115 mode=HUNT rank=3 cell=0,10 score=1.728948 prob=1.571738 density=1.093947 center=0.009000
+turn=115 mode=HUNT rank=4 cell=0,9 score=1.700038 prob=1.542002 density=1.093947 center=0.010000
+turn=115 mode=HUNT rank=5 cell=0,13 score=1.669239 prob=1.519400 density=1.093947 center=0.006000
+turn=115 picked cell=0,12 target_cluster=None active_clusters=1 remaining_cells=35 scans=4
+turn=115 result=MISS
+turn=116 mode=HUNT rank=1 cell=4,16 score=1.680192 prob=1.507373 density=1.108374 center=0.007000
+turn=116 mode=HUNT rank=2 cell=3,16 score=1.529958 prob=1.372323 density=1.108374 center=0.006000
+turn=116 mode=HUNT rank=3 cell=4,17 score=1.463038 prob=1.310887 density=1.108374 center=0.006000
+turn=116 mode=HUNT rank=4 cell=5,16 score=1.358602 prob=1.215634 density=1.108374 center=0.008000
+turn=116 mode=HUNT rank=5 cell=1,16 score=1.352826 prob=1.215634 density=1.108374 center=0.004000
+turn=116 picked cell=4,16 target_cluster=None active_clusters=1 remaining_cells=35 scans=4
+turn=116 result=MISS
+turn=117 mode=HUNT rank=1 cell=3,17 score=1.547494 prob=1.370634 density=1.123308 center=0.005000
+turn=117 mode=HUNT rank=2 cell=0,6 score=1.508422 prob=1.568527 density=0.955650 center=0.007000
+turn=117 mode=HUNT rank=3 cell=0,5 score=1.502042 prob=1.562863 density=0.955650 center=0.006000
+turn=117 mode=HUNT rank=4 cell=2,1 score=1.453845 prob=1.516469 density=0.955650 center=0.004000
+turn=117 mode=HUNT rank=5 cell=1,17 score=1.436870 prob=1.272854 density=1.123308 center=0.003000
+turn=117 picked cell=3,17 target_cluster=None active_clusters=1 remaining_cells=35 scans=4
+turn=117 result=MISS
+turn=118 mode=HUNT rank=1 cell=0,6 score=1.593022 prob=1.663533 density=0.951812 center=0.007000
+turn=118 mode=HUNT rank=2 cell=0,5 score=1.585841 prob=1.656900 density=0.951812 center=0.006000
+turn=118 mode=HUNT rank=3 cell=2,1 score=1.530183 prob=1.600758 density=0.951812 center=0.004000
+turn=118 mode=HUNT rank=4 cell=5,0 score=1.495805 prob=1.562852 density=0.951812 center=0.006000
+turn=118 mode=HUNT rank=5 cell=0,7 score=1.474680 prob=1.538979 density=0.951812 center=0.008000
+turn=118 picked cell=0,6 target_cluster=None active_clusters=1 remaining_cells=35 scans=4
+turn=118 result=MISS
+turn=119 mode=HUNT rank=1 cell=2,1 score=1.622475 prob=1.677860 density=0.962338 center=0.004000
+turn=119 mode=HUNT rank=2 cell=5,0 score=1.586915 prob=1.642362 density=0.962338 center=0.006000
+turn=119 mode=HUNT rank=3 cell=6,0 score=1.544626 prob=1.595423 density=0.962338 center=0.007000
+turn=119 mode=HUNT rank=4 cell=5,1 score=1.528719 prob=1.579535 density=0.962338 center=0.007000
+turn=119 mode=HUNT rank=5 cell=4,0 score=1.475913 prob=1.527225 density=0.962338 center=0.005000
+turn=119 picked cell=2,1 target_cluster=None active_clusters=1 remaining_cells=35 scans=4
+turn=119 result=MISS
+turn=120 mode=HUNT rank=1 cell=5,0 score=1.822393 prob=1.864115 density=0.973187 center=0.006000
+turn=120 mode=HUNT rank=2 cell=6,0 score=1.773996 prob=1.812005 density=0.973187 center=0.007000
+turn=120 mode=HUNT rank=3 cell=4,0 score=1.697193 prob=1.736971 density=0.973187 center=0.005000
+turn=120 mode=HUNT rank=4 cell=3,0 score=1.574789 prob=1.611936 density=0.973187 center=0.004000
+turn=120 mode=HUNT rank=5 cell=12,10 score=1.542689 prob=1.784885 density=0.854826 center=0.015000
+turn=120 picked cell=5,0 target_cluster=None active_clusters=1 remaining_cells=35 scans=4
+turn=120 result=MISS
+turn=121 mode=HUNT rank=1 cell=12,10 score=1.621213 prob=1.882653 density=0.851351 center=0.015000
+turn=121 mode=HUNT rank=2 cell=7,7 score=1.559344 prob=1.564991 density=0.984375 center=0.015000
+turn=121 mode=HUNT rank=3 cell=12,9 score=1.536084 prob=1.785289 density=0.851351 center=0.016000
+turn=121 mode=HUNT rank=4 cell=18,14 score=1.499261 prob=1.753274 density=0.851351 center=0.005000
+turn=121 mode=HUNT rank=5 cell=3,7 score=1.479202 prob=1.490179 density=0.984375 center=0.011000
+turn=121 picked cell=12,10 target_cluster=None active_clusters=1 remaining_cells=35 scans=4
+turn=121 result=MISS
+turn=122 mode=HUNT rank=1 cell=7,7 score=1.737440 prob=1.753507 density=0.980357 center=0.015000
+turn=122 mode=HUNT rank=2 cell=18,14 score=1.735499 prob=2.010537 density=0.859491 center=0.005000
+turn=122 mode=HUNT rank=3 cell=18,15 score=1.689031 prob=1.955502 density=0.859491 center=0.004000
+turn=122 mode=HUNT rank=4 cell=3,7 score=1.659427 prob=1.678788 density=0.980357 center=0.011000
+turn=122 mode=HUNT rank=5 cell=18,13 score=1.627098 prob=1.884143 density=0.859491 center=0.006000
+turn=122 picked cell=7,7 target_cluster=None active_clusters=1 remaining_cells=35 scans=4
+turn=122 result=MISS
+turn=123 mode=HUNT rank=1 cell=18,14 score=1.876771 prob=2.181713 density=0.855969 center=0.005000
+turn=123 mode=HUNT rank=2 cell=18,15 score=1.821152 prob=2.121678 density=0.855969 center=0.004000
+turn=123 mode=HUNT rank=3 cell=18,13 score=1.755744 prob=2.043733 density=0.855969 center=0.006000
+turn=123 mode=HUNT rank=4 cell=17,17 score=1.730751 prob=2.015712 density=0.855969 center=0.003000
+turn=123 mode=HUNT rank=5 cell=5,9 score=1.729164 prob=1.534334 density=1.115816 center=0.015000
+turn=123 picked cell=18,14 target_cluster=None active_clusters=1 remaining_cells=35 scans=4
+turn=123 result=MISS
+turn=124 mode=HUNT rank=1 cell=17,17 score=2.102368 prob=2.427820 density=0.864286 center=0.003000
+turn=124 mode=HUNT rank=2 cell=14,17 score=2.058023 prob=2.370530 density=0.864286 center=0.006000
+turn=124 mode=HUNT rank=3 cell=13,17 score=2.056250 prob=2.370530 density=0.864286 center=0.007000
+turn=124 mode=HUNT rank=4 cell=16,17 score=2.048067 prob=2.360522 density=0.864286 center=0.004000
+turn=124 mode=HUNT rank=5 cell=15,17 score=1.996023 prob=2.302557 density=0.864286 center=0.005000
+turn=124 picked cell=17,17 target_cluster=None active_clusters=1 remaining_cells=35 scans=4
+turn=124 result=MISS
+turn=125 mode=HUNT rank=1 cell=14,7 score=1.881052 prob=1.726559 density=1.080112 center=0.012000
+turn=125 mode=HUNT rank=2 cell=13,1 score=1.877662 prob=1.729385 density=1.080112 center=0.007000
+turn=125 mode=HUNT rank=3 cell=10,11 score=1.807316 prob=2.047746 density=0.872837 center=0.016000
+turn=125 mode=HUNT rank=4 cell=10,12 score=1.801216 prob=2.043428 density=0.872837 center=0.015000
+turn=125 mode=HUNT rank=5 cell=14,1 score=1.768502 prob=1.631718 density=1.080112 center=0.006000
+turn=125 picked cell=14,7 target_cluster=None active_clusters=1 remaining_cells=35 scans=4
+turn=125 result=MISS
+turn=126 mode=HUNT rank=1 cell=13,1 score=2.128011 prob=1.932250 density=1.097143 center=0.007000
+turn=126 mode=HUNT rank=2 cell=14,1 score=2.008391 prob=1.824610 density=1.097143 center=0.006000
+turn=126 mode=HUNT rank=3 cell=10,11 score=1.980004 prob=2.256380 density=0.869215 center=0.016000
+turn=126 mode=HUNT rank=4 cell=10,12 score=1.974001 prob=2.251268 density=0.869215 center=0.015000
+turn=126 mode=HUNT rank=5 cell=12,1 score=1.849965 prob=1.675591 density=1.097143 center=0.008000
+turn=126 picked cell=13,1 target_cluster=None active_clusters=1 remaining_cells=35 scans=4
+turn=126 result=HIT
+turn=127 mode=CHASE cluster=1 cluster_len=1 cell=14,1 score=100001.682571 chase_score=5018.682571 prob=1.682571
+turn=127 picked cell=14,1 target_cluster=Some(1) active_clusters=2 remaining_cells=34 scans=4
+turn=127 result=HIT
+turn=128 mode=CHASE cluster=1 cluster_len=2 cell=12,1 score=200001.539208 chase_score=10048.539208 prob=1.539208
+turn=128 picked cell=12,1 target_cluster=Some(1) active_clusters=2 remaining_cells=33 scans=4
+turn=128 result=HIT
+turn=129 mode=CHASE cluster=1 cluster_len=3 cell=11,1 score=300001.398516 chase_score=10026.398516 prob=1.398516
+turn=129 picked cell=11,1 target_cluster=Some(1) active_clusters=2 remaining_cells=32 scans=4
+turn=129 result=HIT
+turn=130 mode=CHASE cluster=1 cluster_len=4 cell=15,1 score=400001.398516 chase_score=10013.398516 prob=1.398516
+turn=130 picked cell=15,1 target_cluster=Some(1) active_clusters=2 remaining_cells=31 scans=4
+turn=130 result=HIT
+turn=131 mode=CHASE cluster=1 cluster_len=5 cell=16,1 score=500001.213118 chase_score=10008.213118 prob=1.213118
+turn=131 picked cell=16,1 target_cluster=Some(1) active_clusters=2 remaining_cells=30 scans=4
+turn=131 result=HIT
+turn=132 mode=CHASE cluster=1 cluster_len=6 cell=10,1 score=600000.929063 chase_score=10007.929063 prob=0.929063
+turn=132 picked cell=10,1 target_cluster=Some(1) active_clusters=2 remaining_cells=29 scans=4
+turn=132 result=KILL
+turn=132 kill_infer inferred_len=7 committed_hits=6 cluster_hits=6
+turn=133 mode=HUNT rank=1 cell=5,9 score=1.441253 prob=1.065197 density=1.337372 center=0.015000
+turn=133 mode=HUNT rank=2 cell=6,9 score=1.368402 prob=1.009222 density=1.337372 center=0.016000
+turn=133 mode=HUNT rank=3 cell=5,8 score=1.352463 prob=1.125228 density=1.188776 center=0.014000
+turn=133 mode=HUNT rank=4 cell=5,15 score=1.288386 prob=0.953711 density=1.337372 center=0.009000
+turn=133 mode=HUNT rank=5 cell=6,8 score=1.211220 prob=1.003109 density=1.188776 center=0.015000
+turn=133 picked cell=5,9 target_cluster=None active_clusters=1 remaining_cells=28 scans=4
+turn=133 result=HIT
+turn=134 mode=CHASE cluster=1 cluster_len=1 cell=5,8 score=100000.993116 chase_score=5014.993116 prob=0.993116
+turn=134 picked cell=5,8 target_cluster=Some(1) active_clusters=2 remaining_cells=27 scans=4
+turn=134 result=KILL
+turn=134 kill_infer inferred_len=2 committed_hits=1 cluster_hits=1
+turn=135 mode=HUNT rank=1 cell=5,15 score=1.220353 prob=0.936368 density=1.292308 center=0.009000
+turn=135 mode=HUNT rank=2 cell=5,14 score=1.133910 prob=0.869015 density=1.292308 center=0.010000
+turn=135 mode=HUNT rank=3 cell=1,16 score=1.127767 prob=0.869015 density=1.292308 center=0.004000
+turn=135 mode=HUNT rank=4 cell=7,14 score=1.124917 prob=0.859076 density=1.292308 center=0.012000
+turn=135 mode=HUNT rank=5 cell=7,15 score=1.122351 prob=0.859076 density=1.292308 center=0.011000
+turn=135 picked cell=5,15 target_cluster=None active_clusters=1 remaining_cells=26 scans=4
+turn=135 result=HIT
+turn=136 mode=CHASE cluster=1 cluster_len=1 cell=5,14 score=100000.722595 chase_score=5010.972595 prob=0.722595
+turn=136 picked cell=5,14 target_cluster=Some(1) active_clusters=2 remaining_cells=25 scans=4
+turn=136 result=MISS
+turn=137 mode=CHASE cluster=1 cluster_len=1 cell=6,15 score=100000.560718 chase_score=5010.810718 prob=0.560718
+turn=137 picked cell=6,15 target_cluster=Some(1) active_clusters=2 remaining_cells=25 scans=4
+turn=137 result=HIT
+turn=138 mode=CHASE cluster=1 cluster_len=2 cell=4,15 score=200000.553291 chase_score=10030.553291 prob=0.553291
+turn=138 picked cell=4,15 target_cluster=Some(1) active_clusters=2 remaining_cells=24 scans=4
+turn=138 result=HIT
+turn=139 mode=CHASE cluster=1 cluster_len=3 cell=7,15 score=300000.737201 chase_score=10013.737201 prob=0.737201
+turn=139 picked cell=7,15 target_cluster=Some(1) active_clusters=2 remaining_cells=23 scans=4
+turn=139 result=MISS
+turn=140 mode=CHASE cluster=1 cluster_len=3 cell=3,15 score=300000.509546 chase_score=10008.509546 prob=0.509546
+turn=140 picked cell=3,15 target_cluster=Some(1) active_clusters=2 remaining_cells=23 scans=4
+turn=140 result=KILL
+turn=140 kill_infer inferred_len=4 committed_hits=3 cluster_hits=3
+turn=141 mode=HUNT rank=1 cell=6,1 score=1.311291 prob=0.986199 density=1.319648 center=0.008000
+turn=141 mode=HUNT rank=2 cell=16,15 score=1.257526 prob=0.965251 density=1.296415 center=0.006000
+turn=141 mode=HUNT rank=3 cell=10,12 score=1.248479 prob=0.951252 density=1.296415 center=0.015000
+turn=141 mode=HUNT rank=4 cell=10,11 score=1.237750 prob=0.939691 density=1.296415 center=0.016000
+turn=141 mode=HUNT rank=5 cell=11,12 score=1.173782 prob=0.892515 density=1.296415 center=0.014000
+turn=141 picked cell=6,1 target_cluster=None active_clusters=1 remaining_cells=22 scans=4
+turn=141 result=MISS
+turn=142 mode=HUNT rank=1 cell=16,15 score=1.293374 prob=0.996540 density=1.290653 center=0.006000
+turn=142 mode=HUNT rank=2 cell=10,12 score=1.290202 prob=0.984963 density=1.290653 center=0.015000
+turn=142 mode=HUNT rank=3 cell=10,11 score=1.272972 prob=0.973035 density=1.290653 center=0.016000
+turn=142 mode=HUNT rank=4 cell=11,12 score=1.206814 prob=0.922410 density=1.290653 center=0.014000
+turn=142 mode=HUNT rank=5 cell=3,6 score=1.190690 prob=0.882933 density=1.335320 center=0.010000
+turn=142 picked cell=16,15 target_cluster=None active_clusters=1 remaining_cells=22 scans=4
+turn=142 result=MISS
+turn=143 mode=HUNT rank=1 cell=10,12 score=1.421477 prob=1.076295 density=1.303247 center=0.015000
+turn=143 mode=HUNT rank=2 cell=10,11 score=1.403053 prob=1.063173 density=1.303247 center=0.016000
+turn=143 mode=HUNT rank=3 cell=11,12 score=1.328977 prob=1.008091 density=1.303247 center=0.014000
+turn=143 mode=HUNT rank=4 cell=3,6 score=1.276318 prob=0.951349 density=1.329359 center=0.010000
+turn=143 mode=HUNT rank=5 cell=10,13 score=1.270841 prob=0.961248 density=1.303247 center=0.014000
+turn=143 picked cell=10,12 target_cluster=None active_clusters=1 remaining_cells=22 scans=4
+turn=143 result=MISS
+turn=144 mode=HUNT rank=1 cell=11,11 score=1.338845 prob=1.002711 density=1.316206 center=0.015000
+turn=144 mode=HUNT rank=2 cell=11,13 score=1.335152 prob=1.002711 density=1.316206 center=0.013000
+turn=144 mode=HUNT rank=3 cell=3,6 score=1.306950 prob=0.977342 density=1.323398 center=0.010000
+turn=144 mode=HUNT rank=4 cell=13,17 score=1.216148 prob=0.916849 density=1.316206 center=0.007000
+turn=144 mode=HUNT rank=5 cell=9,11 score=1.211011 prob=0.904112 density=1.316206 center=0.017000
+turn=144 picked cell=11,11 target_cluster=None active_clusters=1 remaining_cells=22 scans=4
+turn=144 result=MISS
+turn=145 mode=HUNT rank=1 cell=3,6 score=1.389689 prob=1.046447 density=1.317437 center=0.010000
+turn=145 mode=HUNT rank=2 cell=13,17 score=1.338717 prob=0.998580 density=1.329545 center=0.007000
+turn=145 mode=HUNT rank=3 cell=9,13 score=1.322733 prob=0.983090 density=1.329545 center=0.015000
+turn=145 mode=HUNT rank=4 cell=12,17 score=1.315963 prob=0.981739 density=1.329545 center=0.008000
+turn=145 mode=HUNT rank=5 cell=3,7 score=1.289907 prob=0.969262 density=1.317437 center=0.011000
+turn=145 picked cell=3,6 target_cluster=None active_clusters=1 remaining_cells=22 scans=4
+turn=145 result=MISS
+turn=146 mode=HUNT rank=1 cell=13,17 score=1.444340 prob=1.085585 density=1.323529 center=0.007000
+turn=146 mode=HUNT rank=2 cell=9,13 score=1.428536 prob=1.067949 density=1.323529 center=0.015000
+turn=146 mode=HUNT rank=3 cell=12,17 score=1.421354 prob=1.067272 density=1.323529 center=0.008000
+turn=146 mode=HUNT rank=4 cell=4,7 score=1.407089 prob=1.044273 density=1.333333 center=0.012000
+turn=146 mode=HUNT rank=5 cell=8,6 score=1.377141 prob=1.019378 density=1.333333 center=0.015000
+turn=146 picked cell=13,17 target_cluster=None active_clusters=1 remaining_cells=22 scans=4
+turn=146 result=MISS
+turn=147 mode=HUNT rank=1 cell=9,13 score=1.535209 prob=1.134669 density=1.337178 center=0.015000
+turn=147 mode=HUNT rank=2 cell=4,7 score=1.452044 prob=1.082879 density=1.327273 center=0.012000
+turn=147 mode=HUNT rank=3 cell=8,6 score=1.429137 prob=1.063718 density=1.327273 center=0.015000
+turn=147 mode=HUNT rank=4 cell=9,12 score=1.374470 prob=1.015746 density=1.337178 center=0.016000
+turn=147 mode=HUNT rank=5 cell=17,14 score=1.352809 prob=1.006112 density=1.337178 center=0.006000
+turn=147 picked cell=9,13 target_cluster=None active_clusters=1 remaining_cells=22 scans=4
+turn=147 result=MISS
+turn=148 mode=HUNT rank=1 cell=4,7 score=1.470217 prob=1.101386 density=1.321212 center=0.012000
+turn=148 mode=HUNT rank=2 cell=8,6 score=1.453866 prob=1.089003 density=1.321212 center=0.015000
+turn=148 mode=HUNT rank=3 cell=17,14 score=1.416307 prob=1.042325 density=1.351240 center=0.006000
+turn=148 mode=HUNT rank=4 cell=13,9 score=1.361210 prob=0.995390 density=1.351240 center=0.015000
+turn=148 mode=HUNT rank=5 cell=17,13 score=1.360418 prob=0.998647 density=1.351240 center=0.007000
+turn=148 picked cell=4,7 target_cluster=None active_clusters=1 remaining_cells=22 scans=4
+turn=148 result=MISS
+turn=149 mode=HUNT rank=1 cell=8,6 score=1.637580 prob=1.212162 density=1.337442 center=0.015000
+turn=149 mode=HUNT rank=2 cell=17,14 score=1.543050 prob=1.142575 density=1.345041 center=0.006000
+turn=149 mode=HUNT rank=3 cell=13,9 score=1.484586 prob=1.091651 density=1.345041 center=0.015000
+turn=149 mode=HUNT rank=4 cell=17,13 score=1.481267 prob=1.094905 density=1.345041 center=0.007000
+turn=149 mode=HUNT rank=5 cell=16,18 score=1.450982 prob=1.074240 density=1.345041 center=0.003000
+turn=149 picked cell=8,6 target_cluster=None active_clusters=1 remaining_cells=22 scans=4
+turn=149 result=HIT
+turn=150 mode=CHASE cluster=1 cluster_len=1 cell=8,5 score=100000.844372 chase_score=5011.344372 prob=0.844372
+turn=150 picked cell=8,5 target_cluster=Some(1) active_clusters=2 remaining_cells=21 scans=4
+turn=150 result=HIT
+turn=151 mode=CHASE cluster=1 cluster_len=2 cell=8,4 score=200000.874595 chase_score=10027.874595 prob=0.874595
+turn=151 picked cell=8,4 target_cluster=Some(1) active_clusters=2 remaining_cells=20 scans=4
+turn=151 result=KILL
+turn=151 kill_infer inferred_len=3 committed_hits=2 cluster_hits=2
+turn=152 mode=HUNT rank=1 cell=17,14 score=1.989432 prob=1.289443 density=1.535885 center=0.006000
+turn=152 mode=HUNT rank=2 cell=13,9 score=1.930723 prob=1.244513 density=1.535885 center=0.015000
+turn=152 mode=HUNT rank=3 cell=17,13 score=1.897917 prob=1.228488 density=1.535885 center=0.007000
+turn=152 mode=HUNT rank=4 cell=16,18 score=1.852756 prob=1.201563 density=1.535885 center=0.003000
+turn=152 mode=HUNT rank=5 cell=10,9 score=1.786482 prob=1.150092 density=1.535885 center=0.018000
+turn=152 picked cell=17,14 target_cluster=None active_clusters=1 remaining_cells=19 scans=4
+turn=152 result=MISS
+turn=153 mode=HUNT rank=1 cell=13,9 score=2.241374 prob=1.433324 density=1.552227 center=0.015000
+turn=153 mode=HUNT rank=2 cell=16,18 score=2.152615 prob=1.384805 density=1.552227 center=0.003000
+turn=153 mode=HUNT rank=3 cell=10,9 score=2.076510 prob=1.325363 density=1.552227 center=0.018000
+turn=153 mode=HUNT rank=4 cell=12,9 score=2.035403 prob=1.299552 density=1.552227 center=0.016000
+turn=153 mode=HUNT rank=5 cell=11,9 score=1.997399 prob=1.275375 density=1.552227 center=0.017000
+turn=153 picked cell=13,9 target_cluster=None active_clusters=1 remaining_cells=19 scans=4
+turn=153 result=MISS
+turn=154 mode=HUNT rank=1 cell=16,18 score=2.368840 prob=1.505162 density=1.569079 center=0.003000
+turn=154 mode=HUNT rank=2 cell=15,18 score=2.192187 prob=1.392129 density=1.569079 center=0.004000
+turn=154 mode=HUNT rank=3 cell=14,18 score=1.844779 prob=1.172295 density=1.569079 center=0.005000
+turn=154 mode=HUNT rank=4 cell=17,18 score=1.792137 prob=1.140248 density=1.569079 center=0.002000
+turn=154 mode=HUNT rank=5 cell=12,13 score=1.778684 prob=1.124457 density=1.569079 center=0.012000
+turn=154 picked cell=16,18 target_cluster=None active_clusters=1 remaining_cells=19 scans=4
+turn=154 result=HIT
+turn=155 mode=CHASE cluster=1 cluster_len=1 cell=15,18 score=100000.856927 chase_score=5009.856927 prob=0.856927
+turn=155 picked cell=15,18 target_cluster=Some(1) active_clusters=2 remaining_cells=18 scans=4
+turn=155 result=HIT
+turn=156 mode=CHASE cluster=1 cluster_len=2 cell=14,18 score=200000.721943 chase_score=10024.721943 prob=0.721943
+turn=156 picked cell=14,18 target_cluster=Some(1) active_clusters=2 remaining_cells=17 scans=4
+turn=156 result=MISS
+turn=157 mode=CHASE cluster=1 cluster_len=2 cell=17,18 score=200000.312460 chase_score=10010.312460 prob=0.312460
+turn=157 picked cell=17,18 target_cluster=Some(1) active_clusters=2 remaining_cells=17 scans=4
+turn=157 result=KILL
+turn=157 kill_infer inferred_len=3 committed_hits=2 cluster_hits=2
+turn=158 mode=HUNT rank=1 cell=0,3 score=1.234883 prob=1.056867 density=1.160714 center=0.004000
+turn=158 mode=HUNT rank=2 cell=2,4 score=1.234730 prob=1.056867 density=1.160714 center=0.007000
+turn=158 mode=HUNT rank=3 cell=0,2 score=1.231204 prob=1.056867 density=1.160714 center=0.003000
+turn=158 mode=HUNT rank=4 cell=1,16 score=1.189669 prob=1.113421 density=1.061224 center=0.004000
+turn=158 mode=HUNT rank=5 cell=12,14 score=1.153585 prob=0.877785 density=1.300000 center=0.011000
+turn=158 picked cell=0,3 target_cluster=None active_clusters=1 remaining_cells=16 scans=4
+turn=158 result=HIT
+turn=159 mode=CHASE cluster=1 cluster_len=1 cell=0,2 score=100000.911160 chase_score=5008.411160 prob=0.911160
+turn=159 picked cell=0,2 target_cluster=Some(1) active_clusters=2 remaining_cells=15 scans=4
+turn=159 result=HIT
+turn=160 mode=CHASE cluster=1 cluster_len=2 cell=0,1 score=200000.755041 chase_score=10021.755041 prob=0.755041
+turn=160 picked cell=0,1 target_cluster=Some(1) active_clusters=2 remaining_cells=14 scans=4
+turn=160 result=HIT
+turn=161 mode=CHASE cluster=1 cluster_len=3 cell=0,4 score=300000.731817 chase_score=10014.731817 prob=0.731817
+turn=161 picked cell=0,4 target_cluster=Some(1) active_clusters=2 remaining_cells=13 scans=4
+turn=161 result=HIT
+turn=162 mode=CHASE cluster=1 cluster_len=4 cell=0,0 score=400000.731817 chase_score=10005.731817 prob=0.731817
+turn=162 picked cell=0,0 target_cluster=Some(1) active_clusters=2 remaining_cells=12 scans=4
+turn=162 result=MISS
+turn=163 mode=CHASE cluster=1 cluster_len=4 cell=0,5 score=400000.436164 chase_score=10005.436164 prob=0.436164
+turn=163 picked cell=0,5 target_cluster=Some(1) active_clusters=2 remaining_cells=12 scans=4
+turn=163 result=KILL
+turn=163 kill_infer inferred_len=5 committed_hits=4 cluster_hits=4
+turn=164 mode=HUNT rank=1 cell=12,14 score=1.398262 prob=0.753742 density=1.836364 center=0.011000
+turn=164 mode=HUNT rank=2 cell=11,14 score=1.318226 prob=0.710466 density=1.836364 center=0.012000
+turn=164 mode=HUNT rank=3 cell=1,16 score=1.276136 prob=0.846188 density=1.499072 center=0.004000
+turn=164 mode=HUNT rank=4 cell=12,13 score=1.263803 prob=0.679382 density=1.836364 center=0.012000
+turn=164 mode=HUNT rank=5 cell=18,11 score=1.255921 prob=0.679382 density=1.836364 center=0.008000
+turn=164 picked cell=12,14 target_cluster=None active_clusters=1 remaining_cells=11 scans=4
+turn=164 result=MISS
+turn=165 mode=HUNT rank=1 cell=18,11 score=1.425986 prob=0.760869 density=1.858243 center=0.008000
+turn=165 mode=HUNT rank=2 cell=1,16 score=1.401843 prob=0.936665 density=1.491651 center=0.004000
+turn=165 mode=HUNT rank=3 cell=10,9 score=1.328553 prob=0.704693 density=1.858243 center=0.018000
+turn=165 mode=HUNT rank=4 cell=11,15 score=1.306783 prob=0.695918 density=1.858243 center=0.011000
+turn=165 mode=HUNT rank=5 cell=0,16 score=1.283762 prob=0.857038 density=1.491651 center=0.003000
+turn=165 picked cell=18,11 target_cluster=None active_clusters=1 remaining_cells=11 scans=4
+turn=165 result=MISS
+turn=166 mode=HUNT rank=1 cell=1,16 score=1.521717 prob=1.020020 density=1.484230 center=0.004000
+turn=166 mode=HUNT rank=2 cell=10,9 score=1.480968 prob=0.776988 density=1.880878 center=0.018000
+turn=166 mode=HUNT rank=3 cell=11,15 score=1.460952 prob=0.769368 density=1.880878 center=0.011000
+turn=166 mode=HUNT rank=4 cell=0,16 score=1.391994 prob=0.934279 density=1.484230 center=0.003000
+turn=166 mode=HUNT rank=5 cell=9,9 score=1.264147 prob=0.660714 density=1.880878 center=0.019000
+turn=166 picked cell=1,16 target_cluster=None active_clusters=1 remaining_cells=11 scans=4
+turn=166 result=MISS
+turn=167 mode=HUNT rank=1 cell=10,9 score=1.569642 prob=0.827301 density=1.871473 center=0.018000
+turn=167 mode=HUNT rank=2 cell=11,15 score=1.558354 prob=0.825794 density=1.871473 center=0.011000
+turn=167 mode=HUNT rank=3 cell=9,9 score=1.359639 prob=0.714663 density=1.871473 center=0.019000
+turn=167 mode=HUNT rank=4 cell=11,13 score=1.266172 prob=0.667412 density=1.871473 center=0.013000
+turn=167 mode=HUNT rank=5 cell=0,15 score=1.247880 prob=0.823093 density=1.507576 center=0.004000
+turn=167 picked cell=10,9 target_cluster=None active_clusters=1 remaining_cells=11 scans=4
+turn=167 result=MISS
+turn=168 mode=HUNT rank=1 cell=11,15 score=1.802888 prob=0.943664 density=1.894737 center=0.011000
+turn=168 mode=HUNT rank=2 cell=11,13 score=1.457836 prob=0.761042 density=1.894737 center=0.013000
+turn=168 mode=HUNT rank=3 cell=0,15 score=1.392780 prob=0.925445 density=1.500000 center=0.004000
+turn=168 mode=HUNT rank=4 cell=9,10 score=1.383113 prob=0.718345 density=1.894737 center=0.018000
+turn=168 mode=HUNT rank=5 cell=10,15 score=1.375829 prob=0.718345 density=1.894737 center=0.012000
+turn=168 picked cell=11,15 target_cluster=None active_clusters=1 remaining_cells=11 scans=4
+turn=168 result=MISS
+turn=169 mode=HUNT rank=1 cell=9,10 score=1.721075 prob=0.885342 density=1.918831 center=0.018000
+turn=169 mode=HUNT rank=2 cell=18,16 score=1.703050 prob=0.885342 density=1.918831 center=0.003000
+turn=169 mode=HUNT rank=3 cell=0,15 score=1.678722 prob=1.120109 density=1.492424 center=0.004000
+turn=169 mode=HUNT rank=4 cell=0,16 score=1.615235 prob=1.078811 density=1.492424 center=0.003000
+turn=169 mode=HUNT rank=5 cell=9,11 score=1.523030 prob=0.784256 density=1.918831 center=0.017000
+turn=169 picked cell=9,10 target_cluster=None active_clusters=1 remaining_cells=11 scans=4
+turn=169 result=HIT
+turn=170 mode=CHASE cluster=1 cluster_len=1 cell=9,11 score=100000.248605 chase_score=5003.248605 prob=0.248605
+turn=170 picked cell=9,11 target_cluster=Some(1) active_clusters=2 remaining_cells=10 scans=4
+turn=170 result=MISS
+turn=171 mode=CHASE cluster=1 cluster_len=1 cell=10,10 score=100000.136982 chase_score=5001.386982 prob=0.136982
+turn=171 picked cell=10,10 target_cluster=Some(1) active_clusters=2 remaining_cells=10 scans=4
+turn=171 result=HIT
+turn=172 mode=CHASE cluster=1 cluster_len=2 cell=11,10 score=200000.118936 chase_score=10003.118936 prob=0.118936
+turn=172 picked cell=11,10 target_cluster=Some(1) active_clusters=2 remaining_cells=9 scans=4
+turn=172 result=KILL
+turn=172 kill_infer inferred_len=3 committed_hits=2 cluster_hits=2
+turn=173 mode=HUNT rank=1 cell=0,15 score=2.439223 prob=1.211000 density=2.010417 center=0.004000
+turn=173 mode=HUNT rank=2 cell=0,16 score=2.317703 prob=1.150326 density=2.010417 center=0.003000
+turn=173 mode=HUNT rank=3 cell=0,14 score=1.865302 prob=0.923637 density=2.010417 center=0.005000
+turn=173 mode=HUNT rank=4 cell=0,17 score=1.860062 prob=0.923637 density=2.010417 center=0.002000
+turn=173 mode=HUNT rank=5 cell=6,10 score=1.417275 prob=0.696948 density=2.010417 center=0.015000
+turn=173 picked cell=0,15 target_cluster=None active_clusters=1 remaining_cells=8 scans=4
+turn=173 result=MISS
+turn=174 mode=HUNT rank=1 cell=6,10 score=1.326746 prob=0.641189 density=2.042553 center=0.015000
+turn=174 mode=HUNT rank=2 cell=4,13 score=1.323556 prob=0.641189 density=2.042553 center=0.010000
+turn=174 mode=HUNT rank=3 cell=6,11 score=1.230350 prob=0.594923 density=2.042553 center=0.014000
+turn=174 mode=HUNT rank=4 cell=4,12 score=1.228493 prob=0.594923 density=2.042553 center=0.011000
+turn=174 mode=HUNT rank=5 cell=5,17 score=1.226027 prob=0.594923 density=2.042553 center=0.007000
+turn=174 picked cell=6,10 target_cluster=None active_clusters=1 remaining_cells=8 scans=4
+turn=174 result=MISS
+turn=175 mode=HUNT rank=1 cell=4,13 score=1.536746 prob=0.734805 density=2.076087 center=0.010000
+turn=175 mode=HUNT rank=2 cell=4,12 score=1.429213 prob=0.682749 density=2.076087 center=0.011000
+turn=175 mode=HUNT rank=3 cell=6,17 score=1.425628 prob=0.682749 density=2.076087 center=0.008000
+turn=175 mode=HUNT rank=4 cell=5,17 score=1.424943 prob=0.682749 density=2.076087 center=0.007000
+turn=175 mode=HUNT rank=5 cell=4,11 score=1.324432 prob=0.630692 density=2.076087 center=0.012000
+turn=175 picked cell=4,13 target_cluster=None active_clusters=1 remaining_cells=8 scans=4
+turn=175 result=MISS
+turn=176 mode=HUNT rank=1 cell=5,17 score=1.785353 prob=0.840898 density=2.111111 center=0.007000
+turn=176 mode=HUNT rank=2 cell=6,17 score=1.785258 prob=0.840898 density=2.111111 center=0.008000
+turn=176 mode=HUNT rank=3 cell=7,17 score=1.652142 prob=0.776448 density=2.111111 center=0.009000
+turn=176 mode=HUNT rank=4 cell=4,17 score=1.511225 prob=0.711999 density=2.111111 center=0.006000
+turn=176 mode=HUNT rank=5 cell=5,11 score=0.790514 prob=0.367564 density=2.111111 center=0.013000
+turn=176 picked cell=5,17 target_cluster=None active_clusters=1 remaining_cells=8 scans=4
+turn=176 result=MISS
+turn=177 mode=HUNT rank=1 cell=5,11 score=0.928490 prob=0.425680 density=2.147727 center=0.013000
+turn=177 mode=HUNT rank=2 cell=6,16 score=0.926461 prob=0.425680 density=2.147727 center=0.009000
+turn=177 mode=HUNT rank=3 cell=1,14 score=0.923574 prob=0.425680 density=2.147727 center=0.006000
+turn=177 mode=HUNT rank=4 cell=1,18 score=0.919740 prob=0.425680 density=2.147727 center=0.002000
+turn=177 mode=HUNT rank=5 cell=0,17 score=0.919736 prob=0.425680 density=2.147727 center=0.002000
+turn=177 picked cell=5,11 target_cluster=None active_clusters=1 remaining_cells=8 scans=4
+turn=177 result=MISS
+turn=178 mode=HUNT rank=1 cell=6,16 score=0.949635 prob=0.428361 density=2.186047 center=0.009000
+turn=178 mode=HUNT rank=2 cell=1,14 score=0.945511 prob=0.428361 density=2.186047 center=0.006000
+turn=178 mode=HUNT rank=3 cell=0,17 score=0.942305 prob=0.428361 density=2.186047 center=0.002000
+turn=178 mode=HUNT rank=4 cell=1,17 score=0.941182 prob=0.428361 density=2.186047 center=0.003000
+turn=178 mode=HUNT rank=5 cell=2,17 score=0.940748 prob=0.428361 density=2.186047 center=0.004000
+turn=178 picked cell=6,16 target_cluster=None active_clusters=1 remaining_cells=8 scans=4
+turn=178 result=MISS
+turn=179 mode=HUNT rank=1 cell=1,14 score=0.969366 prob=0.431309 density=2.226190 center=0.006000
+turn=179 mode=HUNT rank=2 cell=1,17 score=0.967349 prob=0.431309 density=2.226190 center=0.003000
+turn=179 mode=HUNT rank=3 cell=2,17 score=0.967281 prob=0.431309 density=2.226190 center=0.004000
+turn=179 mode=HUNT rank=4 cell=1,18 score=0.965093 prob=0.431309 density=2.226190 center=0.002000
+turn=179 mode=HUNT rank=5 cell=0,17 score=0.962836 prob=0.431309 density=2.226190 center=0.002000
+turn=179 picked cell=1,14 target_cluster=None active_clusters=1 remaining_cells=8 scans=4
+turn=179 result=MISS
+turn=180 mode=HUNT rank=1 cell=1,17 score=0.990445 prob=0.434363 density=2.268293 center=0.003000
+turn=180 mode=HUNT rank=2 cell=2,17 score=0.990445 prob=0.434363 density=2.268293 center=0.004000
+turn=180 mode=HUNT rank=3 cell=0,17 score=0.987991 prob=0.434363 density=2.268293 center=0.002000
+turn=180 mode=HUNT rank=4 cell=1,18 score=0.987456 prob=0.434363 density=2.268293 center=0.002000
+turn=180 mode=HUNT rank=5 cell=18,16 score=0.845271 prob=0.625904 density=1.341346 center=0.003000
+turn=180 picked cell=1,17 target_cluster=None active_clusters=1 remaining_cells=8 scans=4
+turn=180 result=MISS
+turn=181 mode=HUNT rank=1 cell=7,9 score=0.997375 prob=0.422145 density=2.312500 center=0.017000
+turn=181 mode=HUNT rank=2 cell=7,12 score=0.993500 prob=0.422145 density=2.312500 center=0.014000
+turn=181 mode=HUNT rank=3 cell=3,9 score=0.993147 prob=0.422145 density=2.312500 center=0.013000
+turn=181 mode=HUNT rank=4 cell=7,13 score=0.991978 prob=0.422145 density=2.312500 center=0.013000
+turn=181 mode=HUNT rank=5 cell=6,12 score=0.991728 prob=0.422145 density=2.312500 center=0.013000
+turn=181 picked cell=7,9 target_cluster=None active_clusters=1 remaining_cells=8 scans=4
+turn=181 result=KILL
+turn=182 mode=HUNT rank=1 cell=18,16 score=1.075482 prob=0.705602 density=1.516484 center=0.003000
+turn=182 mode=HUNT rank=2 cell=11,17 score=0.986251 prob=0.641994 density=1.516484 center=0.009000
+turn=182 mode=HUNT rank=3 cell=10,17 score=0.985970 prob=0.641994 density=1.516484 center=0.010000
+turn=182 mode=HUNT rank=4 cell=18,17 score=0.979663 prob=0.641994 density=1.516484 center=0.002000
+turn=182 mode=HUNT rank=5 cell=18,15 score=0.978934 prob=0.641994 density=1.516484 center=0.004000
+turn=182 picked cell=18,16 target_cluster=None active_clusters=1 remaining_cells=7 scans=4
+turn=182 result=MISS
+turn=183 mode=HUNT rank=1 cell=10,17 score=1.258811 prob=0.810489 density=1.537815 center=0.010000
+turn=183 mode=HUNT rank=2 cell=11,17 score=1.257414 prob=0.810489 density=1.537815 center=0.009000
+turn=183 mode=HUNT rank=3 cell=9,17 score=1.133865 prob=0.727725 density=1.537815 center=0.011000
+turn=183 mode=HUNT rank=4 cell=12,17 score=1.130481 prob=0.727725 density=1.537815 center=0.008000
+turn=183 mode=HUNT rank=5 cell=16,10 score=1.103260 prob=0.708551 density=1.537815 center=0.011000
+turn=183 picked cell=10,17 target_cluster=None active_clusters=1 remaining_cells=7 scans=4
+turn=183 result=MISS
+turn=184 mode=HUNT rank=1 cell=16,11 score=1.340250 prob=0.851033 density=1.560000 center=0.010000
+turn=184 mode=HUNT rank=2 cell=16,10 score=1.340239 prob=0.851033 density=1.560000 center=0.011000
+turn=184 mode=HUNT rank=3 cell=16,9 score=1.285579 prob=0.814259 density=1.560000 center=0.012000
+turn=184 mode=HUNT rank=4 cell=7,12 score=0.980592 prob=0.482440 density=2.000000 center=0.014000
+turn=184 mode=HUNT rank=5 cell=3,9 score=0.980310 prob=0.482440 density=2.000000 center=0.013000
+turn=184 picked cell=16,11 target_cluster=None active_clusters=1 remaining_cells=7 scans=4
+turn=184 result=MISS
+turn=185 mode=HUNT rank=1 cell=3,9 score=1.128959 prob=0.559129 density=1.989011 center=0.013000
+turn=185 mode=HUNT rank=2 cell=6,12 score=1.128930 prob=0.559129 density=1.989011 center=0.013000
+turn=185 mode=HUNT rank=3 cell=7,12 score=1.128427 prob=0.559129 density=1.989011 center=0.014000
+turn=185 mode=HUNT rank=4 cell=7,14 score=1.127162 prob=0.559129 density=1.989011 center=0.012000
+turn=185 mode=HUNT rank=5 cell=7,13 score=1.126411 prob=0.559129 density=1.989011 center=0.013000
+turn=185 picked cell=3,9 target_cluster=None active_clusters=1 remaining_cells=7 scans=4
+turn=185 result=MISS
+turn=186 mode=HUNT rank=1 cell=7,12 score=1.181701 prob=0.574736 density=2.030075 center=0.014000
+turn=186 mode=HUNT rank=2 cell=7,14 score=1.181197 prob=0.574736 density=2.030075 center=0.012000
+turn=186 mode=HUNT rank=3 cell=7,13 score=1.180759 prob=0.574736 density=2.030075 center=0.013000
+turn=186 mode=HUNT rank=4 cell=6,12 score=1.180610 prob=0.574736 density=2.030075 center=0.013000
+turn=186 mode=HUNT rank=5 cell=4,12 score=1.180057 prob=0.574736 density=2.030075 center=0.011000
+turn=186 picked cell=7,12 target_cluster=None active_clusters=1 remaining_cells=7 scans=4
+turn=186 result=MISS
+turn=187 mode=HUNT rank=1 cell=7,14 score=1.240663 prob=0.591277 density=2.073359 center=0.012000
+turn=187 mode=HUNT rank=2 cell=3,13 score=1.238958 prob=0.591277 density=2.073359 center=0.009000
+turn=187 mode=HUNT rank=3 cell=0,10 score=1.237988 prob=0.591277 density=2.073359 center=0.009000
+turn=187 mode=HUNT rank=4 cell=4,12 score=1.237941 prob=0.591277 density=2.073359 center=0.011000
+turn=187 mode=HUNT rank=5 cell=3,12 score=1.237666 prob=0.591277 density=2.073359 center=0.010000
+turn=187 picked cell=7,14 target_cluster=None active_clusters=1 remaining_cells=7 scans=4
+turn=187 result=MISS
+turn=188 mode=HUNT rank=1 cell=4,12 score=1.303998 prob=0.608844 density=2.119048 center=0.011000
+turn=188 mode=HUNT rank=2 cell=3,14 score=1.302308 prob=0.608844 density=2.119048 center=0.008000
+turn=188 mode=HUNT rank=3 cell=7,17 score=1.301843 prob=0.608844 density=2.119048 center=0.009000
+turn=188 mode=HUNT rank=4 cell=3,13 score=1.301666 prob=0.608844 density=2.119048 center=0.009000
+turn=188 mode=HUNT rank=5 cell=3,12 score=1.300864 prob=0.608844 density=2.119048 center=0.010000
+turn=188 picked cell=4,12 target_cluster=None active_clusters=1 remaining_cells=7 scans=4
+turn=188 result=MISS
+turn=189 mode=HUNT rank=1 cell=3,14 score=1.371926 prob=0.627545 density=2.167347 center=0.008000
+turn=189 mode=HUNT rank=2 cell=7,17 score=1.370462 prob=0.627545 density=2.167347 center=0.009000
+turn=189 mode=HUNT rank=3 cell=3,13 score=1.370111 prob=0.627545 density=2.167347 center=0.009000
+turn=189 mode=HUNT rank=4 cell=0,10 score=1.370106 prob=0.627545 density=2.167347 center=0.009000
+turn=189 mode=HUNT rank=5 cell=2,17 score=1.368038 prob=0.627545 density=2.167347 center=0.004000
+turn=189 picked cell=3,14 target_cluster=None active_clusters=1 remaining_cells=7 scans=4
+turn=189 result=MISS
+turn=190 mode=HUNT rank=1 cell=7,17 score=1.449284 prob=0.647501 density=2.218487 center=0.009000
+turn=190 mode=HUNT rank=2 cell=0,10 score=1.448655 prob=0.647501 density=2.218487 center=0.009000
+turn=190 mode=HUNT rank=3 cell=0,13 score=1.443894 prob=0.647501 density=2.218487 center=0.006000
+turn=190 mode=HUNT rank=4 cell=0,17 score=1.442600 prob=0.647501 density=2.218487 center=0.002000
+turn=190 mode=HUNT rank=5 cell=2,18 score=1.442523 prob=0.647501 density=2.218487 center=0.003000
+turn=190 picked cell=7,17 target_cluster=None active_clusters=1 remaining_cells=7 scans=4
+turn=190 result=MISS
+turn=191 mode=HUNT rank=1 cell=0,10 score=1.518254 prob=0.662385 density=2.272727 center=0.009000
+turn=191 mode=HUNT rank=2 cell=0,13 score=1.515303 prob=0.662385 density=2.272727 center=0.006000
+turn=191 mode=HUNT rank=3 cell=2,17 score=1.512399 prob=0.662385 density=2.272727 center=0.004000
+turn=191 mode=HUNT rank=4 cell=0,17 score=1.511589 prob=0.662385 density=2.272727 center=0.002000
+turn=191 mode=HUNT rank=5 cell=2,16 score=1.510868 prob=0.662385 density=2.272727 center=0.005000
+turn=191 picked cell=0,10 target_cluster=None active_clusters=1 remaining_cells=7 scans=4
+turn=191 result=MISS
+turn=192 mode=HUNT rank=1 cell=2,16 score=1.567463 prob=0.668648 density=2.330357 center=0.005000
+turn=192 mode=HUNT rank=2 cell=0,13 score=1.566507 prob=0.668648 density=2.330357 center=0.006000
+turn=192 mode=HUNT rank=3 cell=0,17 score=1.564025 prob=0.668648 density=2.330357 center=0.002000
+turn=192 mode=HUNT rank=4 cell=2,17 score=1.563530 prob=0.668648 density=2.330357 center=0.004000
+turn=192 mode=HUNT rank=5 cell=1,18 score=1.563037 prob=0.668648 density=2.330357 center=0.002000
+turn=192 picked cell=2,16 target_cluster=None active_clusters=1 remaining_cells=7 scans=4
+turn=192 result=HIT
+turn=193 mode=CHASE cluster=1 cluster_len=1 cell=2,17 score=100000.119760 chase_score=5000.619760 prob=0.119760
+turn=193 picked cell=2,17 target_cluster=Some(1) active_clusters=2 remaining_cells=6 scans=4
+turn=193 result=MISS
+turn=194 mode=CHASE cluster=1 cluster_len=1 cell=3,16 score=100000.088269 chase_score=5000.588269 prob=0.088269
+turn=194 picked cell=3,16 target_cluster=Some(1) active_clusters=2 remaining_cells=6 scans=4
+turn=194 result=KILL
+turn=194 kill_infer inferred_len=2 committed_hits=1 cluster_hits=1
+turn=195 mode=HUNT rank=1 cell=11,5 score=0.977332 prob=1.209190 density=0.795349 center=0.013000
+turn=195 mode=HUNT rank=2 cell=13,5 score=0.974940 prob=1.209190 density=0.795349 center=0.011000
+turn=195 mode=HUNT rank=3 cell=11,9 score=0.879584 prob=0.410019 density=2.093878 center=0.017000
+turn=195 mode=HUNT rank=4 cell=9,9 score=0.877783 prob=0.410019 density=2.093878 center=0.019000
+turn=195 mode=HUNT rank=5 cell=9,12 score=0.877245 prob=0.410019 density=2.093878 center=0.016000
+turn=195 picked cell=11,5 target_cluster=None active_clusters=1 remaining_cells=5 scans=4
+turn=195 result=MISS
+turn=196 mode=HUNT rank=1 cell=12,9 score=1.073253 prob=0.505925 density=2.081633 center=0.016000
+turn=196 mode=HUNT rank=2 cell=9,9 score=1.072728 prob=0.505925 density=2.081633 center=0.019000
+turn=196 mode=HUNT rank=3 cell=10,11 score=1.072648 prob=0.505925 density=2.081633 center=0.016000
+turn=196 mode=HUNT rank=4 cell=9,12 score=1.071791 prob=0.505925 density=2.081633 center=0.016000
+turn=196 mode=HUNT rank=5 cell=11,9 score=1.071608 prob=0.505925 density=2.081633 center=0.017000
+turn=196 picked cell=12,9 target_cluster=None active_clusters=1 remaining_cells=5 scans=4
+turn=196 result=MISS
+turn=197 mode=HUNT rank=1 cell=9,9 score=1.111431 prob=0.516461 density=2.112500 center=0.019000
+turn=197 mode=HUNT rank=2 cell=10,11 score=1.110145 prob=0.516461 density=2.112500 center=0.016000
+turn=197 mode=HUNT rank=3 cell=11,9 score=1.109205 prob=0.516461 density=2.112500 center=0.017000
+turn=197 mode=HUNT rank=4 cell=10,13 score=1.109163 prob=0.516461 density=2.112500 center=0.014000
+turn=197 mode=HUNT rank=5 cell=14,9 score=1.109006 prob=0.516461 density=2.112500 center=0.014000
+turn=197 picked cell=9,9 target_cluster=None active_clusters=1 remaining_cells=5 scans=4
+turn=197 result=MISS
+turn=198 mode=HUNT rank=1 cell=9,12 score=1.150372 prob=0.527445 density=2.144681 center=0.016000
+turn=198 mode=HUNT rank=2 cell=11,9 score=1.150018 prob=0.527445 density=2.144681 center=0.017000
+turn=198 mode=HUNT rank=3 cell=10,11 score=1.149079 prob=0.527445 density=2.144681 center=0.016000
+turn=198 mode=HUNT rank=4 cell=12,11 score=1.148406 prob=0.527445 density=2.144681 center=0.014000
+turn=198 mode=HUNT rank=5 cell=13,10 score=1.148014 prob=0.527445 density=2.144681 center=0.014000
+turn=198 picked cell=9,12 target_cluster=None active_clusters=1 remaining_cells=5 scans=4
+turn=198 result=MISS
+turn=199 mode=HUNT rank=1 cell=11,9 score=1.193972 prob=0.538907 density=2.178261 center=0.017000
+turn=199 mode=HUNT rank=2 cell=10,11 score=1.192988 prob=0.538907 density=2.178261 center=0.016000
+turn=199 mode=HUNT rank=3 cell=9,14 score=1.191212 prob=0.538907 density=2.178261 center=0.014000
+turn=199 mode=HUNT rank=4 cell=11,13 score=1.190350 prob=0.538907 density=2.178261 center=0.013000
+turn=199 mode=HUNT rank=5 cell=14,10 score=1.190336 prob=0.538907 density=2.178261 center=0.013000
+turn=199 picked cell=11,9 target_cluster=None active_clusters=1 remaining_cells=5 scans=4
+turn=199 result=MISS
+turn=200 mode=HUNT rank=1 cell=9,14 score=1.237362 prob=0.550877 density=2.213333 center=0.014000
+turn=200 mode=HUNT rank=2 cell=9,15 score=1.236136 prob=0.550877 density=2.213333 center=0.013000
+turn=200 mode=HUNT rank=3 cell=10,11 score=1.235714 prob=0.550877 density=2.213333 center=0.016000
+turn=200 mode=HUNT rank=4 cell=11,12 score=1.235678 prob=0.550877 density=2.213333 center=0.014000
+turn=200 mode=HUNT rank=5 cell=13,10 score=1.235356 prob=0.550877 density=2.213333 center=0.014000
+turn=200 picked cell=9,14 target_cluster=None active_clusters=1 remaining_cells=5 scans=4
+turn=200 result=MISS
+turn=201 mode=HUNT rank=1 cell=12,11 score=1.285140 prob=0.563392 density=2.250000 center=0.014000
+turn=201 mode=HUNT rank=2 cell=14,9 score=1.285024 prob=0.563392 density=2.250000 center=0.014000
+turn=201 mode=HUNT rank=3 cell=9,15 score=1.284496 prob=0.563392 density=2.250000 center=0.013000
+turn=201 mode=HUNT rank=4 cell=13,10 score=1.283929 prob=0.563392 density=2.250000 center=0.014000
+turn=201 mode=HUNT rank=5 cell=10,11 score=1.283883 prob=0.563392 density=2.250000 center=0.016000
+turn=201 picked cell=12,11 target_cluster=None active_clusters=1 remaining_cells=5 scans=4
+turn=201 result=MISS
+turn=202 mode=HUNT rank=1 cell=10,11 score=1.317460 prob=0.567006 density=2.288372 center=0.016000
+turn=202 mode=HUNT rank=2 cell=11,12 score=1.315370 prob=0.567006 density=2.288372 center=0.014000
+turn=202 mode=HUNT rank=3 cell=12,12 score=1.314061 prob=0.567006 density=2.288372 center=0.013000
+turn=202 mode=HUNT rank=4 cell=11,13 score=1.313909 prob=0.567006 density=2.288372 center=0.013000
+turn=202 mode=HUNT rank=5 cell=13,10 score=1.313817 prob=0.567006 density=2.288372 center=0.014000
+turn=202 picked cell=10,11 target_cluster=None active_clusters=1 remaining_cells=5 scans=4
+turn=202 result=MISS
+turn=203 mode=HUNT rank=1 cell=14,10 score=1.345628 prob=0.570671 density=2.328571 center=0.013000
+turn=203 mode=HUNT rank=2 cell=11,12 score=1.345462 prob=0.570671 density=2.328571 center=0.014000
+turn=203 mode=HUNT rank=3 cell=10,13 score=1.344493 prob=0.570671 density=2.328571 center=0.014000
+turn=203 mode=HUNT rank=4 cell=12,12 score=1.344001 prob=0.570671 density=2.328571 center=0.013000
+turn=203 mode=HUNT rank=5 cell=10,14 score=1.343852 prob=0.570671 density=2.328571 center=0.013000
+turn=203 picked cell=14,10 target_cluster=None active_clusters=1 remaining_cells=5 scans=4
+turn=203 result=MISS
+turn=204 mode=HUNT rank=1 cell=14,9 score=1.379246 prob=0.574388 density=2.370732 center=0.014000
+turn=204 mode=HUNT rank=2 cell=11,13 score=1.378187 prob=0.574388 density=2.370732 center=0.013000
+turn=204 mode=HUNT rank=3 cell=12,13 score=1.377538 prob=0.574388 density=2.370732 center=0.012000
+turn=204 mode=HUNT rank=4 cell=13,10 score=1.377515 prob=0.574388 density=2.370732 center=0.014000
+turn=204 mode=HUNT rank=5 cell=16,9 score=1.377402 prob=0.574388 density=2.370732 center=0.012000
+turn=204 picked cell=14,9 target_cluster=None active_clusters=1 remaining_cells=5 scans=4
+turn=204 result=MISS
+turn=205 mode=HUNT rank=1 cell=10,13 score=1.414111 prob=0.578157 density=2.415000 center=0.014000
+turn=205 mode=HUNT rank=2 cell=13,10 score=1.413972 prob=0.578157 density=2.415000 center=0.014000
+turn=205 mode=HUNT rank=3 cell=12,12 score=1.413525 prob=0.578157 density=2.415000 center=0.013000
+turn=205 mode=HUNT rank=4 cell=9,15 score=1.413059 prob=0.578157 density=2.415000 center=0.013000
+turn=205 mode=HUNT rank=5 cell=11,12 score=1.413015 prob=0.578157 density=2.415000 center=0.014000
+turn=205 picked cell=10,13 target_cluster=None active_clusters=1 remaining_cells=5 scans=4
+turn=205 result=HIT
+turn=206 mode=CHASE cluster=1 cluster_len=1 cell=11,13 score=100000.086663 chase_score=5000.086663 prob=0.086663
+turn=206 picked cell=11,13 target_cluster=Some(1) active_clusters=2 remaining_cells=4 scans=4
+turn=206 result=HIT
+turn=207 mode=CHASE cluster=1 cluster_len=2 cell=12,13 score=200000.086663 chase_score=10000.086663 prob=0.086663
+turn=207 picked cell=12,13 target_cluster=Some(1) active_clusters=2 remaining_cells=3 scans=4
+turn=207 result=KILL
+turn=207 kill_infer inferred_len=3 committed_hits=2 cluster_hits=2
+turn=208 mode=HUNT rank=1 cell=6,9 score=0.096582 prob=0.031196 density=2.500000 center=0.016000
+turn=208 mode=HUNT rank=2 cell=5,10 score=0.095606 prob=0.031196 density=2.500000 center=0.014000
+turn=208 mode=HUNT rank=3 cell=4,9 score=0.095210 prob=0.031196 density=2.500000 center=0.014000
+turn=208 mode=HUNT rank=4 cell=6,12 score=0.095018 prob=0.031196 density=2.500000 center=0.013000
+turn=208 mode=HUNT rank=5 cell=6,11 score=0.094670 prob=0.031196 density=2.500000 center=0.014000
+turn=208 picked cell=6,9 target_cluster=None active_clusters=1 remaining_cells=2 scans=4
+turn=208 result=MISS
+turn=209 mode=HUNT rank=1 cell=5,10 score=0.096792 prob=0.031802 density=2.500000 center=0.014000
+turn=209 mode=HUNT rank=2 cell=7,10 score=0.096378 prob=0.031802 density=2.500000 center=0.016000
+turn=209 mode=HUNT rank=3 cell=4,9 score=0.095823 prob=0.031802 density=2.500000 center=0.014000
+turn=209 mode=HUNT rank=4 cell=7,13 score=0.094028 prob=0.031802 density=2.500000 center=0.013000
+turn=209 mode=HUNT rank=5 cell=4,11 score=0.093978 prob=0.031802 density=2.500000 center=0.012000
+turn=209 picked cell=5,10 target_cluster=None active_clusters=1 remaining_cells=2 scans=4
+turn=209 result=MISS
+turn=210 mode=HUNT rank=1 cell=7,10 score=0.101062 prob=0.032432 density=2.500000 center=0.016000
+turn=210 mode=HUNT rank=2 cell=6,11 score=0.098853 prob=0.032432 density=2.500000 center=0.014000
+turn=210 mode=HUNT rank=3 cell=4,9 score=0.097860 prob=0.032432 density=2.500000 center=0.014000
+turn=210 mode=HUNT rank=4 cell=7,13 score=0.096004 prob=0.032432 density=2.500000 center=0.013000
+turn=210 mode=HUNT rank=5 cell=5,13 score=0.095339 prob=0.032432 density=2.500000 center=0.011000
+turn=210 picked cell=7,10 target_cluster=None active_clusters=1 remaining_cells=2 scans=4
+turn=210 result=MISS
+turn=211 mode=HUNT rank=1 cell=6,12 score=0.098981 prob=0.033088 density=2.500000 center=0.013000
+turn=211 mode=HUNT rank=2 cell=6,11 score=0.098805 prob=0.033088 density=2.500000 center=0.014000
+turn=211 mode=HUNT rank=3 cell=4,11 score=0.098487 prob=0.033088 density=2.500000 center=0.012000
+turn=211 mode=HUNT rank=4 cell=4,9 score=0.097655 prob=0.033088 density=2.500000 center=0.014000
+turn=211 mode=HUNT rank=5 cell=3,10 score=0.097330 prob=0.033088 density=2.500000 center=0.012000
+turn=211 picked cell=6,12 target_cluster=None active_clusters=1 remaining_cells=2 scans=4
+turn=211 result=MISS
+turn=212 mode=HUNT rank=1 cell=4,9 score=0.101057 prob=0.033771 density=2.500000 center=0.014000
+turn=212 mode=HUNT rank=2 cell=6,11 score=0.100510 prob=0.033771 density=2.500000 center=0.014000
+turn=212 mode=HUNT rank=3 cell=3,10 score=0.099461 prob=0.033771 density=2.500000 center=0.012000
+turn=212 mode=HUNT rank=4 cell=5,13 score=0.099406 prob=0.033771 density=2.500000 center=0.011000
+turn=212 mode=HUNT rank=5 cell=4,11 score=0.098634 prob=0.033771 density=2.500000 center=0.012000
+turn=212 picked cell=4,9 target_cluster=None active_clusters=1 remaining_cells=2 scans=4
+turn=212 result=KILL
+turn=213 mode=HUNT rank=1 cell=10,8 score=0.079359 prob=0.023810 density=2.500000 center=0.017000
+turn=213 mode=HUNT rank=2 cell=9,7 score=0.079193 prob=0.023810 density=2.500000 center=0.017000
+turn=213 mode=HUNT rank=3 cell=11,7 score=0.078360 prob=0.023810 density=2.500000 center=0.015000
+turn=213 mode=HUNT rank=4 cell=9,6 score=0.078205 prob=0.023810 density=2.500000 center=0.016000
+turn=213 mode=HUNT rank=5 cell=10,6 score=0.077851 prob=0.023810 density=2.500000 center=0.015000
+turn=213 picked cell=10,8 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=213 result=MISS
+turn=214 mode=HUNT rank=1 cell=9,6 score=0.079744 prob=0.024390 density=2.500000 center=0.016000
+turn=214 mode=HUNT rank=2 cell=11,7 score=0.079284 prob=0.024390 density=2.500000 center=0.015000
+turn=214 mode=HUNT rank=3 cell=13,8 score=0.078940 prob=0.024390 density=2.500000 center=0.014000
+turn=214 mode=HUNT rank=4 cell=9,7 score=0.078286 prob=0.024390 density=2.500000 center=0.017000
+turn=214 mode=HUNT rank=5 cell=13,7 score=0.077816 prob=0.024390 density=2.500000 center=0.013000
+turn=214 picked cell=9,6 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=214 result=MISS
+turn=215 mode=HUNT rank=1 cell=9,7 score=0.079975 prob=0.025000 density=2.500000 center=0.017000
+turn=215 mode=HUNT rank=2 cell=9,4 score=0.079369 prob=0.025000 density=2.500000 center=0.014000
+turn=215 mode=HUNT rank=3 cell=13,8 score=0.079124 prob=0.025000 density=2.500000 center=0.014000
+turn=215 mode=HUNT rank=4 cell=14,8 score=0.078747 prob=0.025000 density=2.500000 center=0.013000
+turn=215 mode=HUNT rank=5 cell=10,6 score=0.078739 prob=0.025000 density=2.500000 center=0.015000
+turn=215 picked cell=9,7 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=215 result=MISS
+turn=216 mode=HUNT rank=1 cell=11,7 score=0.082554 prob=0.025641 density=2.500000 center=0.015000
+turn=216 mode=HUNT rank=2 cell=11,6 score=0.082266 prob=0.025641 density=2.500000 center=0.014000
+turn=216 mode=HUNT rank=3 cell=10,6 score=0.082052 prob=0.025641 density=2.500000 center=0.015000
+turn=216 mode=HUNT rank=4 cell=12,7 score=0.081591 prob=0.025641 density=2.500000 center=0.014000
+turn=216 mode=HUNT rank=5 cell=12,5 score=0.080010 prob=0.025641 density=2.500000 center=0.012000
+turn=216 picked cell=11,7 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=216 result=MISS
+turn=217 mode=HUNT rank=1 cell=13,8 score=0.083863 prob=0.026316 density=2.500000 center=0.014000
+turn=217 mode=HUNT rank=2 cell=12,8 score=0.083535 prob=0.026316 density=2.500000 center=0.015000
+turn=217 mode=HUNT rank=3 cell=11,6 score=0.082596 prob=0.026316 density=2.500000 center=0.014000
+turn=217 mode=HUNT rank=4 cell=9,4 score=0.082162 prob=0.026316 density=2.500000 center=0.014000
+turn=217 mode=HUNT rank=5 cell=10,6 score=0.082031 prob=0.026316 density=2.500000 center=0.015000
+turn=217 picked cell=13,8 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=217 result=MISS
+turn=218 mode=HUNT rank=1 cell=11,6 score=0.085290 prob=0.027027 density=2.500000 center=0.014000
+turn=218 mode=HUNT rank=2 cell=10,6 score=0.085135 prob=0.027027 density=2.500000 center=0.015000
+turn=218 mode=HUNT rank=3 cell=12,7 score=0.084202 prob=0.027027 density=2.500000 center=0.014000
+turn=218 mode=HUNT rank=4 cell=12,8 score=0.084125 prob=0.027027 density=2.500000 center=0.015000
+turn=218 mode=HUNT rank=5 cell=10,5 score=0.083528 prob=0.027027 density=2.500000 center=0.014000
+turn=218 picked cell=11,6 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=218 result=MISS
+turn=219 mode=HUNT rank=1 cell=9,4 score=0.087614 prob=0.027778 density=2.500000 center=0.014000
+turn=219 mode=HUNT rank=2 cell=10,6 score=0.086729 prob=0.027778 density=2.500000 center=0.015000
+turn=219 mode=HUNT rank=3 cell=12,8 score=0.086039 prob=0.027778 density=2.500000 center=0.015000
+turn=219 mode=HUNT rank=4 cell=13,7 score=0.086037 prob=0.027778 density=2.500000 center=0.013000
+turn=219 mode=HUNT rank=5 cell=12,7 score=0.085896 prob=0.027778 density=2.500000 center=0.014000
+turn=219 picked cell=9,4 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=219 result=MISS
+turn=220 mode=HUNT rank=1 cell=12,7 score=0.089222 prob=0.028571 density=2.500000 center=0.014000
+turn=220 mode=HUNT rank=2 cell=10,6 score=0.088873 prob=0.028571 density=2.500000 center=0.015000
+turn=220 mode=HUNT rank=3 cell=13,7 score=0.088481 prob=0.028571 density=2.500000 center=0.013000
+turn=220 mode=HUNT rank=4 cell=10,4 score=0.087699 prob=0.028571 density=2.500000 center=0.013000
+turn=220 mode=HUNT rank=5 cell=12,8 score=0.087340 prob=0.028571 density=2.500000 center=0.015000
+turn=220 picked cell=12,7 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=220 result=MISS
+turn=221 mode=HUNT rank=1 cell=10,6 score=0.092387 prob=0.029412 density=2.500000 center=0.015000
+turn=221 mode=HUNT rank=2 cell=10,5 score=0.091513 prob=0.029412 density=2.500000 center=0.014000
+turn=221 mode=HUNT rank=3 cell=12,8 score=0.090780 prob=0.029412 density=2.500000 center=0.015000
+turn=221 mode=HUNT rank=4 cell=10,4 score=0.090507 prob=0.029412 density=2.500000 center=0.013000
+turn=221 mode=HUNT rank=5 cell=14,8 score=0.088830 prob=0.029412 density=2.500000 center=0.013000
+turn=221 picked cell=10,6 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=221 result=MISS
+turn=222 mode=HUNT rank=1 cell=12,8 score=0.094936 prob=0.030303 density=2.500000 center=0.015000
+turn=222 mode=HUNT rank=2 cell=10,5 score=0.094003 prob=0.030303 density=2.500000 center=0.014000
+turn=222 mode=HUNT rank=3 cell=13,7 score=0.092067 prob=0.030303 density=2.500000 center=0.013000
+turn=222 mode=HUNT rank=4 cell=16,8 score=0.090687 prob=0.030303 density=2.500000 center=0.011000
+turn=222 mode=HUNT rank=5 cell=14,6 score=0.090336 prob=0.030303 density=2.500000 center=0.011000
+turn=222 picked cell=12,8 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=222 result=MISS
+turn=223 mode=HUNT rank=1 cell=14,8 score=0.094675 prob=0.031250 density=2.500000 center=0.013000
+turn=223 mode=HUNT rank=2 cell=13,7 score=0.093591 prob=0.031250 density=2.500000 center=0.013000
+turn=223 mode=HUNT rank=3 cell=10,4 score=0.093247 prob=0.031250 density=2.500000 center=0.013000
+turn=223 mode=HUNT rank=4 cell=14,6 score=0.093069 prob=0.031250 density=2.500000 center=0.011000
+turn=223 mode=HUNT rank=5 cell=10,2 score=0.092639 prob=0.031250 density=2.500000 center=0.011000
+turn=223 picked cell=14,8 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=223 result=MISS
+turn=224 mode=HUNT rank=1 cell=10,5 score=0.098401 prob=0.032258 density=2.500000 center=0.014000
+turn=224 mode=HUNT rank=2 cell=11,4 score=0.096802 prob=0.032258 density=2.500000 center=0.012000
+turn=224 mode=HUNT rank=3 cell=13,7 score=0.096429 prob=0.032258 density=2.500000 center=0.013000
+turn=224 mode=HUNT rank=4 cell=13,6 score=0.096421 prob=0.032258 density=2.500000 center=0.012000
+turn=224 mode=HUNT rank=5 cell=16,8 score=0.095585 prob=0.032258 density=2.500000 center=0.011000
+turn=224 picked cell=10,5 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=224 result=MISS
+turn=225 mode=HUNT rank=1 cell=13,7 score=0.099377 prob=0.033333 density=2.500000 center=0.013000
+turn=225 mode=HUNT rank=2 cell=10,4 score=0.099180 prob=0.033333 density=2.500000 center=0.013000
+turn=225 mode=HUNT rank=3 cell=13,6 score=0.098215 prob=0.033333 density=2.500000 center=0.012000
+turn=225 mode=HUNT rank=4 cell=14,5 score=0.096654 prob=0.033333 density=2.500000 center=0.010000
+turn=225 mode=HUNT rank=5 cell=9,2 score=0.096434 prob=0.033333 density=2.500000 center=0.012000
+turn=225 picked cell=13,7 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=225 result=MISS
+turn=226 mode=HUNT rank=1 cell=12,4 score=0.101494 prob=0.034483 density=2.500000 center=0.011000
+turn=226 mode=HUNT rank=2 cell=12,5 score=0.101466 prob=0.034483 density=2.500000 center=0.012000
+turn=226 mode=HUNT rank=3 cell=11,4 score=0.101265 prob=0.034483 density=2.500000 center=0.012000
+turn=226 mode=HUNT rank=4 cell=13,6 score=0.101265 prob=0.034483 density=2.500000 center=0.012000
+turn=226 mode=HUNT rank=5 cell=10,2 score=0.101086 prob=0.034483 density=2.500000 center=0.011000
+turn=226 picked cell=12,4 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=226 result=MISS
+turn=227 mode=HUNT rank=1 cell=12,5 score=0.105258 prob=0.035714 density=2.500000 center=0.012000
+turn=227 mode=HUNT rank=2 cell=9,2 score=0.104623 prob=0.035714 density=2.500000 center=0.012000
+turn=227 mode=HUNT rank=3 cell=10,4 score=0.103397 prob=0.035714 density=2.500000 center=0.013000
+turn=227 mode=HUNT rank=4 cell=14,6 score=0.103103 prob=0.035714 density=2.500000 center=0.011000
+turn=227 mode=HUNT rank=5 cell=10,2 score=0.102822 prob=0.035714 density=2.500000 center=0.011000
+turn=227 picked cell=12,5 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=227 result=MISS
+turn=228 mode=HUNT rank=1 cell=9,2 score=0.108748 prob=0.037037 density=2.500000 center=0.012000
+turn=228 mode=HUNT rank=2 cell=10,4 score=0.108734 prob=0.037037 density=2.500000 center=0.013000
+turn=228 mode=HUNT rank=3 cell=13,6 score=0.108525 prob=0.037037 density=2.500000 center=0.012000
+turn=228 mode=HUNT rank=4 cell=14,6 score=0.106863 prob=0.037037 density=2.500000 center=0.011000
+turn=228 mode=HUNT rank=5 cell=9,0 score=0.106508 prob=0.037037 density=2.500000 center=0.010000
+turn=228 picked cell=9,2 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=228 result=MISS
+turn=229 mode=HUNT rank=1 cell=13,6 score=0.112398 prob=0.038462 density=2.500000 center=0.012000
+turn=229 mode=HUNT rank=2 cell=10,4 score=0.111708 prob=0.038462 density=2.500000 center=0.013000
+turn=229 mode=HUNT rank=3 cell=16,8 score=0.110394 prob=0.038462 density=2.500000 center=0.011000
+turn=229 mode=HUNT rank=4 cell=11,2 score=0.109929 prob=0.038462 density=2.500000 center=0.010000
+turn=229 mode=HUNT rank=5 cell=13,5 score=0.109872 prob=0.038462 density=2.500000 center=0.011000
+turn=229 picked cell=13,6 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=229 result=MISS
+turn=230 mode=HUNT rank=1 cell=11,4 score=0.116193 prob=0.040000 density=2.500000 center=0.012000
+turn=230 mode=HUNT rank=2 cell=16,8 score=0.114647 prob=0.040000 density=2.500000 center=0.011000
+turn=230 mode=HUNT rank=3 cell=10,4 score=0.114166 prob=0.040000 density=2.500000 center=0.013000
+turn=230 mode=HUNT rank=4 cell=11,2 score=0.112921 prob=0.040000 density=2.500000 center=0.010000
+turn=230 mode=HUNT rank=5 cell=9,0 score=0.112698 prob=0.040000 density=2.500000 center=0.010000
+turn=230 picked cell=11,4 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=230 result=MISS
+turn=231 mode=HUNT rank=1 cell=10,2 score=0.119459 prob=0.041667 density=2.500000 center=0.011000
+turn=231 mode=HUNT rank=2 cell=14,6 score=0.118138 prob=0.041667 density=2.500000 center=0.011000
+turn=231 mode=HUNT rank=3 cell=10,4 score=0.117593 prob=0.041667 density=2.500000 center=0.013000
+turn=231 mode=HUNT rank=4 cell=13,5 score=0.116492 prob=0.041667 density=2.500000 center=0.011000
+turn=231 mode=HUNT rank=5 cell=15,4 score=0.116312 prob=0.041667 density=2.500000 center=0.008000
+turn=231 picked cell=10,2 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=231 result=MISS
+turn=232 mode=HUNT rank=1 cell=9,0 score=0.122947 prob=0.043478 density=2.500000 center=0.010000
+turn=232 mode=HUNT rank=2 cell=10,4 score=0.122903 prob=0.043478 density=2.500000 center=0.013000
+turn=232 mode=HUNT rank=3 cell=14,6 score=0.122644 prob=0.043478 density=2.500000 center=0.011000
+turn=232 mode=HUNT rank=4 cell=11,2 score=0.122374 prob=0.043478 density=2.500000 center=0.010000
+turn=232 mode=HUNT rank=5 cell=16,8 score=0.121632 prob=0.043478 density=2.500000 center=0.011000
+turn=232 picked cell=9,0 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=232 result=MISS
+turn=233 mode=HUNT rank=1 cell=10,4 score=0.130394 prob=0.045455 density=2.500000 center=0.013000
+turn=233 mode=HUNT rank=2 cell=16,8 score=0.128582 prob=0.045455 density=2.500000 center=0.011000
+turn=233 mode=HUNT rank=3 cell=13,5 score=0.128375 prob=0.045455 density=2.500000 center=0.011000
+turn=233 mode=HUNT rank=4 cell=14,6 score=0.126957 prob=0.045455 density=2.500000 center=0.011000
+turn=233 mode=HUNT rank=5 cell=16,6 score=0.126389 prob=0.045455 density=2.500000 center=0.009000
+turn=233 picked cell=10,4 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=233 result=MISS
+turn=234 mode=HUNT rank=1 cell=16,8 score=0.131192 prob=0.047619 density=2.500000 center=0.011000
+turn=234 mode=HUNT rank=2 cell=13,5 score=0.131181 prob=0.047619 density=2.500000 center=0.011000
+turn=234 mode=HUNT rank=3 cell=14,6 score=0.131152 prob=0.047619 density=2.500000 center=0.011000
+turn=234 mode=HUNT rank=4 cell=16,5 score=0.130611 prob=0.047619 density=2.500000 center=0.008000
+turn=234 mode=HUNT rank=5 cell=14,4 score=0.129725 prob=0.047619 density=2.500000 center=0.009000
+turn=234 picked cell=16,8 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=234 result=MISS
+turn=235 mode=HUNT rank=1 cell=13,5 score=0.138758 prob=0.050000 density=2.500000 center=0.011000
+turn=235 mode=HUNT rank=2 cell=16,6 score=0.137275 prob=0.050000 density=2.500000 center=0.009000
+turn=235 mode=HUNT rank=3 cell=14,6 score=0.137027 prob=0.050000 density=2.500000 center=0.011000
+turn=235 mode=HUNT rank=4 cell=15,4 score=0.136827 prob=0.050000 density=2.500000 center=0.008000
+turn=235 mode=HUNT rank=5 cell=11,0 score=0.136451 prob=0.050000 density=2.500000 center=0.008000
+turn=235 picked cell=13,5 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=235 result=MISS
+turn=236 mode=HUNT rank=1 cell=11,0 score=0.143586 prob=0.052632 density=2.500000 center=0.008000
+turn=236 mode=HUNT rank=2 cell=16,5 score=0.142935 prob=0.052632 density=2.500000 center=0.008000
+turn=236 mode=HUNT rank=3 cell=13,2 score=0.142712 prob=0.052632 density=2.500000 center=0.008000
+turn=236 mode=HUNT rank=4 cell=14,6 score=0.142618 prob=0.052632 density=2.500000 center=0.011000
+turn=236 mode=HUNT rank=5 cell=11,2 score=0.142530 prob=0.052632 density=2.500000 center=0.010000
+turn=236 picked cell=11,0 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=236 result=MISS
+turn=237 mode=HUNT rank=1 cell=14,6 score=0.152586 prob=0.055556 density=2.500000 center=0.011000
+turn=237 mode=HUNT rank=2 cell=16,5 score=0.150696 prob=0.055556 density=2.500000 center=0.008000
+turn=237 mode=HUNT rank=3 cell=11,2 score=0.150572 prob=0.055556 density=2.500000 center=0.010000
+turn=237 mode=HUNT rank=4 cell=14,5 score=0.150110 prob=0.055556 density=2.500000 center=0.010000
+turn=237 mode=HUNT rank=5 cell=13,2 score=0.149866 prob=0.055556 density=2.500000 center=0.008000
+turn=237 picked cell=14,6 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=237 result=MISS
+turn=238 mode=HUNT rank=1 cell=11,2 score=0.160786 prob=0.058824 density=2.500000 center=0.010000
+turn=238 mode=HUNT rank=2 cell=14,4 score=0.160190 prob=0.058824 density=2.500000 center=0.009000
+turn=238 mode=HUNT rank=3 cell=15,4 score=0.159201 prob=0.058824 density=2.500000 center=0.008000
+turn=238 mode=HUNT rank=4 cell=16,6 score=0.158169 prob=0.058824 density=2.500000 center=0.009000
+turn=238 mode=HUNT rank=5 cell=14,5 score=0.157695 prob=0.058824 density=2.500000 center=0.010000
+turn=238 picked cell=11,2 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=238 result=MISS
+turn=239 mode=HUNT rank=1 cell=15,4 score=0.168126 prob=0.062500 density=2.500000 center=0.008000
+turn=239 mode=HUNT rank=2 cell=14,5 score=0.167348 prob=0.062500 density=2.500000 center=0.010000
+turn=239 mode=HUNT rank=3 cell=16,5 score=0.166935 prob=0.062500 density=2.500000 center=0.008000
+turn=239 mode=HUNT rank=4 cell=16,6 score=0.166522 prob=0.062500 density=2.500000 center=0.009000
+turn=239 mode=HUNT rank=5 cell=13,2 score=0.166385 prob=0.062500 density=2.500000 center=0.008000
+turn=239 picked cell=15,4 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=239 result=MISS
+turn=240 mode=HUNT rank=1 cell=16,6 score=0.177951 prob=0.066667 density=2.500000 center=0.009000
+turn=240 mode=HUNT rank=2 cell=14,5 score=0.177862 prob=0.066667 density=2.500000 center=0.010000
+turn=240 mode=HUNT rank=3 cell=16,5 score=0.177862 prob=0.066667 density=2.500000 center=0.008000
+turn=240 mode=HUNT rank=4 cell=14,4 score=0.177816 prob=0.066667 density=2.500000 center=0.009000
+turn=240 mode=HUNT rank=5 cell=16,4 score=0.177105 prob=0.066667 density=2.500000 center=0.007000
+turn=240 picked cell=16,6 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=240 result=MISS
+turn=241 mode=HUNT rank=1 cell=14,5 score=0.192282 prob=0.071429 density=2.500000 center=0.010000
+turn=241 mode=HUNT rank=2 cell=14,4 score=0.191738 prob=0.071429 density=2.500000 center=0.009000
+turn=241 mode=HUNT rank=3 cell=12,0 score=0.189182 prob=0.071429 density=2.500000 center=0.007000
+turn=241 mode=HUNT rank=4 cell=13,2 score=0.188688 prob=0.071429 density=2.500000 center=0.008000
+turn=241 mode=HUNT rank=5 cell=14,2 score=0.188073 prob=0.071429 density=2.500000 center=0.007000
+turn=241 picked cell=14,5 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=241 result=MISS
+turn=242 mode=HUNT rank=1 cell=16,4 score=0.203566 prob=0.076923 density=2.500000 center=0.007000
+turn=242 mode=HUNT rank=2 cell=16,5 score=0.203177 prob=0.076923 density=2.500000 center=0.008000
+turn=242 mode=HUNT rank=3 cell=13,2 score=0.202905 prob=0.076923 density=2.500000 center=0.008000
+turn=242 mode=HUNT rank=4 cell=12,0 score=0.202449 prob=0.076923 density=2.500000 center=0.007000
+turn=242 mode=HUNT rank=5 cell=14,2 score=0.201999 prob=0.076923 density=2.500000 center=0.007000
+turn=242 picked cell=16,4 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=242 result=MISS
+turn=243 mode=HUNT rank=1 cell=14,4 score=0.219970 prob=0.083333 density=2.500000 center=0.009000
+turn=243 mode=HUNT rank=2 cell=13,0 score=0.218565 prob=0.083333 density=2.500000 center=0.006000
+turn=243 mode=HUNT rank=3 cell=13,2 score=0.217841 prob=0.083333 density=2.500000 center=0.008000
+turn=243 mode=HUNT rank=4 cell=14,2 score=0.217147 prob=0.083333 density=2.500000 center=0.007000
+turn=243 mode=HUNT rank=5 cell=16,5 score=0.216824 prob=0.083333 density=2.500000 center=0.008000
+turn=243 picked cell=14,4 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=243 result=MISS
+turn=244 mode=HUNT rank=1 cell=13,2 score=0.239026 prob=0.090909 density=2.500000 center=0.008000
+turn=244 mode=HUNT rank=2 cell=13,0 score=0.237532 prob=0.090909 density=2.500000 center=0.006000
+turn=244 mode=HUNT rank=3 cell=12,0 score=0.237238 prob=0.090909 density=2.500000 center=0.007000
+turn=244 mode=HUNT rank=4 cell=15,2 score=0.236950 prob=0.090909 density=2.500000 center=0.006000
+turn=244 mode=HUNT rank=5 cell=16,5 score=0.236806 prob=0.090909 density=2.500000 center=0.008000
+turn=244 picked cell=13,2 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=244 result=MISS
+turn=245 mode=HUNT rank=1 cell=15,2 score=0.260124 prob=0.100000 density=2.500000 center=0.006000
+turn=245 mode=HUNT rank=2 cell=14,2 score=0.259647 prob=0.100000 density=2.500000 center=0.007000
+turn=245 mode=HUNT rank=3 cell=12,0 score=0.259600 prob=0.100000 density=2.500000 center=0.007000
+turn=245 mode=HUNT rank=4 cell=16,5 score=0.259468 prob=0.100000 density=2.500000 center=0.008000
+turn=245 mode=HUNT rank=5 cell=16,3 score=0.259393 prob=0.100000 density=2.500000 center=0.006000
+turn=245 picked cell=15,2 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=245 result=MISS
+turn=246 mode=HUNT rank=1 cell=16,5 score=0.289032 prob=0.111111 density=2.500000 center=0.008000
+turn=246 mode=HUNT rank=2 cell=13,0 score=0.287810 prob=0.111111 density=2.500000 center=0.006000
+turn=246 mode=HUNT rank=3 cell=14,2 score=0.287260 prob=0.111111 density=2.500000 center=0.007000
+turn=246 mode=HUNT rank=4 cell=12,0 score=0.287254 prob=0.111111 density=2.500000 center=0.007000
+turn=246 mode=HUNT rank=5 cell=14,0 score=0.286994 prob=0.111111 density=2.500000 center=0.005000
+turn=246 picked cell=16,5 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=246 result=MISS
+turn=247 mode=HUNT rank=1 cell=14,2 score=0.322568 prob=0.125000 density=2.500000 center=0.007000
+turn=247 mode=HUNT rank=2 cell=12,0 score=0.322456 prob=0.125000 density=2.500000 center=0.007000
+turn=247 mode=HUNT rank=3 cell=14,0 score=0.320853 prob=0.125000 density=2.500000 center=0.005000
+turn=247 mode=HUNT rank=4 cell=16,3 score=0.320737 prob=0.125000 density=2.500000 center=0.006000
+turn=247 mode=HUNT rank=5 cell=15,0 score=0.319294 prob=0.125000 density=2.500000 center=0.004000
+turn=247 picked cell=14,2 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=247 result=MISS
+turn=248 mode=HUNT rank=1 cell=14,0 score=0.366409 prob=0.142857 density=2.500000 center=0.005000
+turn=248 mode=HUNT rank=2 cell=16,2 score=0.365244 prob=0.142857 density=2.500000 center=0.005000
+turn=248 mode=HUNT rank=3 cell=13,0 score=0.364940 prob=0.142857 density=2.500000 center=0.006000
+turn=248 mode=HUNT rank=4 cell=12,0 score=0.364234 prob=0.142857 density=2.500000 center=0.007000
+turn=248 mode=HUNT rank=5 cell=16,3 score=0.363298 prob=0.142857 density=2.500000 center=0.006000
+turn=248 picked cell=14,0 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=248 result=MISS
+turn=249 mode=HUNT rank=1 cell=12,0 score=0.426965 prob=0.166667 density=2.500000 center=0.007000
+turn=249 mode=HUNT rank=2 cell=13,0 score=0.424862 prob=0.166667 density=2.500000 center=0.006000
+turn=249 mode=HUNT rank=3 cell=16,3 score=0.424065 prob=0.166667 density=2.500000 center=0.006000
+turn=249 mode=HUNT rank=4 cell=16,2 score=0.422293 prob=0.166667 density=2.500000 center=0.005000
+turn=249 mode=HUNT rank=5 cell=15,0 score=0.422232 prob=0.166667 density=2.500000 center=0.004000
+turn=249 picked cell=12,0 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=249 result=MISS
+turn=250 mode=HUNT rank=1 cell=16,3 score=0.507081 prob=0.200000 density=2.500000 center=0.006000
+turn=250 mode=HUNT rank=2 cell=13,0 score=0.506808 prob=0.200000 density=2.500000 center=0.006000
+turn=250 mode=HUNT rank=3 cell=15,0 score=0.506300 prob=0.200000 density=2.500000 center=0.004000
+turn=250 mode=HUNT rank=4 cell=17,0 score=0.506283 prob=0.200000 density=2.500000 center=0.002000
+turn=250 mode=HUNT rank=5 cell=16,2 score=0.505732 prob=0.200000 density=2.500000 center=0.005000
+turn=250 picked cell=16,3 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=250 result=MISS
+turn=251 mode=HUNT rank=1 cell=13,0 score=0.634481 prob=0.250000 density=2.500000 center=0.006000
+turn=251 mode=HUNT rank=2 cell=15,0 score=0.631252 prob=0.250000 density=2.500000 center=0.004000
+turn=251 mode=HUNT rank=3 cell=16,2 score=0.631094 prob=0.250000 density=2.500000 center=0.005000
+turn=251 mode=HUNT rank=4 cell=17,0 score=0.630662 prob=0.250000 density=2.500000 center=0.002000
+turn=251 mode=HUNT rank=5 cell=7,8 score=0.019778 prob=0.000000 density=0.250000 center=0.016000
+turn=251 picked cell=13,0 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=251 result=MISS
+turn=252 mode=HUNT rank=1 cell=16,2 score=0.842228 prob=0.333333 density=2.500000 center=0.005000
+turn=252 mode=HUNT rank=2 cell=15,0 score=0.840052 prob=0.333333 density=2.500000 center=0.004000
+turn=252 mode=HUNT rank=3 cell=17,0 score=0.836047 prob=0.333333 density=2.500000 center=0.002000
+turn=252 mode=HUNT rank=4 cell=8,7 score=0.020281 prob=0.000000 density=0.250000 center=0.016000
+turn=252 mode=HUNT rank=5 cell=6,8 score=0.018219 prob=0.000000 density=0.250000 center=0.015000
+turn=252 picked cell=16,2 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=252 result=MISS
+turn=253 mode=HUNT rank=1 cell=17,0 score=1.256106 prob=0.500000 density=2.500000 center=0.002000
+turn=253 mode=HUNT rank=2 cell=15,0 score=1.255402 prob=0.500000 density=2.500000 center=0.004000
+turn=253 mode=HUNT rank=3 cell=8,7 score=0.019481 prob=0.000000 density=0.250000 center=0.016000
+turn=253 mode=HUNT rank=4 cell=6,8 score=0.018634 prob=0.000000 density=0.250000 center=0.015000
+turn=253 mode=HUNT rank=5 cell=13,10 score=0.018062 prob=0.000000 density=0.250000 center=0.014000
+turn=253 picked cell=17,0 target_cluster=None active_clusters=1 remaining_cells=1 scans=4
+turn=253 result=KILL

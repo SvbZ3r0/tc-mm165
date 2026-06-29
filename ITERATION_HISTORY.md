@@ -594,3 +594,385 @@ Avoid for now:
 - Small P-threshold tuning unless validated on a fresh large range.
 - Strict chase candidate filtering.
 - More scans without a clearly better way to consume the scan results.
+
+## rejected_iter19_defer_weak_kill_leftovers
+
+Reason: trace comparisons against iter13 and iter16 showed a repeated loss pattern after `KILL`: iter18 often kept a leftover active cluster and chased it immediately, while iter13/iter16 returned to hunt and avoided the loss.
+
+Hypothesis: if a leftover post-KILL cluster had no legal placement support, delaying that cluster for one hunt turn would avoid bad chase overcommit while preserving iter18's same-length ambiguity bookkeeping.
+
+Experiment: defer zero-support leftover clusters created after a `KILL` for one hunt turn, instead of immediately adding them back to `active_clusters`.
+
+Result: rejected at the first gate.
+
+```text
+1..1000: iter19_defer_weak_kill_leftovers 139729.033399
+1..1000: iter18_kill_ambiguity_same_len    139469.033399
+delta: +260.000000
+```
+
+Archive:
+
+- Source: `versions/Battleships_rejected_iter19_defer_weak_kill_leftovers_e7c0d5da2c9f.rs`
+- Run: `benchmarks/20260626T032437Z_iter19_defer_weak_kill_leftovers`
+- Archive manifest: `archives/20260626T032511Z_rejected_iter19_defer_weak_kill_leftovers_e7c0d5da2c9f/manifest.txt`
+
+Inference: the trace pattern was real, but this intervention is too blunt. Some zero-support leftovers still need to be chased immediately, or the one-turn hunt delay loses more than it recovers.
+
+## rejected_iter19_touching_leftover_defer_size1
+
+Reason: the broader `rejected_iter19_defer_weak_kill_leftovers` trial showed that blindly delaying all zero-support post-`KILL` leftovers was too blunt, but trace diagnostics still showed a real failure mode where iter18 chased contaminated leftovers after a `KILL` while iter13/iter16 returned to hunt.
+
+Hypothesis: restrict the delay to the most plausible touching-ship contamination case: a singleton leftover cluster adjacent to the committed killed cells, with zero legal placement support. This should suppress bad post-`KILL` overcommit without delaying useful multi-cell or supported chase contexts.
+
+Experiment: after `KILL`, split leftover hits as usual, but defer only clusters with `len == 1`, adjacency to the committed killed cells, and zero continuation support. Deferred clusters are promoted after one hunt action.
+
+Result: rejected after the second validation range.
+
+```text
+1..1000:    iter19 139466.033399  iter18 139469.033399  delta -3.000000
+1001..3000: iter19 281439.422478  iter18 281346.422478  delta +93.000000
+combined:   iter19 420905.455877  iter18 420815.455877  delta +90.000000
+```
+
+Archive:
+
+- Source: `versions/Battleships_rejected_iter19_touching_leftover_defer_size1_44cbd2f29d25.rs`
+- Validation: `benchmarks/validation_iter19_touching_leftover_defer_size1.tsv`
+- Runs: `benchmarks/20260629T061042Z_iter19_touching_leftover_defer_size1`, `benchmarks/20260629T061118Z_iter19_touching_leftover_defer_size1`
+- Archive manifest: `archives/20260629T061203Z_rejected_iter19_touching_leftover_defer_size1_44cbd2f29d25/manifest.txt`
+
+Inference: the selective rule was less damaging than the broad defer policy, but still not beneficial. Even singleton adjacent zero-support leftovers sometimes contain useful chase signal, or the one-turn delay disrupts timing more than it prevents overcommit.
+
+## rejected_iter19_particle_posterior
+
+Reason: leaderboard movement suggested our independent-placement heatmap had saturated and was missing complete-board reasoning. The intended structural improvement was to estimate `P(cell occupied | all observations)` by sampling complete non-overlapping fleets, rather than counting each ship placement independently.
+
+Hypothesis: a sampled complete-fleet posterior would use global constraints that the heatmap ignores: non-overlap between remaining ships, exact scan-count consistency, remaining ship inventory, and all known hits on one board.
+
+Experiment: added bitset-backed single-ship placements and a randomized complete-fleet rejection sampler. Sampled boards had to avoid miss/dead cells, cover known `Hit` cells, avoid overlap, and satisfy scan rectangle counts including already-dead cells. The posterior occupancy was normalized and blended into `best_hunt_cell`.
+
+Results:
+
+```text
+v1 broad posterior:
+  1..1000:    iter19 139349.033399  iter18 139469.033399  delta -120.000000  seconds 126
+  1001..3000: iter19 282029.422478  iter18 281346.422478  delta +683.000000  seconds 250
+  combined:   delta +563.000000
+
+v2 late only, remaining_cells <= 2N:
+  1..1000:    iter19 138968.033399  iter18 139469.033399  delta -501.000000  seconds 78
+  1001..3000: iter19 281907.422478  iter18 281346.422478  delta +561.000000  seconds 157
+  combined:   delta +60.000000
+
+v3 endgame only, remaining_cells <= N:
+  1..1000:    iter19 139641.033399  iter18 139469.033399  delta +172.000000  seconds 62
+```
+
+Archive:
+
+- `versions/Battleships_rejected_iter19_particle_posterior_v1_broad_2f7fef9fa6ab.rs`
+- `versions/Battleships_rejected_iter19_particle_posterior_v2_late_c25938f7e699.rs`
+- `versions/Battleships_rejected_iter19_particle_posterior_v3_endgame_dad42e2ab167.rs`
+- Validation: `benchmarks/validation_iter19_particle_posterior.tsv`
+
+Inference: complete-board posterior reasoning is still the most plausible missing model class, but this naive rejection sampler is not good enough. It is slow and unstable across ranges. The strong `1..1000` result for `v2` says the idea can help, but the `1001..3000` regression says the sampler/blend is too noisy or biased. A better version should use deterministic/beam enumeration of high-probability fleet states, or use the sampler only as diagnostics until it produces stable posterior estimates.
+
+## iter20_precomputed_beam_posterior
+
+Reason: leaderboard movement suggested the independent-placement heatmap was missing complete-board reasoning. We corrected the architecture to use a separate generated placement model rather than rebuilding placements at runtime.
+
+Model artifact:
+
+- Generator: `tools/generate_placement_model.py`
+- Generated model: `placement_model_generated.rs`
+- Model hash: `a3c9ce3e9f85c185f2207818d7d232bb9e15327e8070e7bb057615257c577df1`
+- The development solver can use `include!("placement_model_generated.rs")`; final packaging should follow actual contest submission rules, not assumptions.
+
+Experiments:
+
+```text
+precomputed_beam_v1:
+  1..1000:    iter20 138435.033399  iter18 139469.033399  delta -1034.000000  seconds 233
+
+precomputed_beam_dedup:
+  1..1000:    iter20 138768.033399  iter18 139469.033399  delta -701.000000   seconds 236
+  inference: exact occupied-bitset dedup was slower/no better and hurt state diversity.
+
+beam_late_fallback:
+  1..1000:    iter20 138263.033399  iter18 139469.033399  delta -1206.000000  seconds 240
+  1001..3000: iter20 282452.422478  iter18 281346.422478  delta +1106.000000  seconds 469
+  combined:   delta -100.000000
+  inference: strong first-range signal but too mixed and too slow to accept.
+
+beam_evidence_score:
+  1..1000:    iter20 139111.033399  iter18 139469.033399  delta -358.000000   seconds 277
+  inference: first evidence-consistency scoring formula regressed versus weak-prior beam.
+```
+
+Archives:
+
+- `versions/Battleships_iter20_beam_late_fallback_mixed_baseline_a7e9309fbaf1.rs`
+- `versions/Battleships_rejected_iter20_precomputed_beam_dedup_5f0b22e4ebab.rs`
+- `versions/Battleships_rejected_iter20_beam_evidence_score_7239ba4b8c21.rs`
+- Validation: `benchmarks/validation_iter20_precomputed_beam.tsv`
+
+Inference: the precomputed complete-fleet beam is the first model-class change with a large local gain, but the current beam is unstable across ranges and very slow. The weak-prior beam outperformed the first evidence scorer, so the next work should not simply add penalties. It should improve the beam search mechanics: canonical handling of identical ships, state representation by placement indices instead of cloned bitsets, and a better future-feasibility bound before scoring tweaks.
+
+## rejected_iter21_canonical_same_len_beam
+
+Reason: iter20's precomputed complete-fleet beam showed a large first-range gain but was slow and unstable. One likely waste was generating equivalent permutations for identical ships of the same length.
+
+Hypothesis: carry each placement's precomputed index in the beam state and, when placing another ship of the same length, only allow nondecreasing placement indices. This canonicalizes equal-length ship ordering and should reduce duplicate fleet prefixes without changing the intended fleet model.
+
+Experiment: started from `versions/Battleships_iter20_beam_late_fallback_mixed_baseline_a7e9309fbaf1.rs`, added placement indices to `BeamPlacement`, tracked `last_len`/`last_index` in `BeamState`, and skipped same-length placements with lower indices.
+
+Result: rejected after broader validation.
+
+```text
+1..1000:    iter21 138383.033399  iter18 139469.033399  delta -1086.000000  seconds 206
+1001..3000: iter21 281983.422478  iter18 281346.422478  delta +637.000000   seconds 396
+3001..5000: iter21 282736.279304  iter18 282197.279304  delta +539.000000   seconds 403
+combined:   iter21 703102.735181  iter18 703012.735181  delta +90.000000
+```
+
+Archive:
+
+- Candidate archive: `versions/Battleships_iter21_canonical_same_len_beam_candidate_4246f0ada2e2.rs`
+- Rejected archive: `versions/Battleships_rejected_iter21_canonical_same_len_beam_4246f0ada2e2.rs`
+- Validation: `benchmarks/validation_iter21_canonical_same_len_beam.tsv`
+
+Inference: canonicalizing identical ships reduced runtime and improved the iter20 second-range regression, but the model still failed by `3001..5000`. The beam line still needs a better decision about when to trust the posterior, or a less biased state selection policy. Mechanics alone did not make it stable.
+
+## Iter21 Beam Loss Timing Diagnostics
+
+Question: are iter21 beam losses mainly late-game cleanup failures, or earlier trajectory changes?
+
+Method:
+
+- Generated fresh iter18 baseline logs for `1..1000`, `1001..3000`, and `3001..5000`.
+- Compared per-seed scores against iter21 canonical beam.
+- Traced the top 30 iter21 losses and top 30 iter21 wins versus iter18.
+- Classified first differing decision by turn and mode.
+
+Artifacts:
+
+- Per-seed deltas: `diagnostics/iter21_vs_iter18_seed_deltas.tsv`
+- Delta summary: `diagnostics/iter21_vs_iter18_seed_deltas.tsv.summary`
+- Trace divergence table: `diagnostics/iter21_vs_iter18_trace_divergence.tsv`
+- Trace divergence summary: `diagnostics/iter21_vs_iter18_trace_divergence.tsv.summary`
+- Trace roots: `diagnostics/traces_iter18_vs_iter21/iter18`, `diagnostics/traces_iter18_vs_iter21/iter21`
+- Scripts: `tools/diagnose_seed_deltas.py`, `tools/diagnose_trace_divergence.py`
+
+Per-seed distribution over `1..5000`:
+
+```text
+seeds:          5000
+total delta:    +90.000000
+iter21 better:  1851 seeds
+iter21 worse:   1874 seeds
+same:           1275 seeds
+top 80 losses:  +6376.000000
+top 80 wins:    -6263.000000
+```
+
+First-divergence timing for traced top-30 losses:
+
+```text
+turn 3: 22 seeds
+turn 5:  8 seeds
+mode: iter21 CHASE, iter18 HUNT in all 30
+```
+
+First-divergence timing for traced top-30 wins:
+
+```text
+turn 3: 28 seeds
+turn 5:  2 seeds
+mode: iter21 CHASE, iter18 HUNT in all 30
+```
+
+Inference: the beam's biggest wins and losses both originate in the opening trajectory, usually immediately after the first beam-influenced hunt shot creates a chase path while iter18 remains in hunt. The issue is not primarily late-game cleanup. This also explains why late-game-only beam variants did not solve the problem: by the time `remaining_cells <= N` or similar gates trigger, the major trajectory divergence has already happened or the beam has too little leverage left.
+
+Implication for iter22: do not frame the beam as a late-game patch. The safer experiment is a confidence override only for early/uncertain hunt decisions, with strict guardrails, or diagnostics that compare heatmap-best versus beam-best before allowing the beam to create an early chase branch.
+
+## Iter21 Top Swing Separator Diagnostics
+
+Question: the top iter21 losses and wins are nearly symmetric (`top 80 losses +6376`, `top 80 wins -6263`). Is there an if/then condition that separates the good beam branches from the bad ones?
+
+Additional diagnostics added:
+
+- Enhanced traces with `GAME` and `RESULT` lines.
+- Beam-stat traces logging the first beam posterior state count and heatmap/beam best-second gaps.
+- Feature tables:
+  - `diagnostics/iter21_top_swing_features.tsv`
+  - `diagnostics/iter21_top_swing_early_window.tsv`
+  - `diagnostics/iter21_beamstat_features.tsv`
+  - `diagnostics/iter21_beamstat_gate_impact.tsv`
+- Scripts:
+  - `tools/diagnose_top_swing_features.py`
+  - `tools/diagnose_early_window.py`
+  - `tools/diagnose_beamstat_features.py`
+
+Findings:
+
+- N/P buckets and immediate result-window features did not cleanly separate wins from losses.
+- The strongest available discriminator was beam posterior state count.
+- On the traced top-60 swing seeds, allow-beam gates around low state count (`states <= ~53..70`) had the best net impact. This means the beam is more reliable when the complete-fleet posterior is concentrated into fewer surviving states, and more dangerous when many states survive and the truncated beam can become confidently wrong.
+
+Interpretation:
+
+The symmetrical variance is not late game and not explained by simple P/N buckets. It appears to be a posterior-confidence issue: when the beam state set is diffuse/high-count, its selected branch is high variance. When state count is low, the constraints are tight enough that beam guidance is more often useful.
+
+Candidate iter22 condition:
+
+```text
+Use beam only if:
+  beam_states <= 65   # tune 53, 59, 65, 70
+  and heatmap is not already decisive
+```
+
+This should be tested as an allow-beam gate, not as a blend everywhere.
+
+## rejected_iter22_beam_confidence_override_s65_h105
+
+Reason: iter21's top wins/losses were nearly symmetric and first diverged at turns 3/5. Follow-up diagnostics suggested beam state count was the best available separator among traced swing seeds, with low state counts around `<= 53..70` preserving more top wins than losses.
+
+Hypothesis: use the beam only as a confidence-gated hunt override, not as a global blend. Start with `BEAM_OVERRIDE_MAX_STATES = 65` and require the heatmap to be non-decisive (`HEATMAP_DECISIVE_RATIO = 1.05`). Also move beam magic constants to named top-level constants.
+
+Experiment: started from iter21 canonical beam, replaced the `0.70/0.30` heatmap/beam blend with a gated override. If `beam_states <= 65` and `heat_best / heat_second <= 1.05`, score cells by normalized beam posterior; otherwise use iter18 heatmap scoring.
+
+Result: rejected after the second validation range.
+
+```text
+1..1000:    iter22 139132.033399  iter18 139469.033399  delta -337.000000   seconds 209
+1001..3000: iter22 283485.422478  iter18 281346.422478  delta +2139.000000  seconds 407
+combined:   iter22 422617.455877  iter18 420815.455877  delta +1802.000000
+```
+
+Archive:
+
+- Source: `versions/Battleships_rejected_iter22_beam_confidence_override_s65_h105_5fb51539fd87.rs`
+- Validation: `benchmarks/validation_iter22_beam_confidence_override.tsv`
+- Archive manifest: `archives/20260629T125818Z_rejected_iter22_beam_confidence_override_s65_h105_5fb51539fd87/manifest.txt`
+
+Inference: the traced top-swing separator did not generalize. Low beam state count is not sufficient as a global allow condition, and converting blend to hard override made the second range substantially worse. Further beam use needs richer confidence diagnostics or per-decision counterfactual logging, not only state-count gating.
+
+## rejected_iter23_beam_topk_rerank
+
+Reason: iter22 showed that hard beam override was too violent. The next hypothesis was to use the complete-fleet beam only as a tie-breaker/veto among cells the original heatmap already liked, preventing beam from selecting an unrelated branch.
+
+Hypothesis: take the top `K` heatmap candidates and rerank only those by `heat_score * (1 + factor * normalized_beam_score)`. This lets the beam discourage weak heatmap choices without choosing outside the heatmap's plausible set.
+
+Experiment:
+
+- Started from iter21 canonical beam.
+- Added top-level constants for beam widths, placement limits, min states, `BEAM_RERANK_TOP_K`, and `BEAM_RERANK_FACTOR`.
+- Preserved existing heatmap scoring for every cell.
+- Collected candidates, sorted by heatmap score, took top `K=5`, and reranked with beam support.
+- Tested factors `0.15` and `0.05`.
+
+Results:
+
+```text
+topk5_f015:
+  1..1000:     iter23 139380.033399  iter18 139469.033399  delta -89.000000
+  1001..3000:  iter23 282355.422478  iter18 281346.422478  delta +1009.000000
+  combined:    delta +920.000000
+
+topk5_f005:
+  1..1000:     iter23 138872.033399  iter18 139469.033399  delta -597.000000
+  1001..3000:  iter23 281604.422478  iter18 281346.422478  delta +258.000000
+  3001..5000:  iter23 282075.279304  iter18 282197.279304  delta -122.000000
+  5001..10000: iter23 719395.572380  iter18 718206.572380  delta +1189.000000
+  combined:    delta +728.000000
+```
+
+Archive:
+
+- `versions/Battleships_rejected_iter23_beam_topk5_rerank_f015_0069b0e586bf.rs`
+- Candidate archive: `versions/Battleships_iter23_beam_topk5_rerank_f005_candidate_c314141b94c0.rs`
+- Rejected final: `versions/Battleships_rejected_iter23_beam_topk5_rerank_f005_c314141b94c0.rs`
+- Validation: `benchmarks/validation_iter23_beam_topk_rerank.tsv`
+
+Inference: top-K reranking is much less destructive than hard override and `factor=0.05` nearly validated through `1..5000`, but the final `5001..10000` range failed. The beam still introduces unstable early trajectory changes, just more softly. This remains a promising direction, but the current expensive beam is not robust enough to promote.
+
+## Iter23 Counterfactual Branch Labels
+
+Purpose: move beyond seed-level correlation by labeling the first rerank branch directly. For selected top iter23 loss/win seeds, the tooling finds the first HUNT decision where the top-K beam reranker chooses a different cell from pure heatmap, then reruns two counterfactual branches:
+
+- A: force the heatmap cell at that branch turn, then continue the same iter23 policy.
+- B: force the iter23 policy/reranked cell at that branch turn, then continue the same iter23 policy.
+
+Label:
+
+```text
+beam_better = score(B) < score(A)
+```
+
+Artifacts:
+
+- Instrumented source: `tmp_trace/Battleships_iter23_branch.rs`
+- Dataset builder: `tools/build_counterfactual_dataset.py`
+- Dataset: `diagnostics/iter23_counterfactual_branch_labels.tsv`
+- Summary: `diagnostics/iter23_counterfactual_branch_labels.summary`
+- Predicate ranking: `diagnostics/iter23_counterfactual_branch_label_predicates.tsv`
+- Trace root: `diagnostics/counterfactual_iter23/`
+
+Pilot scope: top 20 iter23 losses and top 20 iter23 wins versus iter18. Only seeds where iter23 actually reranked away from heatmap produce labeled rows.
+
+Resulting labels:
+
+```text
+rows: 27
+beam_better=True:  9
+beam_better=False: 18
+rows from top_loss seeds: 14  (beam better 2, beam worse 12)
+rows from top_win seeds:  13  (beam better 7, beam worse 6)
+```
+
+Best simple separators so far:
+
+```text
+remaining_cells >= 26       -> beam good 3, beam bad 15
+beam_entropy >= 3.60494     -> beam good 1, beam bad 13
+beam_best >= 0.832888       -> beam good 3, beam bad 15
+beam_second >= 0.832888     -> beam good 3, beam bad 15
+```
+
+Interpretation: the reranker is most dangerous when the branch happens while many ship cells remain and the beam posterior is diffuse/high-entropy. This is consistent with the earlier variance diagnosis: early high-uncertainty beam nudges create large trajectory swings. A plausible next tested rule is not another top-K/factor sweep, but an abstention gate such as:
+
+```text
+allow rerank only if remaining_cells < 26
+and beam_entropy < 3.60
+```
+
+This is preliminary: the labeled dataset is small, but it now labels branch correctness directly rather than using whole-solver outcomes as a proxy.
+
+## rejected_iter24_diverse_beam_sig20_m3
+
+Reason: counterfactual diagnostics suggested the beam posterior may be mode-collapsed: early high-entropy/high-uncertainty beam nudges are often wrong, so we tried to improve the posterior itself rather than tune a gate.
+
+Hypothesis: keep a more diverse set of beam states by limiting how many retained states may share the same occupancy signature over the top heatmap cells. This should reduce fake consensus from near-duplicate beam states.
+
+Experiment:
+
+- Started from iter21 canonical beam.
+- Added top-level beam constants.
+- Computed the top `BEAM_DIVERSITY_CELLS = 20` heatmap cells in `best_hunt_cell`.
+- During every beam expansion, computed a 64-bit signature of each partial state's occupancy over those cells.
+- Kept at most `BEAM_MAX_STATES_PER_SIGNATURE = 3` states per signature before applying normal beam width.
+
+Result: rejected on the first gate.
+
+```text
+1..1000: iter24 139878.033399  iter18 139469.033399  delta +409.000000  seconds 184
+```
+
+Archive:
+
+- Source: `versions/Battleships_rejected_iter24_diverse_beam_sig20_m3_f34293867ef8.rs`
+- Validation: `benchmarks/validation_iter24_diverse_beam.tsv`
+- Archive manifest: `archives/20260629T164749Z_rejected_iter24_diverse_beam_sig20_m3_f34293867ef8/manifest.txt`
+
+Inference: this diversity constraint was too blunt. The beam's concentration over top heatmap cells is not purely fake consensus; forcing diversity there removed useful signal. If we revisit diversity, it should preserve high-probability consensus but diversify lower-ranked alternatives, or diversify by complete-fleet placement identity rather than top-cell occupancy.

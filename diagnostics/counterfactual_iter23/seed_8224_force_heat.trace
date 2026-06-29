@@ -1,0 +1,296 @@
+GAME n=17 p=0.812002780 remaining=[0, 2, 1, 0, 1, 2, 1, 1, 2]
+BRANCH branch_turn=? n=17 remaining_cells=47 beam_states=0 heat_cell=9,10 beam_cell=9,10 chosen_cell=9,10 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=2.264563661 heat_second=2.243752536 beam_best=0.000000000 beam_second=0.000000000 heat_cell_beam=0.000000000 beam_cell_heat=2.264563661 chosen_heat=2.264563661 chosen_beam=0.000000000 beam_entropy=0.000000000
+DECISION branch_turn=1 cell=9,10 target_cluster=None
+RESULT branch_turn=1 cell=9,10 result=MISS remaining_cells=47 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=47 beam_states=0 heat_cell=10,9 beam_cell=10,9 chosen_cell=10,9 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=2.351286881 heat_second=2.340824026 beam_best=0.000000000 beam_second=0.000000000 heat_cell_beam=0.000000000 beam_cell_heat=2.351286881 chosen_heat=2.351286881 chosen_beam=0.000000000 beam_entropy=0.000000000
+DECISION branch_turn=2 cell=10,9 target_cluster=None
+RESULT branch_turn=2 cell=10,9 result=HIT remaining_cells=47 target_cluster=None
+DECISION branch_turn=3 cell=10,8 target_cluster=Some(0)
+RESULT branch_turn=3 cell=10,8 result=HIT remaining_cells=46 target_cluster=Some(0)
+DECISION branch_turn=4 cell=10,7 target_cluster=Some(0)
+RESULT branch_turn=4 cell=10,7 result=HIT remaining_cells=45 target_cluster=Some(0)
+DECISION branch_turn=5 cell=10,6 target_cluster=Some(0)
+RESULT branch_turn=5 cell=10,6 result=MISS remaining_cells=44 target_cluster=Some(0)
+DECISION branch_turn=6 cell=10,10 target_cluster=Some(0)
+RESULT branch_turn=6 cell=10,10 result=HIT remaining_cells=44 target_cluster=Some(0)
+DECISION branch_turn=7 cell=10,11 target_cluster=Some(0)
+RESULT branch_turn=7 cell=10,11 result=HIT remaining_cells=43 target_cluster=Some(0)
+DECISION branch_turn=8 cell=10,12 target_cluster=Some(0)
+RESULT branch_turn=8 cell=10,12 result=HIT remaining_cells=42 target_cluster=Some(0)
+DECISION branch_turn=9 cell=10,13 target_cluster=Some(0)
+RESULT branch_turn=9 cell=10,13 result=KILL remaining_cells=41 target_cluster=Some(0)
+BRANCH branch_turn=? n=17 remaining_cells=40 beam_states=0 heat_cell=8,14 beam_cell=8,14 chosen_cell=8,14 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=1.876117967 heat_second=1.813096916 beam_best=0.000000000 beam_second=0.000000000 heat_cell_beam=0.000000000 beam_cell_heat=1.876117967 chosen_heat=1.876117967 chosen_beam=0.000000000 beam_entropy=0.000000000
+DECISION branch_turn=10 cell=8,14 target_cluster=None
+RESULT branch_turn=10 cell=8,14 result=HIT remaining_cells=40 target_cluster=None
+DECISION branch_turn=11 cell=7,14 target_cluster=Some(0)
+RESULT branch_turn=11 cell=7,14 result=HIT remaining_cells=39 target_cluster=Some(0)
+DECISION branch_turn=12 cell=6,14 target_cluster=Some(0)
+RESULT branch_turn=12 cell=6,14 result=HIT remaining_cells=38 target_cluster=Some(0)
+DECISION branch_turn=13 cell=5,14 target_cluster=Some(0)
+RESULT branch_turn=13 cell=5,14 result=HIT remaining_cells=37 target_cluster=Some(0)
+DECISION branch_turn=14 cell=4,14 target_cluster=Some(0)
+RESULT branch_turn=14 cell=4,14 result=MISS remaining_cells=36 target_cluster=Some(0)
+DECISION branch_turn=15 cell=9,14 target_cluster=Some(0)
+RESULT branch_turn=15 cell=9,14 result=HIT remaining_cells=36 target_cluster=Some(0)
+DECISION branch_turn=16 cell=10,14 target_cluster=Some(0)
+RESULT branch_turn=16 cell=10,14 result=HIT remaining_cells=35 target_cluster=Some(0)
+DECISION branch_turn=17 cell=11,14 target_cluster=Some(0)
+RESULT branch_turn=17 cell=11,14 result=HIT remaining_cells=34 target_cluster=Some(0)
+DECISION branch_turn=18 cell=12,14 target_cluster=Some(0)
+RESULT branch_turn=18 cell=12,14 result=KILL remaining_cells=33 target_cluster=Some(0)
+BRANCH branch_turn=? n=17 remaining_cells=32 beam_states=172 heat_cell=8,9 beam_cell=8,9 chosen_cell=8,9 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=1.034835728 heat_second=1.028478142 beam_best=1.170183862 beam_second=1.170183862 heat_cell_beam=1.170183862 beam_cell_heat=1.034835728 chosen_heat=1.034835728 chosen_beam=1.170183862 beam_entropy=3.653035916
+DECISION branch_turn=19 cell=8,9 target_cluster=None
+RESULT branch_turn=19 cell=8,9 result=MISS remaining_cells=32 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=32 beam_states=169 heat_cell=12,9 beam_cell=12,9 chosen_cell=12,9 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=1.028704095 heat_second=1.020416556 beam_best=1.211303942 beam_second=1.211303942 heat_cell_beam=1.211303942 beam_cell_heat=1.028704095 chosen_heat=1.028704095 chosen_beam=1.211303942 beam_entropy=3.706217977
+DECISION branch_turn=20 cell=12,9 target_cluster=None
+RESULT branch_turn=20 cell=12,9 result=MISS remaining_cells=32 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=32 beam_states=159 heat_cell=13,11 beam_cell=13,8 chosen_cell=13,11 heat_rank_of_beam=3 beam_rank_of_heat=17 chosen_heat_rank=1 chosen_beam_rank=17 heat_best=1.254564138 heat_second=1.246819926 beam_best=1.251346265 beam_second=1.251346265 heat_cell_beam=1.219865856 beam_cell_heat=1.156399028 chosen_heat=1.254564138 chosen_beam=1.219865856 beam_entropy=3.746295520
+DECISION branch_turn=21 cell=13,11 target_cluster=None
+RESULT branch_turn=21 cell=13,11 result=MISS remaining_cells=32 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=32 beam_states=168 heat_cell=14,8 beam_cell=11,8 chosen_cell=14,8 heat_rank_of_beam=4 beam_rank_of_heat=16 chosen_heat_rank=1 chosen_beam_rank=16 heat_best=1.194251373 heat_second=1.175215133 beam_best=1.306074442 beam_second=1.306074442 heat_cell_beam=1.251654674 beam_cell_heat=1.036204569 chosen_heat=1.194251373 chosen_beam=1.251654674 beam_entropy=3.743343888
+DECISION branch_turn=22 cell=14,8 target_cluster=None
+RESULT branch_turn=22 cell=14,8 result=HIT remaining_cells=32 target_cluster=None
+DECISION branch_turn=23 cell=14,7 target_cluster=Some(0)
+RESULT branch_turn=23 cell=14,7 result=HIT remaining_cells=31 target_cluster=Some(0)
+DECISION branch_turn=24 cell=14,6 target_cluster=Some(0)
+RESULT branch_turn=24 cell=14,6 result=HIT remaining_cells=30 target_cluster=Some(0)
+DECISION branch_turn=25 cell=14,5 target_cluster=Some(0)
+RESULT branch_turn=25 cell=14,5 result=MISS remaining_cells=29 target_cluster=Some(0)
+DECISION branch_turn=26 cell=14,9 target_cluster=Some(0)
+RESULT branch_turn=26 cell=14,9 result=HIT remaining_cells=29 target_cluster=Some(0)
+DECISION branch_turn=27 cell=14,10 target_cluster=Some(0)
+RESULT branch_turn=27 cell=14,10 result=HIT remaining_cells=28 target_cluster=Some(0)
+DECISION branch_turn=28 cell=14,11 target_cluster=Some(0)
+RESULT branch_turn=28 cell=14,11 result=KILL remaining_cells=27 target_cluster=Some(0)
+BRANCH branch_turn=? n=17 remaining_cells=26 beam_states=171 heat_cell=3,8 beam_cell=5,8 chosen_cell=3,8 heat_rank_of_beam=2 beam_rank_of_heat=10 chosen_heat_rank=1 chosen_beam_rank=10 heat_best=0.779944562 heat_second=0.764757426 beam_best=1.064031263 beam_second=1.064031263 heat_cell_beam=1.051586452 beam_cell_heat=0.764757426 chosen_heat=0.779944562 chosen_beam=1.051586452 beam_entropy=3.564459966
+DECISION branch_turn=29 cell=3,8 target_cluster=None
+RESULT branch_turn=29 cell=3,8 result=KILL remaining_cells=26 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=25 beam_states=162 heat_cell=11,9 beam_cell=11,9 chosen_cell=11,9 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.768628221 heat_second=0.741993187 beam_best=1.037172296 beam_second=1.037172296 heat_cell_beam=1.037172296 beam_cell_heat=0.768628221 chosen_heat=0.768628221 chosen_beam=1.037172296 beam_entropy=3.534011575
+DECISION branch_turn=30 cell=11,9 target_cluster=None
+RESULT branch_turn=30 cell=11,9 result=MISS remaining_cells=25 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=25 beam_states=161 heat_cell=15,12 beam_cell=8,11 chosen_cell=15,12 heat_rank_of_beam=28 beam_rank_of_heat=15 chosen_heat_rank=1 chosen_beam_rank=15 heat_best=0.994532967 heat_second=0.787600243 beam_best=1.069014843 beam_second=1.069014843 heat_cell_beam=0.790141406 beam_cell_heat=0.591052153 chosen_heat=0.994532967 chosen_beam=0.790141406 beam_entropy=3.857574424
+DECISION branch_turn=31 cell=15,12 target_cluster=None
+RESULT branch_turn=31 cell=15,12 result=HIT remaining_cells=25 target_cluster=None
+DECISION branch_turn=32 cell=15,11 target_cluster=Some(0)
+RESULT branch_turn=32 cell=15,11 result=HIT remaining_cells=24 target_cluster=Some(0)
+DECISION branch_turn=33 cell=15,10 target_cluster=Some(0)
+RESULT branch_turn=33 cell=15,10 result=HIT remaining_cells=23 target_cluster=Some(0)
+DECISION branch_turn=34 cell=15,9 target_cluster=Some(0)
+RESULT branch_turn=34 cell=15,9 result=HIT remaining_cells=22 target_cluster=Some(0)
+DECISION branch_turn=35 cell=15,8 target_cluster=Some(0)
+RESULT branch_turn=35 cell=15,8 result=HIT remaining_cells=21 target_cluster=Some(0)
+DECISION branch_turn=36 cell=15,7 target_cluster=Some(0)
+RESULT branch_turn=36 cell=15,7 result=MISS remaining_cells=20 target_cluster=Some(0)
+DECISION branch_turn=37 cell=15,13 target_cluster=Some(0)
+RESULT branch_turn=37 cell=15,13 result=HIT remaining_cells=20 target_cluster=Some(0)
+DECISION branch_turn=38 cell=15,14 target_cluster=Some(0)
+RESULT branch_turn=38 cell=15,14 result=HIT remaining_cells=19 target_cluster=Some(0)
+DECISION branch_turn=39 cell=15,15 target_cluster=Some(0)
+RESULT branch_turn=39 cell=15,15 result=KILL remaining_cells=18 target_cluster=Some(0)
+BRANCH branch_turn=? n=17 remaining_cells=17 beam_states=130 heat_cell=5,10 beam_cell=6,8 chosen_cell=5,10 heat_rank_of_beam=6 beam_rank_of_heat=11 chosen_heat_rank=1 chosen_beam_rank=11 heat_best=0.657584225 heat_second=0.616254531 beam_best=0.721037982 beam_second=0.721037982 heat_cell_beam=0.576830385 beam_cell_heat=0.583927042 chosen_heat=0.657584225 chosen_beam=0.576830385 beam_entropy=3.384764777
+DECISION branch_turn=40 cell=5,10 target_cluster=None
+RESULT branch_turn=40 cell=5,10 result=MISS remaining_cells=17 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=17 beam_states=95 heat_cell=4,9 beam_cell=6,8 chosen_cell=6,8 heat_rank_of_beam=2 beam_rank_of_heat=17 chosen_heat_rank=2 chosen_beam_rank=1 heat_best=0.621579175 heat_second=0.605945198 beam_best=0.729491707 beam_second=0.729491707 heat_cell_beam=0.330190983 beam_cell_heat=0.605945198 chosen_heat=0.605945198 chosen_beam=0.729491707 beam_entropy=3.380215571
+FORCE branch_turn=41 from=6,8 to=4,9
+DECISION branch_turn=41 cell=4,9 target_cluster=None
+RESULT branch_turn=41 cell=4,9 result=MISS remaining_cells=17 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=17 beam_states=110 heat_cell=7,11 beam_cell=7,11 chosen_cell=7,11 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.676725572 heat_second=0.624458041 beam_best=0.793314115 beam_second=0.793314115 heat_cell_beam=0.793314115 beam_cell_heat=0.676725572 chosen_heat=0.676725572 chosen_beam=0.793314115 beam_entropy=3.269668642
+DECISION branch_turn=42 cell=7,11 target_cluster=None
+RESULT branch_turn=42 cell=7,11 result=MISS remaining_cells=17 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=17 beam_states=129 heat_cell=6,12 beam_cell=6,12 chosen_cell=6,12 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.665769215 heat_second=0.599631009 beam_best=0.826281796 beam_second=0.787850085 heat_cell_beam=0.826281796 beam_cell_heat=0.665769215 chosen_heat=0.665769215 chosen_beam=0.826281796 beam_entropy=3.505542534
+DECISION branch_turn=43 cell=6,12 target_cluster=None
+RESULT branch_turn=43 cell=6,12 result=MISS remaining_cells=17 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=17 beam_states=104 heat_cell=2,11 beam_cell=9,8 chosen_cell=2,11 heat_rank_of_beam=41 beam_rank_of_heat=16 chosen_heat_rank=1 chosen_beam_rank=16 heat_best=0.765462590 heat_second=0.672101372 beam_best=0.858284730 beam_second=0.848641081 heat_cell_beam=0.559331622 beam_cell_heat=0.368932828 chosen_heat=0.765462590 chosen_beam=0.559331622 beam_entropy=3.514548628
+DECISION branch_turn=44 cell=2,11 target_cluster=None
+RESULT branch_turn=44 cell=2,11 result=MISS remaining_cells=17 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=17 beam_states=90 heat_cell=5,13 beam_cell=8,15 chosen_cell=5,13 heat_rank_of_beam=3 beam_rank_of_heat=8 chosen_heat_rank=1 chosen_beam_rank=8 heat_best=0.677637441 heat_second=0.672006967 beam_best=0.909238333 beam_second=0.909238333 heat_cell_beam=0.889033037 beam_cell_heat=0.663219030 chosen_heat=0.677637441 chosen_beam=0.889033037 beam_entropy=3.196104575
+DECISION branch_turn=45 cell=5,13 target_cluster=None
+RESULT branch_turn=45 cell=5,13 result=HIT remaining_cells=17 target_cluster=None
+DECISION branch_turn=46 cell=4,13 target_cluster=Some(0)
+RESULT branch_turn=46 cell=4,13 result=HIT remaining_cells=16 target_cluster=Some(0)
+DECISION branch_turn=47 cell=3,13 target_cluster=Some(0)
+RESULT branch_turn=47 cell=3,13 result=HIT remaining_cells=15 target_cluster=Some(0)
+DECISION branch_turn=48 cell=2,13 target_cluster=Some(0)
+RESULT branch_turn=48 cell=2,13 result=KILL remaining_cells=14 target_cluster=Some(0)
+BRANCH branch_turn=? n=17 remaining_cells=13 beam_states=128 heat_cell=10,15 beam_cell=10,15 chosen_cell=10,15 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.562192487 heat_second=0.550231851 beam_best=0.582324680 beam_second=0.582324680 heat_cell_beam=0.582324680 beam_cell_heat=0.562192487 chosen_heat=0.562192487 chosen_beam=0.582324680 beam_entropy=3.284309572
+DECISION branch_turn=49 cell=10,15 target_cluster=None
+RESULT branch_turn=49 cell=10,15 result=HIT remaining_cells=13 target_cluster=None
+DECISION branch_turn=50 cell=9,15 target_cluster=Some(0)
+RESULT branch_turn=50 cell=9,15 result=HIT remaining_cells=12 target_cluster=Some(0)
+DECISION branch_turn=51 cell=8,15 target_cluster=Some(0)
+RESULT branch_turn=51 cell=8,15 result=HIT remaining_cells=11 target_cluster=Some(0)
+DECISION branch_turn=52 cell=7,15 target_cluster=Some(0)
+RESULT branch_turn=52 cell=7,15 result=HIT remaining_cells=10 target_cluster=Some(0)
+DECISION branch_turn=53 cell=6,15 target_cluster=Some(0)
+RESULT branch_turn=53 cell=6,15 result=HIT remaining_cells=9 target_cluster=Some(0)
+DECISION branch_turn=54 cell=5,15 target_cluster=Some(0)
+RESULT branch_turn=54 cell=5,15 result=KILL remaining_cells=8 target_cluster=Some(0)
+DECISION branch_turn=55 cell=11,15 target_cluster=Some(0)
+RESULT branch_turn=55 cell=11,15 result=HIT remaining_cells=7 target_cluster=Some(0)
+DECISION branch_turn=56 cell=12,15 target_cluster=Some(0)
+RESULT branch_turn=56 cell=12,15 result=HIT remaining_cells=6 target_cluster=Some(0)
+DECISION branch_turn=57 cell=13,15 target_cluster=Some(0)
+RESULT branch_turn=57 cell=13,15 result=HIT remaining_cells=5 target_cluster=Some(0)
+DECISION branch_turn=58 cell=14,15 target_cluster=Some(0)
+RESULT branch_turn=58 cell=14,15 result=KILL remaining_cells=4 target_cluster=Some(0)
+BRANCH branch_turn=? n=17 remaining_cells=3 beam_states=27 heat_cell=7,8 beam_cell=7,8 chosen_cell=7,8 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.058710417 heat_second=0.053059530 beam_best=0.039003302 beam_second=0.022045344 heat_cell_beam=0.039003302 beam_cell_heat=0.058710417 chosen_heat=0.058710417 chosen_beam=0.039003302 beam_entropy=2.564555781
+DECISION branch_turn=59 cell=7,8 target_cluster=None
+RESULT branch_turn=59 cell=7,8 result=MISS remaining_cells=3 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=3 beam_states=12 heat_cell=7,9 beam_cell=7,9 chosen_cell=7,9 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.055705273 heat_second=0.053581409 beam_best=0.039551474 beam_second=0.029663606 heat_cell_beam=0.039551474 beam_cell_heat=0.055705273 chosen_heat=0.055705273 chosen_beam=0.039551474 beam_entropy=2.291195783
+DECISION branch_turn=60 cell=7,9 target_cluster=None
+RESULT branch_turn=60 cell=7,9 result=MISS remaining_cells=3 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=3 beam_states=0 heat_cell=3,10 beam_cell=3,10 chosen_cell=3,10 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.065313886 heat_second=0.064890921 beam_best=0.000000000 beam_second=0.000000000 heat_cell_beam=0.000000000 beam_cell_heat=0.065313886 chosen_heat=0.065313886 chosen_beam=0.000000000 beam_entropy=0.000000000
+DECISION branch_turn=61 cell=3,10 target_cluster=None
+RESULT branch_turn=61 cell=3,10 result=MISS remaining_cells=3 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=3 beam_states=0 heat_cell=2,9 beam_cell=2,9 chosen_cell=2,9 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.065981024 heat_second=0.064975296 beam_best=0.000000000 beam_second=0.000000000 heat_cell_beam=0.000000000 beam_cell_heat=0.065981024 chosen_heat=0.065981024 chosen_beam=0.000000000 beam_entropy=0.000000000
+DECISION branch_turn=62 cell=2,9 target_cluster=None
+RESULT branch_turn=62 cell=2,9 result=MISS remaining_cells=3 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=3 beam_states=0 heat_cell=4,11 beam_cell=4,11 chosen_cell=4,11 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.064640008 heat_second=0.064515345 beam_best=0.000000000 beam_second=0.000000000 heat_cell_beam=0.000000000 beam_cell_heat=0.064640008 chosen_heat=0.064640008 chosen_beam=0.000000000 beam_entropy=0.000000000
+DECISION branch_turn=63 cell=4,11 target_cluster=None
+RESULT branch_turn=63 cell=4,11 result=HIT remaining_cells=3 target_cluster=None
+DECISION branch_turn=64 cell=5,11 target_cluster=Some(0)
+RESULT branch_turn=64 cell=5,11 result=MISS remaining_cells=2 target_cluster=Some(0)
+DECISION branch_turn=65 cell=4,12 target_cluster=Some(0)
+RESULT branch_turn=65 cell=4,12 result=MISS remaining_cells=2 target_cluster=Some(0)
+DECISION branch_turn=66 cell=3,11 target_cluster=Some(0)
+RESULT branch_turn=66 cell=3,11 result=MISS remaining_cells=2 target_cluster=Some(0)
+DECISION branch_turn=67 cell=4,10 target_cluster=Some(0)
+RESULT branch_turn=67 cell=4,10 result=KILL remaining_cells=2 target_cluster=Some(0)
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=66 heat_cell=8,7 beam_cell=8,7 chosen_cell=8,7 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.036358927 heat_second=0.035467012 beam_best=0.010745891 beam_second=0.010745891 heat_cell_beam=0.010745891 beam_cell_heat=0.036358927 chosen_heat=0.036358927 chosen_beam=0.010745891 beam_entropy=4.189654742
+DECISION branch_turn=68 cell=8,7 target_cluster=None
+RESULT branch_turn=68 cell=8,7 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=65 heat_cell=9,5 beam_cell=9,5 chosen_cell=9,5 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.035292949 heat_second=0.034007700 beam_best=0.010872788 beam_second=0.010872788 heat_cell_beam=0.010872788 beam_cell_heat=0.035292949 chosen_heat=0.035292949 chosen_beam=0.010872788 beam_entropy=4.174387270
+DECISION branch_turn=69 cell=9,5 target_cluster=None
+RESULT branch_turn=69 cell=9,5 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=64 heat_cell=9,7 beam_cell=9,7 chosen_cell=9,7 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.037382521 heat_second=0.036800945 beam_best=0.011002814 beam_second=0.011002814 heat_cell_beam=0.011002814 beam_cell_heat=0.037382521 chosen_heat=0.037382521 chosen_beam=0.011002814 beam_entropy=4.158883083
+DECISION branch_turn=70 cell=9,7 target_cluster=None
+RESULT branch_turn=70 cell=9,7 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=63 heat_cell=8,6 beam_cell=8,6 chosen_cell=8,6 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.036121233 heat_second=0.035053121 beam_best=0.011136085 beam_second=0.011136085 heat_cell_beam=0.011136085 beam_cell_heat=0.036121233 chosen_heat=0.036121233 chosen_beam=0.011136085 beam_entropy=4.143134726
+DECISION branch_turn=71 cell=8,6 target_cluster=None
+RESULT branch_turn=71 cell=8,6 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=62 heat_cell=8,5 beam_cell=8,5 chosen_cell=8,5 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.037530364 heat_second=0.036258436 beam_best=0.011272727 beam_second=0.011272727 heat_cell_beam=0.011272727 beam_cell_heat=0.037530364 chosen_heat=0.037530364 chosen_beam=0.011272727 beam_entropy=4.127134385
+DECISION branch_turn=72 cell=8,5 target_cluster=None
+RESULT branch_turn=72 cell=8,5 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=61 heat_cell=11,5 beam_cell=11,5 chosen_cell=11,5 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.034539129 heat_second=0.034431391 beam_best=0.011412871 beam_second=0.011412871 heat_cell_beam=0.011412871 beam_cell_heat=0.034539129 chosen_heat=0.034539129 chosen_beam=0.011412871 beam_entropy=4.110873864
+DECISION branch_turn=73 cell=11,5 target_cluster=None
+RESULT branch_turn=73 cell=11,5 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=60 heat_cell=9,6 beam_cell=9,6 chosen_cell=9,6 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.037527153 heat_second=0.037204959 beam_best=0.011556654 beam_second=0.011556654 heat_cell_beam=0.011556654 beam_cell_heat=0.037527153 chosen_heat=0.037527153 chosen_beam=0.011556654 beam_entropy=4.094344562
+DECISION branch_turn=74 cell=9,6 target_cluster=None
+RESULT branch_turn=74 cell=9,6 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=59 heat_cell=9,4 beam_cell=9,4 chosen_cell=9,4 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.035255954 heat_second=0.034786653 beam_best=0.011704222 beam_second=0.011704222 heat_cell_beam=0.011704222 beam_cell_heat=0.035255954 chosen_heat=0.035255954 chosen_beam=0.011704222 beam_entropy=4.077537444
+DECISION branch_turn=75 cell=9,4 target_cluster=None
+RESULT branch_turn=75 cell=9,4 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=58 heat_cell=11,7 beam_cell=11,7 chosen_cell=11,7 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.037846561 heat_second=0.035884535 beam_best=0.011855727 beam_second=0.011855727 heat_cell_beam=0.011855727 beam_cell_heat=0.037846561 chosen_heat=0.037846561 chosen_beam=0.011855727 beam_entropy=4.060443011
+DECISION branch_turn=76 cell=11,7 target_cluster=None
+RESULT branch_turn=76 cell=11,7 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=57 heat_cell=10,5 beam_cell=10,5 chosen_cell=10,5 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.036538127 heat_second=0.036229546 beam_best=0.012011331 beam_second=0.012011331 heat_cell_beam=0.012011331 beam_cell_heat=0.036538127 chosen_heat=0.036538127 chosen_beam=0.012011331 beam_entropy=4.043051268
+DECISION branch_turn=77 cell=10,5 target_cluster=None
+RESULT branch_turn=77 cell=10,5 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=56 heat_cell=8,4 beam_cell=8,4 chosen_cell=8,4 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.038332997 heat_second=0.036629897 beam_best=0.012171204 beam_second=0.012171204 heat_cell_beam=0.012171204 beam_cell_heat=0.038332997 chosen_heat=0.038332997 chosen_beam=0.012171204 beam_entropy=4.025351691
+DECISION branch_turn=78 cell=8,4 target_cluster=None
+RESULT branch_turn=78 cell=8,4 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=55 heat_cell=12,7 beam_cell=12,7 chosen_cell=12,7 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.037095982 heat_second=0.036057880 beam_best=0.012335526 beam_second=0.012335526 heat_cell_beam=0.012335526 beam_cell_heat=0.037095982 chosen_heat=0.037095982 chosen_beam=0.012335526 beam_entropy=4.007333185
+DECISION branch_turn=79 cell=12,7 target_cluster=None
+RESULT branch_turn=79 cell=12,7 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=54 heat_cell=8,3 beam_cell=8,3 chosen_cell=8,3 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.038169271 heat_second=0.037376129 beam_best=0.012504487 beam_second=0.012504487 heat_cell_beam=0.012504487 beam_cell_heat=0.038169271 chosen_heat=0.038169271 chosen_beam=0.012504487 beam_entropy=3.988984047
+DECISION branch_turn=80 cell=8,3 target_cluster=None
+RESULT branch_turn=80 cell=8,3 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=53 heat_cell=10,4 beam_cell=10,4 chosen_cell=10,4 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.037314876 heat_second=0.036972349 beam_best=0.012678288 beam_second=0.012678288 heat_cell_beam=0.012678288 beam_cell_heat=0.037314876 chosen_heat=0.037314876 chosen_beam=0.012678288 beam_entropy=3.970291914
+DECISION branch_turn=81 cell=10,4 target_cluster=None
+RESULT branch_turn=81 cell=10,4 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=52 heat_cell=11,6 beam_cell=11,6 chosen_cell=11,6 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.037722616 heat_second=0.036607088 beam_best=0.012857143 beam_second=0.012857143 heat_cell_beam=0.012857143 beam_cell_heat=0.037722616 chosen_heat=0.037722616 chosen_beam=0.012857143 beam_entropy=3.951243719
+DECISION branch_turn=82 cell=11,6 target_cluster=None
+RESULT branch_turn=82 cell=11,6 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=51 heat_cell=9,3 beam_cell=9,3 chosen_cell=9,3 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.038554088 heat_second=0.037544716 beam_best=0.013041276 beam_second=0.013041276 heat_cell_beam=0.013041276 beam_cell_heat=0.038554088 chosen_heat=0.038554088 chosen_beam=0.013041276 beam_entropy=3.931825633
+DECISION branch_turn=83 cell=9,3 target_cluster=None
+RESULT branch_turn=83 cell=9,3 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=50 heat_cell=8,2 beam_cell=8,2 chosen_cell=8,2 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.038199458 heat_second=0.037736611 beam_best=0.013230928 beam_second=0.013230928 heat_cell_beam=0.013230928 beam_cell_heat=0.038199458 chosen_heat=0.038199458 chosen_beam=0.013230928 beam_entropy=3.912023005
+DECISION branch_turn=84 cell=8,2 target_cluster=None
+RESULT branch_turn=84 cell=8,2 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=49 heat_cell=10,3 beam_cell=10,3 chosen_cell=10,3 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.038126965 heat_second=0.037946634 beam_best=0.013426353 beam_second=0.013426353 heat_cell_beam=0.013426353 beam_cell_heat=0.038126965 chosen_heat=0.038126965 chosen_beam=0.013426353 beam_entropy=3.891820298
+DECISION branch_turn=85 cell=10,3 target_cluster=None
+RESULT branch_turn=85 cell=10,3 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=48 heat_cell=12,6 beam_cell=12,6 chosen_cell=12,6 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.038802437 heat_second=0.038678484 beam_best=0.013627820 beam_second=0.013627820 heat_cell_beam=0.013627820 beam_cell_heat=0.038802437 chosen_heat=0.038802437 chosen_beam=0.013627820 beam_entropy=3.871201011
+DECISION branch_turn=86 cell=12,6 target_cluster=None
+RESULT branch_turn=86 cell=12,6 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=47 heat_cell=12,5 beam_cell=12,5 chosen_cell=12,5 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.038872510 heat_second=0.038834100 beam_best=0.013835616 beam_second=0.013835616 heat_cell_beam=0.013835616 beam_cell_heat=0.038872510 chosen_heat=0.038872510 chosen_beam=0.013835616 beam_entropy=3.850147602
+DECISION branch_turn=87 cell=12,5 target_cluster=None
+RESULT branch_turn=87 cell=12,5 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=46 heat_cell=13,6 beam_cell=13,6 chosen_cell=13,6 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.039013147 heat_second=0.038686739 beam_best=0.014050049 beam_second=0.014050049 heat_cell_beam=0.014050049 beam_cell_heat=0.039013147 chosen_heat=0.039013147 chosen_beam=0.014050049 beam_entropy=3.828641396
+DECISION branch_turn=88 cell=13,6 target_cluster=None
+RESULT branch_turn=88 cell=13,6 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=45 heat_cell=13,7 beam_cell=13,7 chosen_cell=13,7 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.040741931 heat_second=0.040355459 beam_best=0.014271443 beam_second=0.014271443 heat_cell_beam=0.014271443 beam_cell_heat=0.040741931 chosen_heat=0.040741931 chosen_beam=0.014271443 beam_entropy=3.806662490
+DECISION branch_turn=89 cell=13,7 target_cluster=None
+RESULT branch_turn=89 cell=13,7 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=44 heat_cell=8,1 beam_cell=8,1 chosen_cell=8,1 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.039995112 heat_second=0.039849072 beam_best=0.014500146 beam_second=0.014500146 heat_cell_beam=0.014500146 beam_cell_heat=0.039995112 chosen_heat=0.039995112 chosen_beam=0.014500146 beam_entropy=3.784189634
+DECISION branch_turn=90 cell=8,1 target_cluster=None
+RESULT branch_turn=90 cell=8,1 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=43 heat_cell=9,2 beam_cell=9,2 chosen_cell=9,2 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.041373273 heat_second=0.039251751 beam_best=0.014736529 beam_second=0.014736529 heat_cell_beam=0.014736529 beam_cell_heat=0.041373273 chosen_heat=0.041373273 chosen_beam=0.014736529 beam_entropy=3.761200116
+DECISION branch_turn=91 cell=9,2 target_cluster=None
+RESULT branch_turn=91 cell=9,2 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=42 heat_cell=8,0 beam_cell=8,0 chosen_cell=8,0 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.041052985 heat_second=0.039749047 beam_best=0.014980989 beam_second=0.014980989 heat_cell_beam=0.014980989 beam_cell_heat=0.041052985 chosen_heat=0.041052985 chosen_beam=0.014980989 beam_entropy=3.737669618
+DECISION branch_turn=92 cell=8,0 target_cluster=None
+RESULT branch_turn=92 cell=8,0 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=41 heat_cell=11,3 beam_cell=11,3 chosen_cell=11,3 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.041669231 heat_second=0.041228177 beam_best=0.015233950 beam_second=0.015233950 heat_cell_beam=0.015233950 beam_cell_heat=0.041669231 chosen_heat=0.041669231 chosen_beam=0.015233950 beam_entropy=3.713572067
+DECISION branch_turn=93 cell=11,3 target_cluster=None
+RESULT branch_turn=93 cell=11,3 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=40 heat_cell=11,4 beam_cell=11,4 chosen_cell=11,4 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.042118170 heat_second=0.041278122 beam_best=0.015495868 beam_second=0.015495868 heat_cell_beam=0.015495868 beam_cell_heat=0.042118170 chosen_heat=0.042118170 chosen_beam=0.015495868 beam_entropy=3.688879454
+DECISION branch_turn=94 cell=11,4 target_cluster=None
+RESULT branch_turn=94 cell=11,4 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=39 heat_cell=13,5 beam_cell=13,5 chosen_cell=13,5 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.042430958 heat_second=0.041967259 beam_best=0.015767230 beam_second=0.015767230 heat_cell_beam=0.015767230 beam_cell_heat=0.042430958 chosen_heat=0.042430958 chosen_beam=0.015767230 beam_entropy=3.663561646
+DECISION branch_turn=95 cell=13,5 target_cluster=None
+RESULT branch_turn=95 cell=13,5 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=38 heat_cell=9,1 beam_cell=9,1 chosen_cell=9,1 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.043122964 heat_second=0.042072880 beam_best=0.016048561 beam_second=0.016048561 heat_cell_beam=0.016048561 beam_cell_heat=0.043122964 chosen_heat=0.043122964 chosen_beam=0.016048561 beam_entropy=3.637586160
+DECISION branch_turn=96 cell=9,1 target_cluster=None
+RESULT branch_turn=96 cell=9,1 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=37 heat_cell=12,4 beam_cell=12,4 chosen_cell=12,4 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.044251370 heat_second=0.043795425 beam_best=0.016340426 beam_second=0.016340426 heat_cell_beam=0.016340426 beam_cell_heat=0.044251370 chosen_heat=0.044251370 chosen_beam=0.016340426 beam_entropy=3.610917913
+DECISION branch_turn=97 cell=12,4 target_cluster=None
+RESULT branch_turn=97 cell=12,4 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=36 heat_cell=10,2 beam_cell=10,2 chosen_cell=10,2 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.044106425 heat_second=0.043428779 beam_best=0.016643430 beam_second=0.016643430 heat_cell_beam=0.016643430 beam_cell_heat=0.044106425 chosen_heat=0.044106425 chosen_beam=0.016643430 beam_entropy=3.583518938
+DECISION branch_turn=98 cell=10,2 target_cluster=None
+RESULT branch_turn=98 cell=10,2 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=35 heat_cell=15,5 beam_cell=15,5 chosen_cell=15,5 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.043682301 heat_second=0.043489559 beam_best=0.016958229 beam_second=0.016958229 heat_cell_beam=0.016958229 beam_cell_heat=0.043682301 chosen_heat=0.043682301 chosen_beam=0.016958229 beam_entropy=3.555348061
+DECISION branch_turn=99 cell=15,5 target_cluster=None
+RESULT branch_turn=99 cell=15,5 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=34 heat_cell=16,7 beam_cell=16,7 chosen_cell=16,7 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.045603174 heat_second=0.044584209 beam_best=0.017285531 beam_second=0.017285531 heat_cell_beam=0.017285531 beam_cell_heat=0.045603174 chosen_heat=0.045603174 chosen_beam=0.017285531 beam_entropy=3.526360525
+DECISION branch_turn=100 cell=16,7 target_cluster=None
+RESULT branch_turn=100 cell=16,7 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=33 heat_cell=15,6 beam_cell=15,6 chosen_cell=15,6 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.046426572 heat_second=0.045214715 beam_best=0.017626102 beam_second=0.017626102 heat_cell_beam=0.017626102 beam_cell_heat=0.046426572 chosen_heat=0.046426572 chosen_beam=0.017626102 beam_entropy=3.496507561
+DECISION branch_turn=101 cell=15,6 target_cluster=None
+RESULT branch_turn=101 cell=15,6 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=32 heat_cell=13,4 beam_cell=13,4 chosen_cell=13,4 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.047052265 heat_second=0.045962818 beam_best=0.017980769 beam_second=0.017980769 heat_cell_beam=0.017980769 beam_cell_heat=0.047052265 chosen_heat=0.047052265 chosen_beam=0.017980769 beam_entropy=3.465735903
+DECISION branch_turn=102 cell=13,4 target_cluster=None
+RESULT branch_turn=102 cell=13,4 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=31 heat_cell=11,2 beam_cell=11,2 chosen_cell=11,2 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.048145840 heat_second=0.047202313 beam_best=0.018350434 beam_second=0.018350434 heat_cell_beam=0.018350434 beam_cell_heat=0.048145840 chosen_heat=0.048145840 chosen_beam=0.018350434 beam_entropy=3.433987204
+DECISION branch_turn=103 cell=11,2 target_cluster=None
+RESULT branch_turn=103 cell=11,2 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=30 heat_cell=10,1 beam_cell=10,1 chosen_cell=10,1 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.047844198 heat_second=0.047834097 beam_best=0.018736075 beam_second=0.018736075 heat_cell_beam=0.018736075 beam_cell_heat=0.047844198 chosen_heat=0.047844198 chosen_beam=0.018736075 beam_entropy=3.401197382
+DECISION branch_turn=104 cell=10,1 target_cluster=None
+RESULT branch_turn=104 cell=10,1 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=29 heat_cell=12,3 beam_cell=12,3 chosen_cell=12,3 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.049477851 heat_second=0.048529646 beam_best=0.019138756 beam_second=0.019138756 heat_cell_beam=0.019138756 beam_cell_heat=0.049477851 chosen_heat=0.049477851 chosen_beam=0.019138756 beam_entropy=3.367295830
+DECISION branch_turn=105 cell=12,3 target_cluster=None
+RESULT branch_turn=105 cell=12,3 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=28 heat_cell=9,0 beam_cell=9,0 chosen_cell=9,0 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.050627293 heat_second=0.050167263 beam_best=0.019559641 beam_second=0.019559641 heat_cell_beam=0.019559641 beam_cell_heat=0.050627293 chosen_heat=0.050627293 chosen_beam=0.019559641 beam_entropy=3.332204510
+DECISION branch_turn=106 cell=9,0 target_cluster=None
+RESULT branch_turn=106 cell=9,0 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=27 heat_cell=11,1 beam_cell=11,1 chosen_cell=11,1 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.050403687 heat_second=0.050336479 beam_best=0.020000000 beam_second=0.020000000 heat_cell_beam=0.020000000 beam_cell_heat=0.050403687 chosen_heat=0.050403687 chosen_beam=0.020000000 beam_entropy=3.295836866
+DECISION branch_turn=107 cell=11,1 target_cluster=None
+RESULT branch_turn=107 cell=11,1 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=26 heat_cell=12,2 beam_cell=12,2 chosen_cell=12,2 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.051384713 heat_second=0.051245971 beam_best=0.020461225 beam_second=0.020461225 heat_cell_beam=0.020461225 beam_cell_heat=0.051384713 chosen_heat=0.051384713 chosen_beam=0.020461225 beam_entropy=3.258096538
+DECISION branch_turn=108 cell=12,2 target_cluster=None
+RESULT branch_turn=108 cell=12,2 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=25 heat_cell=16,6 beam_cell=16,6 chosen_cell=16,6 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.053286147 heat_second=0.052496418 beam_best=0.020944845 beam_second=0.020944845 heat_cell_beam=0.020944845 beam_cell_heat=0.053286147 chosen_heat=0.053286147 chosen_beam=0.020944845 beam_entropy=3.218875825
+DECISION branch_turn=109 cell=16,6 target_cluster=None
+RESULT branch_turn=109 cell=16,6 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=24 heat_cell=10,0 beam_cell=10,0 chosen_cell=10,0 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.054626849 heat_second=0.053831549 beam_best=0.021452541 beam_second=0.021452541 heat_cell_beam=0.021452541 beam_cell_heat=0.054626849 chosen_heat=0.054626849 chosen_beam=0.021452541 beam_entropy=3.178053830
+DECISION branch_turn=110 cell=10,0 target_cluster=None
+RESULT branch_turn=110 cell=10,0 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=23 heat_cell=12,1 beam_cell=12,1 chosen_cell=12,1 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.055163879 heat_second=0.054347141 beam_best=0.021986166 beam_second=0.021986166 heat_cell_beam=0.021986166 beam_cell_heat=0.055163879 chosen_heat=0.055163879 chosen_beam=0.021986166 beam_entropy=3.135494216
+DECISION branch_turn=111 cell=12,1 target_cluster=None
+RESULT branch_turn=111 cell=12,1 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=22 heat_cell=14,4 beam_cell=14,4 chosen_cell=14,4 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.057034928 heat_second=0.056202386 beam_best=0.022547771 beam_second=0.022547771 heat_cell_beam=0.022547771 beam_cell_heat=0.057034928 chosen_heat=0.057034928 chosen_beam=0.022547771 beam_entropy=3.091042453
+DECISION branch_turn=112 cell=14,4 target_cluster=None
+RESULT branch_turn=112 cell=14,4 result=MISS remaining_cells=1 target_cluster=None
+BRANCH branch_turn=? n=17 remaining_cells=1 beam_states=21 heat_cell=13,3 beam_cell=13,3 chosen_cell=13,3 heat_rank_of_beam=1 beam_rank_of_heat=1 chosen_heat_rank=1 chosen_beam_rank=1 heat_best=0.058073375 heat_second=0.056927294 beam_best=0.023139627 beam_second=0.023139627 heat_cell_beam=0.023139627 beam_cell_heat=0.058073375 chosen_heat=0.058073375 chosen_beam=0.023139627 beam_entropy=3.044522438
+DECISION branch_turn=113 cell=13,3 target_cluster=None
+RESULT branch_turn=113 cell=13,3 result=KILL remaining_cells=1 target_cluster=None

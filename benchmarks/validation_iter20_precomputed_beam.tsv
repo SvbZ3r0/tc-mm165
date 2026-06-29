@@ -1,0 +1,7 @@
+variant	range	score	iter18_score	delta	seconds	run_dir
+precomputed_beam_v1	1..1000	138435.033399	139469.033399	-1034.000000	233	benchmarks/20260629T072708Z_iter20_precomputed_beam_v1
+precomputed_beam_dedup	1..1000	138768.033399	139469.033399	-701.000000	236	benchmarks/20260629T073327Z_iter20_precomputed_beam_dedup
+beam_late_fallback	1..1000	138263.033399	139469.033399	-1206.000000	240	benchmarks/20260629T074212Z_iter20_beam_late_fallback
+beam_late_fallback	1001..3000	282452.422478	281346.422478	+1106.000000	469	benchmarks/20260629T074651Z_iter20_beam_late_fallback
+beam_late_fallback	combined_1..3000	420715.455877	420815.455877	-100.000000	709	
+beam_evidence_score	1..1000	139111.033399	139469.033399	-358.000000	277	benchmarks/20260629T080621Z_iter20_beam_evidence_score
