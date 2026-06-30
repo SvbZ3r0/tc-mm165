@@ -4,23 +4,31 @@ This document records the main solver iterations, tuning sweeps, and rejected ex
 
 ## Current Best
 
-Current active solver: `iter18_kill_ambiguity_same_len`
+Current active solver: `iter26_density_fallback_blind_hunt`
+
+- Source: `versions/Battleships_iter26_density_fallback_blind_hunt_bcd99c0ce5d0.rs`
+- Hash: `bcd99c0ce5d062125a31eb124901a31c949264a33336a65cf480f7693c12ca70`
+- Archive: `archives/20260630T040800Z_iter26_density_fallback_blind_hunt_bcd99c0ce5d0`
+
+Key validation vs iter18:
+
+```text
+range       iter26          iter18          delta
+1..1000     130947.033399   139469.033399   -8522
+1001..3000  263688.422478   281346.422478   -17658
+3001..5000  265063.279304   282197.279304   -17134
+5001..10000 670999.572380   718206.572380   -47207
+combined    1330698.307561  1421219.307561  -90521
+```
+
+The win comes from a density-based fallback in `best_hunt_cell` when heatmap probability is zero (the "blind hunt" state caused by cascading kill inference errors). See `## iter26_density_fallback_blind_hunt` below.
+
+### Previous Best: iter18_kill_ambiguity_same_len
 
 - Source: `versions/Battleships_iter18_kill_ambiguity_same_len_62877d07fd2e.rs`
 - Hash: `62877d07fd2ec8f7ea7eb16f330ee8dc7be365c674abe51325c83e407417bb1a`
 - Archive: `archives/20260626T004555Z_iter18_kill_ambiguity_same_len_62877d07fd2e`
 - Validation: `benchmarks/validation_iter18_kill_ambiguity_same_len.tsv`
-
-Key validation vs iter16:
-
-```text
-range       iter17          iter16          delta
-1..1000     139876.033399   147673.033399   -7797
-1001..3000  281811.422478   296704.422478   -14893
-3001..5000  282439.279304   295901.279304   -13462
-5001..10000 719451.572380   754752.572380   -35301
-combined    1423578.307561  1495031.307561  -71453
-```
 
 The largest durable win came from exact placement-based KILL inference. The current solver also retains the scan-weighted heatmap and conditional opening scan policy from earlier successful iterations.
 
@@ -976,3 +984,131 @@ Archive:
 - Archive manifest: `archives/20260629T164749Z_rejected_iter24_diverse_beam_sig20_m3_f34293867ef8/manifest.txt`
 
 Inference: this diversity constraint was too blunt. The beam's concentration over top heatmap cells is not purely fake consensus; forcing diversity there removed useful signal. If we revisit diversity, it should preserve high-probability consensus but diversify lower-ranked alternatives, or diversify by complete-fleet placement identity rather than top-cell occupancy.
+
+## rejected_iter25_beam_remaining_gates
+
+Reason: iter24 diversity constraint was too blunt. Four beam configurations were tested in iter25 to resolve the structural instability.
+
+Hypothesis: the iter23 counterfactual diagnostics showed `remaining_cells >= 26` strongly predicts bad beam decisions (bad 15/18 = 83%) while `remaining_cells < 26` is more reliable (bad 3/9 = 33%). A remaining_cells gate might eliminate the bad branches while preserving the good ones.
+
+Experiments (all starting from iter23 topk5_f005 candidate):
+
+### Variant A: gate beam to remaining_cells < 26 (original gate)
+
+Removes 70/30 blend and rerank when remaining_cells >= 26 (large board, uncertain beam).
+
+```text
+1..1000: iter25 139544.033399  iter18 139469.033399  delta +75.000000   seconds 135
+```
+
+Rejected on first gate. The beam was actually helping seeds 1..1000 in the early game (remaining >= 26) - removing it cost +75 shots. The counterfactual predicates pointed at the wrong direction for typical (non-top-swing) seeds.
+
+### Variant B: gate beam to remaining_cells >= 26 (inverted gate, with blend)
+
+Removes all beam influence for remaining < 26 (late game). Preserves 70/30 blend + 5% rerank for remaining >= 26.
+
+```text
+1..1000:    delta -107.000000   seconds 91
+1001..3000: delta -528.000000   seconds 175
+3001..5000: delta +655.000000
+```
+
+Rejected on third gate. Late-game beam (remaining < 26) was saving ~600 shots on seeds 3001..5000. Removing it caused regression there even though it was hurting 1001..3000.
+
+### Variant C: gate beam to remaining_cells >= 26 (inverted gate, no blend)
+
+Same inverted gate but removes the 70/30 blend entirely. Only the 5% top-K rerank influences the final cell choice.
+
+```text
+1..1000:    delta -77.000000    seconds 90
+1001..3000: delta -313.000000   seconds 172
+3001..5000: delta +477.000000
+```
+
+Rejected on third gate. Removing the blend reduced the 3001..5000 regression from +655 to +477 but did not eliminate it. The early beam (remaining >= 26, no blend) still consistently hurts seeds 3001..5000 by ~480 shots.
+
+### Variant D: no gate, no blend (top-K rerank only, beam always)
+
+Removes the remaining_cells gate entirely and removes the 70/30 blend. Beam only influences via 5% top-K rerank.
+
+```text
+1..1000:    delta -472.000000   seconds 206
+1001..3000: delta +403.000000
+```
+
+Rejected on second gate. Without the gate, late-game beam returns and again hurts 1001..3000 by +403.
+
+### Summary of structural conflict
+
+The conflict is irreducible:
+
+```text
+                     1..1000    1001..3000  3001..5000
+iter23 f005 (full):  -597       +258        -122        -> fail 1001..3000
+inverted gate blend: -107       -528        +655        -> fail 3001..5000
+no-blend gate:       -77        -313        +477        -> fail 3001..5000
+no gate no blend:    -472       +403        (not run)   -> fail 1001..3000
+```
+
+Late-game beam (remaining < 26): helps 3001..5000 by ~600 shots, hurts 1001..3000 by ~700 shots.
+Early-game beam (remaining >= 26): helps 1001..3000 with gate on, hurts 3001..5000.
+
+No single gate satisfies all ranges. The per-seed variance of the beam effect is too high, and the "helpful" seeds and "harmful" seeds are distributed across seed ranges with no exploitable pattern at runtime.
+
+Archives:
+
+- `versions/Battleships_rejected_iter25_beam_remaining_gate26_original.rs` (variant A)
+- `versions/Battleships_rejected_iter25_beam_rerank_min_remaining26_blend.rs` (variant B)
+- `versions/Battleships_rejected_iter25_beam_rerank_min_remaining26_noblend.rs` (variant C)
+- `versions/Battleships_rejected_iter25_beam_rerank_nogate_noblend.rs` (variant D)
+
+Inference: beam-based hunt improvement is fundamentally variance-limited. Every configuration that fixes one range introduces regression in another. The expected per-seed effect of the beam is approximately neutral (combined signal across all variants hovers near zero), but with high per-seed variance that shifts win/loss distribution between seed ranges as parameters change. The beam approach should be abandoned as the primary improvement direction. Future iterations should focus on non-beam improvements to hunt, chase, or kill inference.
+
+## iter26_density_fallback_blind_hunt
+
+Reason: after abandoning beam-based approaches (iters 20-25), the focus shifted to non-beam improvements. Trace analysis of top iter18 loss seeds (seed 588: +148 shots vs iter13) revealed a catastrophic failure mode:
+
+1. Kill inference errors cascade: wrong `inferred_len` causes `decrement_ship_count` to decrement the wrong ship length from `remaining[]`.
+2. After multiple cascading errors, `remaining[L] = 0` for all L, but `remaining_cells > 0` (the counter remains accurate since it's based on actual HIT/KILL responses).
+3. `build_probabilities` iterates over `remaining[]` — finding all zeros, it produces `prob[r][c] = 0.0` for every cell.
+4. In `best_hunt_cell`, the score becomes `0.0 * density_scale + center_bias + jitter` — effectively blind hunt guided only by distance from center.
+5. The solver takes 189 turns (seed 588: turns 205–394) doing center-biased random walk until it accidentally finds the last ship cell.
+
+The fix is minimal: when `prob[r][c] < 1e-10`, add `density_scale * 5e-3` to the hunt score as a fallback.
+
+- Normal case (prob > 0): density_fallback = 0. No change.
+- Blind hunt case (all prob = 0): density_fallback = density_scale * 0.005. This uses scan-derived density (computed from `remaining_cells` and scan residuals, not from `remaining[]`) to guide hunt toward the scan region with highest ship density.
+
+The density_scale computation in `best_hunt_cell` uses `remaining_cells` (correct) rather than `remaining[]` (wrong), so it provides accurate regional guidance even in the cascade-error endgame.
+
+Change: one line added to `best_hunt_cell` in Battleships.rs:
+
+```rust
+let density_fallback = if prob[r][c] < 1e-10 { density_scale * 5e-3 } else { 0.0 };
+let score = prob[r][c] * density_scale + density_fallback + center_bias + jitter;
+```
+
+Validation:
+
+```text
+range       iter26          iter18          delta
+1..1000     130947.033399   139469.033399   -8522
+1001..3000  263688.422478   281346.422478   -17658
+3001..5000  265063.279304   282197.279304   -17134
+5001..10000 670999.572380   718206.572380   -47207
+combined    1330698.307561  1421219.307561  -90521
+```
+
+All four ranges pass. Combined improvement: -90521 shots over 10000 seeds (-9.05 shots/game average).
+
+Archive:
+
+- Source: `versions/Battleships_iter26_density_fallback_blind_hunt_bcd99c0ce5d0.rs`
+- Archive: `archives/20260630T040800Z_iter26_density_fallback_blind_hunt_bcd99c0ce5d0`
+- Runs:
+  - `benchmarks/20260630T034605Z_iter26_density_fallback_blind_hunt` (1..1000)
+  - `benchmarks/20260630T035734Z_iter26_density_fallback_blind_hunt` (1001..3000)
+  - `benchmarks/20260630T035810Z_iter26_density_fallback_blind_hunt` (3001..5000)
+  - `benchmarks/20260630T040013Z_iter26_density_fallback_blind_hunt` (5001..10000)
+
+Inference: the cascade kill inference error → blind hunt → wasted shots chain is extremely common across all seed ranges (consistent per-game improvement of ~9 shots). This means a large fraction of games (~10-20%) suffers from the kill inference cascade. The density fallback is a minimal fix that avoids the blind hunt without changing any other behavior. The underlying root cause (wrong inferred_len leading to wrong `remaining[]` state) remains unfixed and is a candidate for iter27.

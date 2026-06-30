@@ -91,6 +91,14 @@ fn placement_is_legal(
 }
 
 const HEATMAP_ALPHA: f64 = 0.50;
+const BEAM_WIDTH_NO_HITS: usize = 180;
+const BEAM_WIDTH_WITH_HITS: usize = 260;
+const BEAM_PLACEMENT_LIMIT_NO_HITS: usize = 260;
+const BEAM_PLACEMENT_LIMIT_WITH_HITS: usize = 420;
+const BEAM_MIN_VALID_STATES: usize = 8;
+const BEAM_RERANK_TOP_K: usize = 5;
+const BEAM_RERANK_FACTOR: f64 = 0.05;
+const BEAM_RERANK_MAX_REMAINING: usize = 26;
 
 fn build_probabilities(
     n: usize,
@@ -216,6 +224,251 @@ fn build_probabilities(
     prob
 }
 
+#[derive(Clone)]
+struct BeamPlacement {
+    index: usize,
+    bits: Vec<u64>,
+    scan_counts: Vec<usize>,
+    prior: f64,
+}
+
+#[derive(Clone)]
+struct BeamState {
+    bits: Vec<u64>,
+    scan_counts: Vec<usize>,
+    last_len: usize,
+    last_index: usize,
+    score: f64,
+}
+
+// BEGIN GENERATED PLACEMENT MODEL
+include!("placement_model_generated.rs");
+// END GENERATED PLACEMENT MODEL
+
+
+fn bit_has(bits: &[u64], idx: usize) -> bool {
+    (bits[idx / 64] & (1u64 << (idx % 64))) != 0
+}
+
+fn bit_intersects(a: &[u64], b: &[u64]) -> bool {
+    a.iter().zip(b.iter()).any(|(x, y)| (x & y) != 0)
+}
+
+fn bit_or_into(dst: &mut [u64], src: &[u64]) {
+    for (d, s) in dst.iter_mut().zip(src.iter()) {
+        *d |= *s;
+    }
+}
+
+fn build_beam_placements(
+    n: usize,
+    len: usize,
+    grid: &[Vec<Cell>],
+    shot: &[Vec<bool>],
+    scans: &[Scan],
+) -> Vec<BeamPlacement> {
+    let words = (n * n + 63) / 64;
+    let center = (n as f64 - 1.0) * 0.5;
+    let mut placements = Vec::new();
+
+    for (raw_index, raw) in PRECOMPUTED_PLACEMENTS.iter().enumerate() {
+        if raw.n as usize != n || raw.len as usize != len {
+            continue;
+        }
+
+        let mut scan_counts = vec![0usize; scans.len()];
+        let mut hit_count = 0usize;
+        let mut prior = 0.0;
+        let mut ok = true;
+
+        for i in 0..len {
+            let idx = raw.cells[i] as usize;
+            let r = idx / n;
+            let c = idx % n;
+            let cell = grid[r][c];
+            if cell == Cell::Miss || cell == Cell::Dead || (shot[r][c] && cell != Cell::Hit) {
+                ok = false;
+                break;
+            }
+            if cell == Cell::Hit {
+                hit_count += 1;
+            }
+            for (scan_idx, scan) in scans.iter().enumerate() {
+                if scan.r1 <= r && r <= scan.r2 && scan.c1 <= c && c <= scan.c2 {
+                    scan_counts[scan_idx] += 1;
+                }
+            }
+            let dr = r as f64 - center;
+            let dc = c as f64 - center;
+            prior -= (dr * dr + dc * dc).sqrt() * 0.001;
+        }
+
+        if ok {
+            prior += hit_count as f64 * 1000.0;
+            placements.push(BeamPlacement {
+                index: raw_index,
+                bits: raw.bits[..words].to_vec(),
+                scan_counts,
+                prior,
+            });
+        }
+    }
+
+    placements.sort_by(|a, b| b.prior.partial_cmp(&a.prior).unwrap());
+    placements
+}
+
+
+fn beam_fleet_posterior(
+    n: usize,
+    grid: &[Vec<Cell>],
+    shot: &[Vec<bool>],
+    remaining: &[usize],
+    scans: &[Scan],
+    remaining_cells: usize,
+) -> Option<(Vec<Vec<f64>>, usize)> {
+    let known_hits: Vec<(usize, usize)> = (0..n)
+        .flat_map(|r| (0..n).map(move |c| (r, c)))
+        .filter(|&(r, c)| grid[r][c] == Cell::Hit)
+        .collect();
+
+    let remaining_ships: usize = remaining.iter().sum();
+    let should_use_beam = remaining_ships <= 8 || !known_hits.is_empty() || remaining_cells <= n * 2;
+    if !should_use_beam {
+        return None;
+    }
+    if known_hits.is_empty() && scans.is_empty() && remaining_cells > n * 2 {
+        return None;
+    }
+
+    let mut ship_lengths = Vec::new();
+    for len in (1..remaining.len()).rev() {
+        for _ in 0..remaining[len] {
+            ship_lengths.push(len);
+        }
+    }
+    if ship_lengths.is_empty() || ship_lengths.len() > 18 {
+        return None;
+    }
+
+    let mut dead_in_scan = vec![0usize; scans.len()];
+    for (idx, scan) in scans.iter().enumerate() {
+        for r in scan.r1..=scan.r2 {
+            for c in scan.c1..=scan.c2 {
+                if grid[r][c] == Cell::Dead {
+                    dead_in_scan[idx] += 1;
+                }
+            }
+        }
+        if dead_in_scan[idx] > scan.count {
+            return None;
+        }
+    }
+
+    let mut by_len: Vec<Vec<BeamPlacement>> = vec![Vec::new(); remaining.len()];
+    for len in 1..remaining.len() {
+        if remaining[len] > 0 {
+            by_len[len] = build_beam_placements(n, len, grid, shot, scans);
+            if by_len[len].is_empty() {
+                return None;
+            }
+        }
+    }
+
+    let words = (n * n + 63) / 64;
+    let mut states = vec![BeamState {
+        bits: vec![0u64; words],
+        scan_counts: vec![0usize; scans.len()],
+        last_len: 0,
+        last_index: 0,
+        score: 0.0,
+    }];
+    let beam_width = if known_hits.is_empty() { BEAM_WIDTH_NO_HITS } else { BEAM_WIDTH_WITH_HITS };
+    let per_len_limit = if known_hits.is_empty() { BEAM_PLACEMENT_LIMIT_NO_HITS } else { BEAM_PLACEMENT_LIMIT_WITH_HITS };
+
+    for &len in &ship_lengths {
+        let mut next_states: Vec<BeamState> = Vec::new();
+        for state in &states {
+            for placement in by_len[len].iter().take(per_len_limit) {
+                if state.last_len == len && placement.index < state.last_index {
+                    continue;
+                }
+                if bit_intersects(&state.bits, &placement.bits) {
+                    continue;
+                }
+                let mut ok = true;
+                let mut scan_counts = state.scan_counts.clone();
+                for idx in 0..scans.len() {
+                    scan_counts[idx] += placement.scan_counts[idx];
+                    if dead_in_scan[idx] + scan_counts[idx] > scans[idx].count {
+                        ok = false;
+                        break;
+                    }
+                }
+                if !ok {
+                    continue;
+                }
+                let mut bits = state.bits.clone();
+                bit_or_into(&mut bits, &placement.bits);
+                next_states.push(BeamState {
+                    bits,
+                    scan_counts,
+                    last_len: len,
+                    last_index: placement.index,
+                    score: state.score + placement.prior,
+                });
+            }
+        }
+        if next_states.is_empty() {
+            return None;
+        }
+        next_states.sort_by(|a, b| b.score.partial_cmp(&a.score).unwrap());
+        if next_states.len() > beam_width {
+            next_states.truncate(beam_width);
+        }
+        states = next_states;
+    }
+
+    let mut valid: Vec<BeamState> = Vec::new();
+    'state_loop: for state in states {
+        for &(r, c) in &known_hits {
+            if !bit_has(&state.bits, r * n + c) {
+                continue 'state_loop;
+            }
+        }
+        for (idx, scan) in scans.iter().enumerate() {
+            if dead_in_scan[idx] + state.scan_counts[idx] != scan.count {
+                continue 'state_loop;
+            }
+        }
+        valid.push(state);
+    }
+
+    if valid.len() < BEAM_MIN_VALID_STATES {
+        return None;
+    }
+
+    let mut posterior = vec![vec![0.0; n]; n];
+    for state in &valid {
+        for r in 0..n {
+            for c in 0..n {
+                if grid[r][c] == Cell::Unknown && !shot[r][c] && bit_has(&state.bits, r * n + c) {
+                    posterior[r][c] += 1.0;
+                }
+            }
+        }
+    }
+    let scale = 1.0 / valid.len() as f64;
+    for r in 0..n {
+        for c in 0..n {
+            posterior[r][c] *= scale;
+        }
+    }
+
+    Some((posterior, valid.len()))
+}
+
+
 fn placement_scan_weight(
     r: usize,
     c: usize,
@@ -288,8 +541,17 @@ fn best_hunt_cell(
     rng: &mut u64,
 ) -> Option<(usize, usize)> {
     let prob = build_probabilities(n, grid, shot, remaining, scans, remaining_cells);
-    let mut best = None;
-    let mut best_score = -1.0f64;
+    let beam_post = beam_fleet_posterior(n, grid, shot, remaining, scans, remaining_cells);
+    let _max_prob = prob
+        .iter()
+        .flat_map(|row| row.iter())
+        .fold(0.0f64, |a, &b| a.max(b));
+    let max_beam = beam_post
+        .as_ref()
+        .map(|(post, _)| post.iter().flat_map(|row| row.iter()).fold(0.0f64, |a, &b| a.max(b)))
+        .unwrap_or(0.0);
+
+    let mut candidates: Vec<(f64, f64, usize, usize)> = Vec::new();
 
     for r in 0..n {
         for c in 0..n {
@@ -334,17 +596,46 @@ fn best_hunt_cell(
 
             *rng = rng.wrapping_mul(6364136223846793005).wrapping_add(1442695040888963407);
             let jitter = ((*rng >> 32) as f64) * 1e-12;
-            let density_fallback = if prob[r][c] < 1e-10 { density_scale * 5e-3 } else { 0.0 };
-            let score = prob[r][c] * density_scale + density_fallback + center_bias + jitter;
-            if score > best_score {
-                best_score = score;
-                best = Some((r, c));
-            }
+            let beam_score = if let Some((post, states)) = beam_post.as_ref() {
+                    if *states >= 8 && max_beam > 0.0 {
+                        post[r][c]
+                    } else {
+                        0.0
+                    }
+                } else {
+                    0.0
+                };
+                let score = prob[r][c] * density_scale + center_bias + jitter;
+            candidates.push((score, beam_score, r, c));
         }
     }
 
-    best
+    if candidates.is_empty() {
+        return None;
+    }
+    candidates.sort_by(|a, b| b.0.partial_cmp(&a.0).unwrap());
+    let max_beam_candidate = candidates
+        .iter()
+        .take(BEAM_RERANK_TOP_K)
+        .map(|candidate| candidate.1)
+        .fold(0.0f64, |a, b| a.max(b));
+    let mut best_choice = candidates[0];
+    let mut best_choice_score = -1.0f64;
+    for candidate in candidates.iter().take(BEAM_RERANK_TOP_K) {
+        let beam_norm = if max_beam_candidate > 0.0 {
+            candidate.1 / max_beam_candidate
+        } else {
+            0.0
+        };
+        let rerank_score = candidate.0 * (1.0 + BEAM_RERANK_FACTOR * beam_norm);
+        if rerank_score > best_choice_score {
+            best_choice_score = rerank_score;
+            best_choice = *candidate;
+        }
+    }
+    Some((best_choice.2, best_choice.3))
 }
+
 
 fn placement_score_for_hits(
     n: usize,
