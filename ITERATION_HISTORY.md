@@ -4,24 +4,42 @@ This document records the main solver iterations, tuning sweeps, and rejected ex
 
 ## Current Best
 
-Current active solver: `iter26_density_fallback_blind_hunt`
+Current active solver: `iter27_fallback_2e2`
 
-- Source: `versions/Battleships_iter26_density_fallback_blind_hunt_bcd99c0ce5d0.rs`
-- Hash: `bcd99c0ce5d062125a31eb124901a31c949264a33336a65cf480f7693c12ca70`
-- Archive: `archives/20260630T040800Z_iter26_density_fallback_blind_hunt_bcd99c0ce5d0`
+- Source: `versions/Battleships_iter27_fallback_2e2_b251e92467828bcd.rs`
+- Hash: `b251e92467828bcd884e46c7a83cc9d4642457993e6e3560cfbc12dedeafcc7a`
+- Archive: `archives/20260630T045724Z_iter27_fallback_2e2_b251e92467828bcd`
 
 Key validation vs iter18:
 
 ```text
-range       iter26          iter18          delta
-1..1000     130947.033399   139469.033399   -8522
-1001..3000  263688.422478   281346.422478   -17658
-3001..5000  265063.279304   282197.279304   -17134
-5001..10000 670999.572380   718206.572380   -47207
-combined    1330698.307561  1421219.307561  -90521
+range       iter27          iter18          delta
+1..1000     128715.033399   139469.033399   -10754
+1001..3000  258909.422478   281346.422478   -22437
+3001..5000  260658.279304   282197.279304   -21539
+5001..10000 659497.572380   718206.572380   -58709
+combined    1307780.307561  1421219.307561  -113439
 ```
 
-The win comes from a density-based fallback in `best_hunt_cell` when heatmap probability is zero (the "blind hunt" state caused by cascading kill inference errors). See `## iter26_density_fallback_blind_hunt` below.
+Validation vs iter26:
+
+```text
+range       iter27          iter26          delta
+1..1000     128715.033399   130947.033399   -2232
+1001..3000  258909.422478   263688.422478   -4779
+3001..5000  260658.279304   265063.279304   -4405
+5001..10000 659497.572380   670999.572380   -11502
+combined    1307780.307561  1330698.307561  -22918
+```
+
+The win extends iter26's density fallback from the full-blind-hunt case to partial-corruption states. See `## iter27_fallback_2e2` below.
+
+### Previous Best: iter26_density_fallback_blind_hunt
+
+- Source: `versions/Battleships_iter26_density_fallback_blind_hunt_bcd99c0ce5d0.rs`
+- Hash: `bcd99c0ce5d062125a31eb124901a31c949264a33336a65cf480f7693c12ca70`
+- Archive: `archives/20260630T040800Z_iter26_density_fallback_blind_hunt_bcd99c0ce5d0`
+- Combined: 1330698 over 1..10000
 
 ### Previous Best: iter18_kill_ambiguity_same_len
 
@@ -1112,3 +1130,263 @@ Archive:
   - `benchmarks/20260630T040013Z_iter26_density_fallback_blind_hunt` (5001..10000)
 
 Inference: the cascade kill inference error → blind hunt → wasted shots chain is extremely common across all seed ranges (consistent per-game improvement of ~9 shots). This means a large fraction of games (~10-20%) suffers from the kill inference cascade. The density fallback is a minimal fix that avoids the blind hunt without changing any other behavior. The underlying root cause (wrong inferred_len leading to wrong `remaining[]` state) remains unfixed and is a candidate for iter27.
+
+## iter27_fallback_2e2
+
+Reason: iter26 fixed the catastrophic blind-hunt case (all `prob=0`) by adding `density_scale * 5e-3` as a fallback. Iter27 targets the adjacent partial-corruption case where cascade errors corrupt `remaining[]` partially: some cells have `prob=0` (the true ship's cells, whose length is now `remaining[true_len]=0`) while wrong-length cells have small but positive `prob`. At the original `5e-3` coefficient, the prob=0 cells score ~0.005 versus low-prob wrong cells at ~0.01-0.02 — still a 2-4x disadvantage.
+
+Coefficient sweep on 1..1000 (delta vs iter26):
+
+```text
+5e-3 (iter26): 130947 (baseline)
+1e-2:          129329 (-1618)
+2e-2:          128715 (-2232)  ← best
+3e-2:          128727 (-2220)
+4e-2:          128824 (-2123)
+```
+
+2e-2 wins: `density_scale * 2e-2` gives prob=0 cells ~0.02 * density_scale, competitive with typical low-prob wrong-length cells. Above 2e-2, prob=0 cells start winning over legitimate low-prob cells in clean games, adding noise.
+
+Change: one coefficient update in `best_hunt_cell`:
+
+```rust
+// iter26:
+let density_fallback = if prob[r][c] < 1e-10 { density_scale * 5e-3 } else { 0.0 };
+// iter27:
+let density_fallback = if prob[r][c] < 1e-10 { density_scale * 2e-2 } else { 0.0 };
+```
+
+Validation vs iter26:
+
+```text
+range       iter27          iter26          delta
+1..1000     128715.033399   130947.033399   -2232
+1001..3000  258909.422478   263688.422478   -4779
+3001..5000  260658.279304   265063.279304   -4405
+5001..10000 659497.572380   670999.572380   -11502
+combined    1307780.307561  1330698.307561  -22918
+```
+
+All four ranges improve. Combined: -22918 further shots over 1..10000 (-2.29 shots/game). Combined vs iter18: -113439 shots (-11.34 shots/game).
+
+Archive:
+
+- Source: `versions/Battleships_iter27_fallback_2e2_b251e92467828bcd.rs`
+- Archive: `archives/20260630T045724Z_iter27_fallback_2e2_b251e92467828bcd`
+- Runs:
+  - `benchmarks/20260630T044338Z_iter27_fallback_2e2` (1..1000)
+  - `benchmarks/20260630T045257Z_iter27_fallback_2e2_v1` (1001..3000)
+  - `benchmarks/20260630T045258Z_iter27_fallback_2e2_v2` (3001..5000)
+  - `benchmarks/20260630T045259Z_iter27_fallback_2e2_v3` (5001..10000)
+
+Inference: the partial-corruption case (remaining[] wrong but not all-zero) still affects a significant fraction of games. The stronger fallback coefficient helps the solver find true-ship cells that `build_probabilities` rates as zero due to cascade-corrupted remaining[]. The root cause (wrong inferred_len → wrong remaining[]) remains unfixed. Possible iter28 directions: fix kill inference to prefer lengths consistent with remaining fleet counts; add a correctness check post-inference to detect phantom leftovers; or investigate whether the density_fallback coefficient can be made adaptive (scale with remaining_cells/alive ratio).
+
+## iter28_remaining_decrement_guard
+
+Reason: iter27 showed that wrong KILL inference corrupts `remaining[]`, and the density fallback only mitigates the resulting blind/partial-corruption hunts. The next root-cause fix was to stop the solver from making the inventory state worse when inferred kill length is unavailable.
+
+Bug found: `decrement_ship_count()` did not merely skip unavailable lengths. If `remaining[inferred_len] == 0`, it decremented the nearest available ship length instead. That silently poisoned `remaining[]` with a guessed alternative length.
+
+Fix:
+
+```rust
+fn decrement_ship_count(remaining: &mut [usize], len: usize) -> bool {
+    if len < remaining.len() && remaining[len] > 0 {
+        remaining[len] -= 1;
+        true
+    } else {
+        false
+    }
+}
+```
+
+The return value is currently ignored; the behavioral change is that unavailable inferred lengths no longer decrement a neighboring available length.
+
+Validation:
+
+```text
+1..1000:     iter28 128631.033399  iter27 128715.033399  delta -84.000000
+1001..3000:  iter28 258766.422478  iter27 258909.422478  delta -143.000000
+3001..5000:  iter28 260395.279304  iter27 260658.279304  delta -263.000000
+5001..10000: iter28 659140.572380  iter27 659497.572380  delta -357.000000
+combined:    iter28 1306933.307561  iter27 1307780.307561  delta -847.000000
+```
+
+Versus iter18:
+
+```text
+iter28 1306933.307561
+iter18 1421219.307561
+delta  -114286.000000
+```
+
+Archive:
+
+- Source: `versions/Battleships_iter28_remaining_decrement_guard_0f7d4c534595.rs`
+- Validation: `benchmarks/validation_iter28_remaining_decrement_guard.tsv`
+- Archive manifest: `archives/20260630T060201Z_iter28_remaining_decrement_guard_0f7d4c534595/manifest.txt`
+
+Inference: this confirms the inventory corruption path. The gain is modest compared with iter27's density fallback because iter27 already masks many corrupted states, but this is a genuine root-cause containment and is positive across all ranges. Next, reevaluate previously failed experiments on top of iter28, prioritizing variants that were sensitive to `remaining[]`: KILL ambiguity, chase/beam, and scan-aware placement logic.
+
+## iter29 rejected: retest iter23 top-K beam reranker after iter28 guard
+
+Reason for trial: after iter28 fixed the `remaining[]` corruption path, we needed to recheck previously rejected serious variants whose results may have been distorted by corrupted remaining ship counts. The first retest was iter23's beam-as-top-K-reranker idea because it had been close before the guard.
+
+Change tested: start from the iter23 `K=5`, factor `0.05` beam top-K reranker, then apply iter28's guarded `decrement_ship_count()` behavior and keep the iter27 density fallback coefficient `2e-2`.
+
+Validation:
+
+```text
+1..1000
+iter29 133436.033399
+iter28 128631.033399
+delta  +4805.000000
+seconds 204
+```
+
+Decision: rejected on the first gate. The remaining-count guard does not rescue this reranker; it still creates high-cost branch changes. No longer ranges were run.
+
+Artifacts:
+
+```text
+source:     versions/Battleships_rejected_iter29_iter28_topk5_rerank_f005_d0f52eed2056.rs
+sha256:     d0f52eed20569ace36f7a2f37aba56a2b8fc9e24f7efb04eb93116aa5f653a2f
+run:        benchmarks/20260630T062613Z_iter29_iter28_topk5_rerank_f005
+manifest:   archives/20260630T063003Z_rejected_iter29_iter28_topk5_rerank_f005_d0f52eed2056/manifest.txt
+validation: benchmarks/validation_iter29_rejected_iter28_topk5_rerank_f005.tsv
+```
+
+## iter30 rejected: retest touching-leftover singleton deferral after iter28 guard
+
+Reason for trial: after iter28 fixed the `remaining[]` corruption path, KILL-adjacent rejected variants needed retesting. This one revisited iter19's idea that a singleton hit left over after a `KILL`, touching killed cells and having zero continuation support, might be contamination from touching ships and should be deferred until no normal target cluster remains.
+
+Change tested: apply only the iter19 singleton leftover deferral logic on top of accepted iter28. Preserved iter28's guarded `decrement_ship_count()` behavior and the iter27 density fallback coefficient `2e-2`; did not reintroduce iter19's nearest-length decrement fallback or remove the density fallback.
+
+Validation versus iter28:
+
+```text
+range        iter30          iter28          delta
+1..1000      128701.033399   128631.033399   +70.000000
+1001..3000   258772.422478   258766.422478   +6.000000
+3001..5000   260407.279304   260395.279304   +12.000000
+5001..10000  659174.572380   659140.572380   +34.000000
+combined     1307055.307561  1306933.307561  +122.000000
+```
+
+Decision: rejected. The effect is small, but it is consistently worse across every disjoint range. The iter28 guard does not turn this KILL leftover deferral into a gain.
+
+Artifacts:
+
+```text
+source:     versions/Battleships_rejected_iter30_iter28_touching_leftover_defer_size1_31092fe6d97c.rs
+sha256:     31092fe6d97cf0089304642bf64791c22639ac955c6b3da2fdbf13783ce62b92
+manifest:   archives/20260630T071959Z_rejected_iter30_iter28_touching_leftover_defer_size1_31092fe6d97c/manifest.txt
+validation: benchmarks/validation_iter30_rejected_iter28_touching_leftover_defer_size1.tsv
+```
+
+## iter31 rejected: one-step EV hunt reranking
+
+Reason for trial: the solver's policy is still mostly `argmax P(cell occupied)`. We tested a small step toward POMDP/Bellman-style decision making: keep the existing heatmap as a candidate generator, then rerank the top hunt candidates by a cheap one-step information value estimate.
+
+Change tested: added placement-elimination information gain for candidate shots. Two subvariants were tested on top of accepted iter28:
+
+```text
+iter31a additive EV term
+iter31b bounded normalized EV tie-breaker among top heat candidates
+```
+
+Validation versus iter28 on the first gate:
+
+```text
+variant  score          iter28          delta
+31a      160582.033399  128631.033399   +31951.000000
+31b      160812.033399  128631.033399   +32181.000000
+```
+
+Decision: rejected immediately. This particular EV proxy is badly wrong; it rewards splitting the independent placement set in ways that do not correspond to lower expected game cost. The result does not disprove policy search, but it shows that naive placement-elimination information gain is actively harmful.
+
+Artifacts:
+
+```text
+31a source: versions/Battleships_rejected_iter31a_ev_hunt_additive_696e7339b144.rs
+31a sha256: 696e7339b144c0c9441fe9e99eae990c320ea31984ff4ad3b593cab8453969a8
+31a manifest: archives/20260630T090046Z_rejected_iter31a_ev_hunt_additive_696e7339b144/manifest.txt
+31b source: versions/Battleships_rejected_iter31b_ev_hunt_norm_tiebreak_07fa7a10ec66.rs
+31b sha256: 07fa7a10ec66c4508fffa4999fc07fefd7a63b1731fd308f9f66f03a5c6093b7
+31b manifest: archives/20260630T154240Z_rejected_iter31b_ev_hunt_norm_tiebreak_07fa7a10ec66/manifest.txt
+validation: benchmarks/validation_iter31_rejected_ev_hunt_rerank.tsv
+```
+
+## iter32 rejected: conservative complete-fleet posterior support
+
+Reason for trial: after the naive independent-placement EV reranker failed, we tested the other proposed direction: use complete-fleet posterior support instead of raw placement entropy. To avoid the trajectory violence seen in earlier beam variants, this was made deliberately small.
+
+Change tested: start from the archived iter23 beam posterior reranker, apply iter28's guarded `decrement_ship_count()` and preserve the `2e-2` density fallback, then reduce the posterior influence from top-5/factor-0.05 to top-3/factor-0.005. This made posterior support a tiny tie-break among already-good heatmap candidates, not a selector.
+
+Validation versus iter28:
+
+```text
+1..1000
+iter32 133147.033399
+iter28 128631.033399
+delta  +4516.000000
+seconds 205
+```
+
+Decision: rejected on the first gate. Even tiny support from this beam posterior remains harmful and expensive. The issue appears to be the posterior construction/selection bias itself, not merely an excessive rerank factor.
+
+Artifacts:
+
+```text
+source:      versions/Battleships_rejected_iter32_posterior_top3_f0005_9724c1b63cee.rs
+sha256:      9724c1b63cee15747bddea55b76a70a1eda0deeb2829ea4e41eef228932ae4c6
+model:       placement_model_generated.rs
+model sha:   a3c9ce3e9f85c185f2207818d7d232bb9e15327e8070e7bb057615257c577df1
+run:         benchmarks/20260630T155020Z_iter32_posterior_top3_f0005
+manifest:    archives/20260630T155407Z_rejected_iter32_posterior_top3_f0005_9724c1b63cee/manifest.txt
+validation:  benchmarks/validation_iter32_rejected_posterior_top3_f0005.tsv
+```
+
+## iter33 rejected: KILL candidates ignore corrupted remaining counts
+
+Reason for trial: manual tracing found a plausible root cause. `infer_killed_hits()` generated candidates only for lengths where `remaining[len] > 0`. If `remaining[]` was already corrupted, geometrically-valid killed placements were skipped before Dead-marking, forcing shorter candidates and creating phantom leftover clusters that chase wasted. The proposed fix was to use all geometrically-valid killed candidates for Dead-marking while keeping the guarded decrement unchanged.
+
+Code verification: confirmed. In accepted iter28, `infer_killed_hits()` had this candidate-generation filter:
+
+```rust
+if remaining[len] == 0 || len > n {
+    continue;
+}
+```
+
+The actual decrement path was already guarded separately:
+
+```rust
+if len < remaining.len() && remaining[len] > 0 {
+    remaining[len] -= 1;
+}
+```
+
+Change tested: remove only the `remaining[len] == 0` candidate-generation filter, leaving the decrement guard intact.
+
+Validation versus iter28:
+
+```text
+1..1000
+iter33 129725.033399
+iter28 128631.033399
+delta  +1094.000000
+```
+
+Decision: rejected on the first gate. The diagnosis is real at the code level, but unconditional use of all geometrically-valid killed candidates is too broad. It likely admits impossible inventory lengths in normal states and degrades KILL inference more often than it fixes corrupted states. A follow-up should apply this relaxation only when there is evidence of inventory corruption or zero-support leftover formation.
+
+Artifacts:
+
+```text
+source:     versions/Battleships_rejected_iter33_kill_candidates_ignore_remaining_ddd7631cf905.rs
+sha256:     ddd7631cf905bfc01c33294dafd3177a0ee5746917766f100eea0ecdcc79decd
+run:        benchmarks/20260630T183402Z_iter33_kill_candidates_ignore_remaining
+manifest:   archives/20260630T183426Z_rejected_iter33_kill_candidates_ignore_remaining_ddd7631cf905/manifest.txt
+validation: benchmarks/validation_iter33_rejected_kill_candidates_ignore_remaining.tsv
+```
+

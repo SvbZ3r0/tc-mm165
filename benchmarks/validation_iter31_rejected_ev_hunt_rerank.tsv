@@ -1,0 +1,3 @@
+label	seed_range	score	iter28_baseline	delta	seconds	run_dir	notes
+iter31a_ev_hunt_additive	1..1000	160582.033399	128631.033399	+31951.000000	16	benchmarks/20260630T085827Z_iter31_ev_hunt_rerank	Rejected additive one-step information-gain shot reranker; information term dominated heat.
+iter31b_ev_hunt_norm_tiebreak	1..1000	160812.033399	128631.033399	+32181.000000	16	benchmarks/20260630T154158Z_iter31b_ev_hunt_norm_tiebreak_fixed	Rejected bounded normalized tie-break version; still selected bad low-objective candidates.

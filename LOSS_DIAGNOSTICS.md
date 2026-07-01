@@ -454,3 +454,125 @@ Archive:
 - Archive manifest: `archives/20260629T164749Z_rejected_iter24_diverse_beam_sig20_m3_f34293867ef8/manifest.txt`
 
 Inference: this diversity constraint was too blunt. The beam's concentration over top heatmap cells is not purely fake consensus; forcing diversity there removed useful signal. If we revisit diversity, it should preserve high-probability consensus but diversify lower-ranked alternatives, or diversify by complete-fleet placement identity rather than top-cell occupancy.
+
+## iter28_remaining_decrement_guard
+
+Reason: iter27 showed that wrong KILL inference corrupts `remaining[]`, and the density fallback only mitigates the resulting blind/partial-corruption hunts. The next root-cause fix was to stop the solver from making the inventory state worse when inferred kill length is unavailable.
+
+Bug found: `decrement_ship_count()` did not merely skip unavailable lengths. If `remaining[inferred_len] == 0`, it decremented the nearest available ship length instead. That silently poisoned `remaining[]` with a guessed alternative length.
+
+Fix:
+
+```rust
+fn decrement_ship_count(remaining: &mut [usize], len: usize) -> bool {
+    if len < remaining.len() && remaining[len] > 0 {
+        remaining[len] -= 1;
+        true
+    } else {
+        false
+    }
+}
+```
+
+The return value is currently ignored; the behavioral change is that unavailable inferred lengths no longer decrement a neighboring available length.
+
+Validation:
+
+```text
+1..1000:     iter28 128631.033399  iter27 128715.033399  delta -84.000000
+1001..3000:  iter28 258766.422478  iter27 258909.422478  delta -143.000000
+3001..5000:  iter28 260395.279304  iter27 260658.279304  delta -263.000000
+5001..10000: iter28 659140.572380  iter27 659497.572380  delta -357.000000
+combined:    iter28 1306933.307561  iter27 1307780.307561  delta -847.000000
+```
+
+Versus iter18:
+
+```text
+iter28 1306933.307561
+iter18 1421219.307561
+delta  -114286.000000
+```
+
+Archive:
+
+- Source: `versions/Battleships_iter28_remaining_decrement_guard_0f7d4c534595.rs`
+- Validation: `benchmarks/validation_iter28_remaining_decrement_guard.tsv`
+- Archive manifest: `archives/20260630T060201Z_iter28_remaining_decrement_guard_0f7d4c534595/manifest.txt`
+
+Inference: this confirms the inventory corruption path. The gain is modest compared with iter27's density fallback because iter27 already masks many corrupted states, but this is a genuine root-cause containment and is positive across all ranges. Next, reevaluate previously failed experiments on top of iter28, prioritizing variants that were sensitive to `remaining[]`: KILL ambiguity, chase/beam, and scan-aware placement logic.
+
+## iter29 beam reranker retest after iter28
+
+Hypothesis: the earlier top-K beam reranker might have failed partly because KILL inference could corrupt `remaining[]`, leaving the heatmap in a degraded state. After iter28 guarded `decrement_ship_count()`, retesting that beam idea checked whether the rejected result was caused by the bug or by the beam policy itself.
+
+Result: still rejected immediately on `1..1000`.
+
+```text
+iter29 133436.033399
+iter28 128631.033399
+delta  +4805.000000
+```
+
+Inference: the regression is not explained by the fixed `remaining[]` decrement bug. Beam top-K reranking remains too trajectory-sensitive even when used as a small factor among heatmap candidates.
+
+## iter30 touching-leftover singleton deferral retest after iter28
+
+Hypothesis: some post-`KILL` singleton clusters are artifacts of touching ships. If a singleton touches killed cells and has zero continuation support, deferring it might avoid chase overcommit. This was retested after iter28 because the old result could have been polluted by `remaining[]` corruption.
+
+Result: consistently slightly worse.
+
+```text
+1..1000      +70
+1001..3000   +6
+3001..5000   +12
+5001..10000  +34
+combined     +122
+```
+
+Inference: the issue was not primarily that these singleton leftovers should be delayed. Accepted same-length ambiguity handling plus the iter28 decrement guard is already the better KILL-side behavior; extra deferral loses a little tempo.
+
+## iter31 EV hunt rerank failure
+
+Hypothesis: top heatmap shots should be reranked by one-step information value, approximating expected future cost better than raw hit probability.
+
+Result: catastrophic on `1..1000`.
+
+```text
+31a additive EV:        +31951 vs iter28
+31b normalized tie-break: +32181 vs iter28
+```
+
+Inference: independent-placement elimination is not a valid information proxy here. It likely favors cells that split many legal placements while ignoring actual fleet consistency, chase value, scan cost already paid, and the fact that missing high-probability cells is expensive. Any future policy-search attempt needs branch labels or complete-fleet posterior support, not raw independent placement entropy.
+
+## iter32 posterior support failure
+
+Hypothesis: if raw independent-placement entropy was a bad policy proxy, a complete-fleet posterior might provide safer support. The test made posterior influence very small: top-3 heatmap candidates only, factor `0.005`.
+
+Result: still rejected immediately.
+
+```text
+iter32 133147.033399
+iter28 128631.033399
+delta  +4516.000000
+seconds 205
+```
+
+Inference: the current beam posterior is not a trustworthy belief model even as a tiny tie-break. It likely has biased state construction: partial fleets are selected by fixed priors rather than likelihood of all observations/future consistency. Next policy work should be branch-label diagnostics or a different posterior sampler, not more rerank-factor tuning on this beam.
+
+## iter33 KILL candidate inventory-filter verification
+
+Verified root-cause claim: accepted iter28 did filter killed-placement candidates through `remaining[len] > 0`, while the actual decrement was separately guarded. So prior inventory corruption can indeed remove geometrically-valid killed candidates before Dead-marking.
+
+Tested fix: ignore `remaining[len]` for all killed candidates, keep decrement guard.
+
+Result:
+
+```text
+iter33 129725.033399
+iter28 128631.033399
+delta  +1094.000000 on 1..1000
+```
+
+Inference: unconditional relaxation is too broad. The next version should be conditional: use inventory-respecting candidates normally, but fall back to geometry-only candidates only when inventory-respecting inference creates ambiguous leftovers or has no strong same-length candidate.
+

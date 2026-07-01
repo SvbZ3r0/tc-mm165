@@ -1,0 +1,6 @@
+label	seed_range	score	iter28_baseline	delta	seconds	run_dir	notes
+iter30_iter28_touching_leftover_defer_size1	1..1000	128701.033399	128631.033399	+70.000000	14	benchmarks/20260630T065624Z_iter30_iter28_touching_leftover_defer_size1	Retested rejected iter19 singleton leftover deferral after iter28 remaining[] guard.
+iter30_iter28_touching_leftover_defer_size1	1001..3000	258772.422478	258766.422478	+6.000000	27	benchmarks/20260630T065737Z_iter30_iter28_touching_leftover_defer_size1	Same variant.
+iter30_iter28_touching_leftover_defer_size1	3001..5000	260407.279304	260395.279304	+12.000000	26	benchmarks/20260630T065821Z_iter30_iter28_touching_leftover_defer_size1	Same variant.
+iter30_iter28_touching_leftover_defer_size1	5001..10000	659174.572380	659140.572380	+34.000000	68	benchmarks/20260630T065909Z_iter30_iter28_touching_leftover_defer_size1	Same variant.
+iter30_iter28_touching_leftover_defer_size1	1..10000	1307055.307561	1306933.307561	+122.000000	135	combined	Rejected: consistently slightly worse across all ranges.
